@@ -1,0 +1,43 @@
+name: "Regression Checks"
+
+on:
+
+  schedule:
+    - cron: "0 0 * * *"
+
+  # Allow workflow to be manually run from the GitHub UI
+  workflow_dispatch:
+
+  push:
+
+jobs:
+
+  android-unit-tests:
+    name: "Android Unit Tests"
+    runs-on: ubuntu-latest
+    steps:
+        - name: "Checkout"
+          uses: actions/checkout@v3
+        - name: "Run Android Unit Tests"
+          working-directory: DisneyScenicRides
+          run: ./gradlew test
+
+  android-lint:
+    name: "Android Unit Tests"
+    runs-on: ubuntu-latest
+    steps:
+      - name: "Checkout"
+        uses: actions/checkout@v3
+      - name: "Run Android Unit Tests"
+        working-directory: DisneyScenicRides
+        run: ./gradlew lint
+
+  android-kotlin-lint:
+    name: "Android Unit Tests"
+    runs-on: ubuntu-latest
+    steps:
+      - name: "Checkout"
+        uses: actions/checkout@v3
+      - name: "Run Android Unit Tests"
+        working-directory: DisneyScenicRides
+        run: ./gradlew ktlintCheck
