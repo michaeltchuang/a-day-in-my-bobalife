@@ -10,9 +10,10 @@ object Constants {
     const val ALGOD_API_TOKEN_KEY = "X-API-Key"
     const val ALGOD_API_TOKEN = "B3SU4KcVKi94Jap2VXkK83xx38bsv95K5UZm2lab"
     const val RANDOM_BEACON_APPID = 110096026L
+    const val COINFLIP_APP_ID_TESTNET = 115885218L
     const val TEST_ADDRESS = "LMRZRYVM3EXPLNGW7VRIIZ4CQKW5IVPDDXCKFZKCLJF35CNJMEKJNUTJIQ"
     const val TEST_PASSPHRASE = "swing enrich bring novel oak gadget barely deer bottom brown where fossil can intact cactus rail pumpkin cost actual famous gauge deny pink above rubber"
     const val DEFAULT_APP_OPT_IN_STATE = "DEFAULT_APP_OPT_IN_STATE"
-    const val DEFAULT_MICRO_ALGO_BET_AMOUNT = 50000
+    const val DEFAULT_MICRO_ALGO_TRANSFER_AMOUNT = 888
     const val DEFAULT_MICRO_ALGO_TXN_FEE_SAFE_AMOUNT = 10000
 }
