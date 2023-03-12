@@ -68,6 +68,7 @@ jobs:
         run: |
           git pull origin release/${{ github.run_number }}
       - name: "Semantic Release"
+        working-directory: HaveAMagicalDay
         run: |
           npx \
           -p lodash \
