@@ -25,7 +25,7 @@ jobs:
           run: ./gradlew test
 
   android-lint:
-    name: "Android Unit Tests"
+    name: "Android Lint Checks"
     runs-on: ubuntu-latest
     steps:
       - name: "Checkout"
@@ -35,7 +35,7 @@ jobs:
         run: ./gradlew lint
 
   android-kotlin-lint:
-    name: "Android Unit Tests"
+    name: "Android Kotlin Lint Checks"
     runs-on: ubuntu-latest
     steps:
       - name: "Checkout"
