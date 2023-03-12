@@ -1,8 +1,6 @@
-const appVersionName = "2023.03.11"
-
 module.exports = {
   branches: ["main"],
-  tagFormat: "v${appVersionName}",
+  tagFormat: "v${version}",
   plugins: [
     [
       "@semantic-release/commit-analyzer",
@@ -86,7 +84,7 @@ module.exports = {
     [
       "@semantic-release/exec",
       {
-        prepareCmd: "sh ./scripts/release.sh ${appVersionName}",
+        prepareCmd: "sh ./scripts/release.sh ${version.next}",
       },
     ],
     ["@semantic-release/github"],
@@ -95,7 +93,7 @@ module.exports = {
       {
         assets: ["CHANGELOG.md", "build.gradle", "README.md"],
         message:
-          "chore: ${appVersionName} (release) \n\n${nextRelease.notes}",
+          "chore: ${version.next} (release) \n\n${nextRelease.notes}",
       },
     ],
   ],
