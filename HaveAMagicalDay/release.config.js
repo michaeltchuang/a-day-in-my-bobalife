@@ -84,7 +84,7 @@ module.exports = {
     [
       "@semantic-release/exec",
       {
-        prepareCmd: "sh ./scripts/release.sh ${version.next}",
+        prepareCmd: "sh ./scripts/release.sh ${nextRelease.version}",
       },
     ],
     ["@semantic-release/github"],
@@ -93,7 +93,7 @@ module.exports = {
       {
         assets: ["CHANGELOG.md", "build.gradle", "README.md"],
         message:
-          "chore: ${version.next} (release) \n\n${nextRelease.notes}",
+          "chore: ${nextRelease.version} (release) \n\n${nextRelease.notes}",
       },
     ],
   ],
