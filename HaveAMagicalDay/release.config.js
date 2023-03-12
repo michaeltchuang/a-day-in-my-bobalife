@@ -1,18 +1,4 @@
-const appVersionName = {
-    var todaysDate = new Date();
-    var pstDate = todaysDate.toLocaleString("en-US", {
-      timeZone: "America/Los_Angeles"
-    })
-    var mm = pstDate.getMonth() + 1;
-    var yyyy = pstDate.getFullYear();
-    if (dd < 10) {
-      dd = '0' + dd;
-    }
-    if (mm < 10) {
-      mm = '0' + mm;
-    }
-    return yyyy + '.' + mm + '.' +dd;
-};
+const appVersionName = "2023.03.11"
 
 module.exports = {
   branches: ["main"],
@@ -95,6 +81,12 @@ module.exports = {
       "@semantic-release/changelog",
       {
         changelogFile: "CHANGELOG.md",
+      },
+    ],
+    [
+      "@semantic-release/exec",
+      {
+        prepareCmd: "sh ./scripts/release.sh ${appVersionName}",
       },
     ],
     ["@semantic-release/github"],
