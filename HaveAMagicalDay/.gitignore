@@ -14,3 +14,4 @@
 .cxx
 local.properties
 *.jar
+app/bin/*

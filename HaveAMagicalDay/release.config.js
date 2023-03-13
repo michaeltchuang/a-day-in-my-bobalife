@@ -7,6 +7,7 @@ module.exports = {
       {
         preset: "angular",
         releaseRules: [
+            {type: 'breaking', release: 'major'},
             {type: 'feat', release: 'minor'},
             {type: 'ci', release: 'patch'},
             {type: 'fix', release: 'patch'},
@@ -26,6 +27,11 @@ module.exports = {
         preset: "conventionalcommits",
         presetConfig: {
           types: [
+            {
+              "type": "breaking",
+              "section": "Breaking",
+              "hidden": false
+            },
             {
               "type": "feat",
               "section": "Features",

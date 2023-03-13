@@ -5,16 +5,13 @@ import com.algorand.algosdk.builder.transaction.PaymentTransactionBuilder
 import com.algorand.algosdk.crypto.Address
 import com.algorand.algosdk.transaction.SignedTransaction
 import com.algorand.algosdk.util.Encoder
-
 import com.algorand.algosdk.v2.client.Utils
 import com.algorand.algosdk.v2.client.common.AlgodClient
 import com.algorand.algosdk.v2.client.model.PendingTransactionResponse
 import com.algorand.algosdk.v2.client.model.TransactionParametersResponse
 import com.michaeltchuang.cron.txHeaders
 import com.michaeltchuang.cron.txValues
-
 import com.michaeltchuang.cron.utils.Constants
-
 
 class AlgorandRepository() {
     private val TAG: String = "AlgorandRepository"
@@ -25,7 +22,7 @@ class AlgorandRepository() {
         Constants.ALGOD_API_TOKEN_KEY
     )
 
-    fun recoverAccount(passPhrase : String) : Account? {
+    fun recoverAccount(passPhrase: String): Account? {
         try {
             return Account(passPhrase)
         } catch (e: Exception) {
@@ -34,7 +31,7 @@ class AlgorandRepository() {
         }
     }
 
-    fun sendPayment(account: Account, appId: Long, amount: Int) : PendingTransactionResponse? {
+    fun sendPayment(account: Account, appId: Long, amount: Int, note: String): PendingTransactionResponse? {
         try {
             val respAcct = client.AccountInformation(account.getAddress()).execute()
             if (!respAcct.isSuccessful) {
@@ -48,7 +45,6 @@ class AlgorandRepository() {
             }
             val sp: TransactionParametersResponse = resp.body()
                 ?: throw java.lang.Exception("Params retrieval error")
-            val note = "Have a magical day everyone"
 
             // Create a transaction
             val ptxn = PaymentTransactionBuilder.Builder()
@@ -69,9 +65,9 @@ class AlgorandRepository() {
 
             // Wait for transaction confirmation
             val pTrx: PendingTransactionResponse = Utils.waitForConfirmation(client, txnId, 10)
-            println("${account.address} sent ${amount} microAlgos to ${Address.forApplication(appId)} for transaction ${txnId}")
+            println("${account.address} sent $amount microAlgos to ${Address.forApplication(appId)} for transaction $txnId")
             return pTrx
-        } catch(e: Exception) {
+        } catch (e: Exception) {
             println(e.toString())
             return null
         }
