@@ -1,23 +1,18 @@
 package com.michaeltchuang.cron
 
-import com.algorand.algosdk.v2.client.common.AlgodClient
 import com.michaeltchuang.cron.data.AlgorandRepository
 import com.michaeltchuang.cron.utils.Constants
+import com.michaeltchuang.cron.utils.DateUtils
+import java.nio.file.Files
+import java.nio.file.Paths
+import java.nio.file.StandardOpenOption
 import java.time.LocalDate
-import java.time.Period
 import java.time.format.DateTimeFormatter
 import java.util.TimeZone
 
-private val TAG: String = "AlgorandRepository"
-private var client: AlgodClient = AlgodClient(
-    Constants.ALGOD_API_ADDR,
-    Constants.ALGOD_PORT,
-    Constants.ALGOD_API_TOKEN,
-    Constants.ALGOD_API_TOKEN_KEY
-)
-
-val txHeaders = arrayOf("Content-Type")
-val txValues = arrayOf("application/x-binary")
+val tz = TimeZone.getTimeZone("America/Los_Angeles")
+val dateFormatter: DateTimeFormatter =  DateTimeFormatter.ofPattern("yyyy-MM-dd").withZone(tz.toZoneId())
+val currentDateStr = LocalDate.now(tz.toZoneId()).format(dateFormatter).toString()
 
 fun main() {
     val repository = AlgorandRepository()
@@ -26,38 +21,37 @@ fun main() {
     if (account == null) {
         throw Exception("Could not find account")
     } else {
-        account.address?.apply { repository.sendPayment(account, Constants.COINFLIP_APP_ID_TESTNET,
-            Constants.DEFAULT_MICRO_ALGO_TRANSFER_AMOUNT, getGreeting(false)) }
+        val volumeNum = DateUtils().calculateVolumeNum(false, Constants.VOL2_START_DATE, currentDateStr)
+        var vlogNum = DateUtils().calculateVlogNum(false, Constants.VOL2_START_DATE, currentDateStr)
+        account.address?.apply { AppendToCsvFile(vlogNum, repository.sendPayment(account, Constants.COINFLIP_APP_ID_TESTNET,
+            Constants.DEFAULT_MICRO_ALGO_TRANSFER_AMOUNT, getGreeting(volumeNum, vlogNum))) }
 
         //send twice if Mondays - 8th vlog
-        val tz = TimeZone.getTimeZone("America/Los_Angeles")
         if(LocalDate.now(tz.toZoneId()).dayOfWeek.value == 1) {
-            account.address?.apply { repository.sendPayment(account, Constants.COINFLIP_APP_ID_TESTNET,
-                Constants.DEFAULT_MICRO_ALGO_TRANSFER_AMOUNT, getGreeting(true)) }
+            vlogNum = DateUtils().calculateVlogNum(true, Constants.VOL2_START_DATE, currentDateStr)
+            account.address?.apply { AppendToCsvFile(vlogNum, repository.sendPayment(account, Constants.COINFLIP_APP_ID_TESTNET,
+                Constants.DEFAULT_MICRO_ALGO_TRANSFER_AMOUNT, getGreeting(volumeNum, vlogNum))) }
         }
     }
 }
 
-fun getGreeting(isEighth: Boolean) : String {
-    var vlogNum = calculateVlogNum(isEighth)
-
-    val note = "Volume 2 Vlog ${vlogNum}, have a magical day everyone! - Michael T Chuang"
+fun getGreeting(volume: Int, vlogNum: Int) : String {
+    val note = "Vlog ${volume}-${vlogNum}, have a magical day everyone! - Michael T Chuang"
     println(note)
     return note
 }
 
-fun calculateVlogNum(isEighth: Boolean) : Int {
-    val tz = TimeZone.getTimeZone("America/Los_Angeles")
-    val dateFormatter: DateTimeFormatter =  DateTimeFormatter.ofPattern("yyyyMMdd").withZone(tz.toZoneId())
-    val from = LocalDate.parse("20230220", dateFormatter)
-    val to = LocalDate.now(tz.toZoneId())
-    val period = Period.between(from, to)
-    val weeks = period.days / 8
-    println("${period.days} days is ${weeks} weeks since Feb 21, 2023")
-
-    if(!isEighth) {
-        return ((weeks * 8) + (period.days % 7))
-    } else {
-        return (weeks * 8) + 8
-    }
+fun AppendToCsvFile(vlogNum: Int, txnId: String?) {
+    try {
+        if(txnId != null) {
+            val str = "\n${currentDateStr},2-${vlogNum},${txnId}"
+            Files.write(
+                Paths.get(Constants.HISTORY_CSV_FILE),
+                str.toByteArray(),
+                StandardOpenOption.APPEND
+            )
+        } else {
+            throw IllegalStateException("Error in creating Algorand transaction")
+        }
+    } catch (e: Exception) { println(e.toString())}
 }

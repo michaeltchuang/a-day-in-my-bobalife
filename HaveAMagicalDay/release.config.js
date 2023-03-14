@@ -99,7 +99,7 @@ module.exports = {
       {
         assets: ["CHANGELOG.md", "build.gradle", "README.md"],
         message:
-          "chore: ${nextRelease.version} (release) \n\n${nextRelease.notes}",
+          "chore: v${nextRelease.version} (release) \n\n${nextRelease.notes}",
       },
     ],
   ],
