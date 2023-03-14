@@ -1,3 +1,11 @@
+## [2023.10.0](https://github.com/michaeltchuang/a-day-in-my-bobalife/compare/v2023.9.0...v2023.10.0) (2023-03-14)
+
+
+### Features
+
+* add in vlog date calculations for volume 2 ([80a0ba2](https://github.com/michaeltchuang/a-day-in-my-bobalife/commit/80a0ba26782eba114d5cc4f0b31c4ce94986b3c3))
+* save greeting to log file ([4023899](https://github.com/michaeltchuang/a-day-in-my-bobalife/commit/40238997914e003e419110c97fbf0f1888c03655))
+
 ## 2023.9.0 (2023-03-12)
 
 
