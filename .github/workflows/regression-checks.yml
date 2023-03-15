@@ -44,7 +44,3 @@ jobs:
       - name: "Run Android Unit Tests"
         working-directory: DisneyScenicRides
         run: ./gradlew ktlintCheck
-
-  greeting:
-    name: "Run Donate Script"
-    uses: michaeltchuang/a-day-in-my-bobalife/.github/workflows/greet.yml@main
