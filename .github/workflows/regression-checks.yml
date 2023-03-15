@@ -15,32 +15,8 @@ on:
 
 jobs:
 
-  android-unit-tests:
-    name: "Android Unit Tests"
-    runs-on: ubuntu-latest
-    steps:
-        - name: "Checkout"
-          uses: actions/checkout@v3
-        - name: "Run Android Unit Tests"
-          working-directory: DisneyScenicRides
-          run: ./gradlew test
-
-  android-lint:
-    name: "Android Lint Checks"
-    runs-on: ubuntu-latest
-    steps:
-      - name: "Checkout"
-        uses: actions/checkout@v3
-      - name: "Run Android Unit Tests"
-        working-directory: DisneyScenicRides
-        run: ./gradlew lint
-
-  android-kotlin-lint:
-    name: "Android Kotlin Lint Checks"
-    runs-on: ubuntu-latest
-    steps:
-      - name: "Checkout"
-        uses: actions/checkout@v3
-      - name: "Run Android Unit Tests"
-        working-directory: DisneyScenicRides
-        run: ./gradlew ktlintCheck
+  disney-scenic-rides:
+    name: "Disney Scenic Rides"
+    uses: michaeltchuang/a-day-in-my-life/.github/workflows/app-tests.yml@main
+    with:
+        app_workspace: "DisneyScenicRides"

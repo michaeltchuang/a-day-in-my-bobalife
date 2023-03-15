@@ -1,0 +1,79 @@
+name: "App Tests"
+
+on:
+
+  workflow_call:
+    inputs:
+      app_workspace:
+        description: "App workspace path"
+        required: true
+        default: "./"
+        type: string
+
+jobs:
+
+  android-unit-tests:
+    name: "Android Unit Tests"
+    runs-on: ubuntu-latest
+    steps:
+        - name: "Checkout"
+          uses: actions/checkout@v3
+        - name: "Install JDK 11"
+          uses: actions/setup-java@v3
+          with:
+            distribution: "zulu"
+            java-version: "11"
+            cache: "gradle"
+        - name: "Run Android Unit Tests"
+          working-directory: ${{ inputs.app_workspace }}
+          run: ./gradlew test
+        - name: "Android Unit Tests Report"
+          uses: actions/upload-artifact@v3
+          if: ${{ always() }}
+          with:
+            name: "unit-tests-results"
+            path: ./**/build/reports/**
+
+  android-lint:
+    name: "Android Lint Checks"
+    runs-on: ubuntu-latest
+    steps:
+      - name: "Checkout"
+        uses: actions/checkout@v3
+      - name: "Install JDK 11"
+        uses: actions/setup-java@v3
+        with:
+          distribution: "zulu"
+          java-version: "11"
+          cache: "gradle"
+      - name: "Run Android Unit Tests"
+        working-directory: ${{ inputs.app_workspace }}
+        run: ./gradlew lint
+      - name: "Archive Lint Test Results"
+        uses: actions/upload-artifact@v3
+        if: ${{ always() }}
+        with:
+          name: "lint-results"
+          path: ./**/build/reports/**
+
+  android-kotlin-lint:
+    name: "Android Kotlin Lint Checks"
+    runs-on: ubuntu-latest
+    steps:
+      - name: "Checkout"
+        uses: actions/checkout@v3
+      - name: "Install JDK 11"
+        uses: actions/setup-java@v3
+        with:
+          distribution: "zulu"
+          java-version: "11"
+          cache: "gradle"
+      - name: "Run Android Unit Tests"
+        working-directory: ${{ inputs.app_workspace }}
+        run: ./gradlew ktlintCheck
+      - name: "Archive Lint Test Results"
+        uses: actions/upload-artifact@v3
+        if: ${{ always() }}
+        with:
+          name: "kotlin-lint-results"
+          path: ./**/build/reports/**
