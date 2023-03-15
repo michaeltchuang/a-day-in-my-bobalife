@@ -1,3 +1,5 @@
+@file:JvmName("App")
+
 package com.michaeltchuang.cron
 
 import com.michaeltchuang.cron.data.AlgorandRepository
@@ -45,6 +47,7 @@ fun AppendToCsvFile(vlogNum: Int, txnId: String?) {
     try {
         if(txnId != null) {
             val str = "\n${currentDateStr},2-${vlogNum},${txnId}"
+            //println(Paths.get("").toAbsolutePath().toString())
             Files.write(
                 Paths.get(Constants.HISTORY_CSV_FILE),
                 str.toByteArray(),

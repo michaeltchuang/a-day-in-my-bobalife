@@ -1,0 +1,45 @@
+name: "AlgoFam Greeting"
+
+on:
+
+  # Allow workflow to be manually run from the GitHub UI
+  workflow_dispatch:
+
+  workflow_call:
+
+jobs:
+
+  run-greeting-app:
+    name: "Run Greeting App"
+    runs-on: ubuntu-latest
+    env:
+      GITHUB_TOKEN: ${{ secrets.MICHAELTCHUANG_BOT }}
+      GIT_AUTHOR_NAME: michaeltchuang
+      GIT_AUTHOR_EMAIL: github@michaeltchuang.com
+      GIT_COMMITTER_NAME: michaeltchuang
+      GIT_COMMITTER_EMAIL: github@michaeltchuang.com
+    steps:
+      - name: "Checkout main branch"
+        uses: actions/checkout@v3
+        with:
+          token: ${{ secrets.MICHAELTCHUANG_BOT }}
+          repository: michaeltchuang/a-day-in-my-bobalife
+          ref: main
+          submodules: recursive
+      - name: "Import GPG Key"
+        uses: crazy-max/ghaction-import-gpg@v5
+        with:
+          gpg_private_key: ${{ secrets.GPG_PRIVATE_KEY }}
+          passphrase: ${{ secrets.GPG_PASSPHRASE }}
+          git_user_signingkey: true
+          git_commit_gpgsign: true
+      - name: "Run greeting script"
+        working-directory: HaveAMagicalDay
+        run: ./gradlew run
+      - name: "Commit changes"
+        working-directory: HaveAMagicalDay
+        run: | 
+          git add .
+          git diff-index --quiet HEAD || git commit -m 'chore: log greeting (%Y-%m-%d)'
+      - name: "Push updates to main branch"
+        run: git push origin HEAD:main

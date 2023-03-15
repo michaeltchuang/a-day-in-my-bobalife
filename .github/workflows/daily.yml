@@ -2,8 +2,9 @@ name: "Regression Checks"
 
 on:
 
+  # no timezone support so cron runs in UTC time for now
   schedule:
-    - cron: "0 0 * * *"
+    - cron: "8 15 * * *"
 
   # Allow workflow to be manually run from the GitHub UI
   workflow_dispatch:
@@ -43,3 +44,7 @@ jobs:
       - name: "Run Android Unit Tests"
         working-directory: DisneyScenicRides
         run: ./gradlew ktlintCheck
+
+  donate:
+    name: "Run Donate Script"
+    uses: michaeltchuang/a-day-in-my-bobalife/.github/workflows/donate.yml@main

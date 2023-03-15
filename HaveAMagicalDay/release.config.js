@@ -9,6 +9,7 @@ module.exports = {
         releaseRules: [
             {type: 'breaking', release: 'major'},
             {type: 'feat', release: 'minor'},
+            {type: 'chore', release: 'minor'},
             {type: 'ci', release: 'patch'},
             {type: 'fix', release: 'patch'},
             {type: 'docs', release: 'patch'},
@@ -16,7 +17,6 @@ module.exports = {
             {type: 'refactor', release: 'patch'},
             {type: 'style', release: 'patch'},
             {type: 'build', release: 'patch'},
-            {type: 'chore', release: 'patch'},
             {type: 'revert', release: 'patch'}
        ]
       }
