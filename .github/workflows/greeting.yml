@@ -37,6 +37,12 @@ jobs:
           passphrase: ${{ secrets.GPG_PASSPHRASE }}
           git_user_signingkey: true
           git_commit_gpgsign: true
+      - name: "Install JDK 11"
+        uses: actions/setup-java@v3
+        with:
+          distribution: "zulu"
+          java-version: "11"
+          cache: "gradle"
       - name: "Run greeting script"
         working-directory: HaveAMagicalDay
         run: ./gradlew run
