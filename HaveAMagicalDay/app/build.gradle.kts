@@ -12,6 +12,11 @@ application {
     mainClass.set("com.michaeltchuang.cron.App")
 }
 
+java {
+    sourceCompatibility = JavaVersion.VERSION_11
+    targetCompatibility = JavaVersion.VERSION_11
+}
+
 dependencies {
     implementation("com.github.ajalt.clikt:clikt:3.5.2")
     implementation("com.algorand:algosdk:2.0.0")
