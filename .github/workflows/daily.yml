@@ -45,6 +45,6 @@ jobs:
         working-directory: DisneyScenicRides
         run: ./gradlew ktlintCheck
 
-  donate:
+  greeting:
     name: "Run Donate Script"
-    uses: michaeltchuang/a-day-in-my-bobalife/.github/workflows/donate.yml@main
+    uses: michaeltchuang/a-day-in-my-bobalife/.github/workflows/greet.yml@main
