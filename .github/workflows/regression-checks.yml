@@ -17,6 +17,6 @@ jobs:
 
   disney-scenic-rides:
     name: "Disney Scenic Rides"
-    uses: michaeltchuang/a-day-in-my-life/.github/workflows/app-tests.yml@main
+    uses: michaeltchuang/a-day-in-my-bobalife/.github/workflows/app-tests.yml@main
     with:
         app_workspace: "DisneyScenicRides"
