@@ -12,15 +12,16 @@ application {
     mainClass.set("com.michaeltchuang.cron.App")
 }
 
-java {
-    sourceCompatibility = JavaVersion.VERSION_11
-    targetCompatibility = JavaVersion.VERSION_11
-}
-
 dependencies {
     implementation("com.github.ajalt.clikt:clikt:3.5.2")
     implementation("com.algorand:algosdk:2.0.0")
     testImplementation("junit:junit:4.13.2")
+}
+
+tasks.withType<org.jetbrains.kotlin.gradle.tasks.KotlinCompile>().configureEach {
+    kotlinOptions {
+        jvmTarget = "11"
+    }
 }
 
 fun buildVersionCode(): Int {

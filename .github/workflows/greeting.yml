@@ -44,9 +44,9 @@ jobs:
           java-version: "11"
           cache: "gradle"
       - name: Get current date
-        id: date
+        id: currentdate
         run: |
-          echo "{date}={$(date +'%Y-%m-%d')}" >> $GITHUB_STATE
+          echo "jobdate=$(date +'%Y-%m-%d')" >> $GITHUB_OUTPUT
       - name: "Run greeting script"
         working-directory: HaveAMagicalDay
         run: ./gradlew run
@@ -54,6 +54,6 @@ jobs:
         working-directory: HaveAMagicalDay
         run: |
           git add .
-          git diff-index --quiet HEAD || git commit -m 'chore: log greeting (${{ env.date }})'
+          git diff-index --quiet HEAD || git commit -m 'chore: log greeting (${{ steps.currentdate.outputs.jobdate }})'
       - name: "Push updates to main branch"
         run: git push origin HEAD:main
