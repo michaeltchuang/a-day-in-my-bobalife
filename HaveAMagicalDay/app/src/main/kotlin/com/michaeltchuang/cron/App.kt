@@ -60,7 +60,7 @@ fun getGreeting(volume: Int, vlogNum: Int): String {
 fun AppendToCsvFile(vlogNum: Int, txnId: String?) {
     try {
         if (txnId != null) {
-            val str = "\n$currentDateStr,2-$vlogNum,$txnId"
+            val str = "$currentDateStr,2-$vlogNum,$txnId\n"
             // println(Paths.get("").toAbsolutePath().toString())
             Files.write(
                 Paths.get(Constants.HISTORY_CSV_FILE),
