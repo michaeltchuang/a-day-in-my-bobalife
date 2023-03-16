@@ -1,3 +1,7 @@
 # A Day In My Bobalife
 
-![Regression Checks](https://github.com/michaeltchuang/a-day-in-my-bobalife/actions/workflows/daily.yml/badge.svg)
+
+![Daily Regression Check](https://github.com/michaeltchuang/a-day-in-my-bobalife/actions/workflows/regression-check.yml/badge.svg)
+
+![Daily AlgoFam Greeting](https://github.com/michaeltchuang/a-day-in-my-bobalife/actions/workflows/greeting.yml/badge.svg)
+
