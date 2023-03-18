@@ -2,7 +2,7 @@ name: "Dependabot Automerge"
 
 on:
   workflow_run:
-    workflows: ["Pull Request"]
+    workflows: ["Regression Check"]
     types:
       - completed
 
