@@ -1,0 +1,22 @@
+version: 2
+updates:
+  - package-ecosystem: gradle
+    directory: "/DisneyScenicRides"
+    schedule:
+      interval: daily
+      time: "08:00"
+      timezone: "America/Los_Angeles"
+    labels: ['dependabot']
+    open-pull-requests-limit: 10
+    commit-message:
+      prefix: "chore"
+  - package-ecosystem: gradle
+    directory: "/HaveAMagicalDay"
+    schedule:
+      interval: daily
+      time: "08:00"
+      timezone: "America/Los_Angeles"
+    labels: ['dependabot']
+    open-pull-requests-limit: 10
+    commit-message:
+      prefix: "chore"

@@ -13,10 +13,24 @@ on:
 
   push:
 
+  pull-request:
+
 jobs:
+
+  have-a-magical-day:
+    name: "Have a magical day"
+    uses: michaeltchuang/.github/.github/workflows/clikt-app-tests.yml@main
+    with:
+        app_workspace: "HaveAMagicalDay"
 
   disney-scenic-rides:
     name: "Disney Scenic Rides"
-    uses: michaeltchuang/a-day-in-my-bobalife/.github/workflows/app-tests.yml@main
+    uses: michaeltchuang/.github/.github/workflows/android-app-tests.yml@main
     with:
         app_workspace: "DisneyScenicRides"
+
+  automerge-dependabot:
+    name: "Save PR Number for Dependabot Automerge"
+    needs: [ have-a-magical-day, disney-scenic-rides ]
+    uses: michaeltchuang/.github/.github/workflows/dependabot-save-pr-number.yml@main
+    secrets: inherit
