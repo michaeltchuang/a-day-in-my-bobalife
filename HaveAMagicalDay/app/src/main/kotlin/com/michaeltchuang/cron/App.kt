@@ -29,8 +29,10 @@ fun main() {
             AppendToCsvFile(
                 vlogNum,
                 repository.sendPayment(
-                    account, Constants.COINFLIP_APP_ID_TESTNET,
-                    Constants.DEFAULT_MICRO_ALGO_TRANSFER_AMOUNT, getGreeting(volumeNum, vlogNum)
+                    account,
+                    Constants.COINFLIP_APP_ID_TESTNET,
+                    Constants.DEFAULT_MICRO_ALGO_TRANSFER_AMOUNT,
+                    getGreeting(volumeNum, vlogNum)
                 )
             )
         }
@@ -42,8 +44,10 @@ fun main() {
                 AppendToCsvFile(
                     vlogNum,
                     repository.sendPayment(
-                        account, Constants.COINFLIP_APP_ID_TESTNET,
-                        Constants.DEFAULT_MICRO_ALGO_TRANSFER_AMOUNT, getGreeting(volumeNum, vlogNum)
+                        account,
+                        Constants.COINFLIP_APP_ID_TESTNET,
+                        Constants.DEFAULT_MICRO_ALGO_TRANSFER_AMOUNT,
+                        getGreeting(volumeNum, vlogNum)
                     )
                 )
             }
