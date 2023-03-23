@@ -1,4 +1,4 @@
-package com.michaeltchuang.ride
+package com.michaeltchuang.ride.ui
 
 import android.content.pm.ActivityInfo
 import android.os.Bundle

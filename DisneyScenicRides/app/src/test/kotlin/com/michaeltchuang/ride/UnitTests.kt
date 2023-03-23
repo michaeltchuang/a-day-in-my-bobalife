@@ -1,6 +1,7 @@
 package com.michaeltchuang.ride
 
-import org.junit.Assert.assertEquals
+import com.michaeltchuang.ride.data.DataProvider
+import org.junit.Assert
 import org.junit.Test
 
 /**
@@ -8,9 +9,9 @@ import org.junit.Test
  *
  * See [testing documentation](http://d.android.com/tools/testing).
  */
-class ExampleUnitTest {
+class UnitTests {
     @Test
-    fun addition_isCorrect() {
-        assertEquals(4, 2 + 2)
+    fun VideoHubNotEmpty() {
+        Assert.assertNotNull(DataProvider.videos.size)
     }
 }
