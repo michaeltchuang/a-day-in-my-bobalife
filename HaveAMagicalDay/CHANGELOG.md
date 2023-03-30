@@ -1,3 +1,46 @@
+## [2023.11.0](https://github.com/michaeltchuang/a-day-in-my-bobalife/compare/v2023.10.0...v2023.11.0) (2023-03-30)
+
+
+### Features
+
+* add in greet job ([3df27ce](https://github.com/michaeltchuang/a-day-in-my-bobalife/commit/3df27cee94df2a7388804e0db29487c692e2e098))
+
+
+### Bug Fixes
+
+* ci template typos ([4c6a04e](https://github.com/michaeltchuang/a-day-in-my-bobalife/commit/4c6a04e65cf976f6dd437b7d3cfd45142dc3c481))
+* typo on daily job ([f9ad380](https://github.com/michaeltchuang/a-day-in-my-bobalife/commit/f9ad38087775344bca346ef6c0ad3c1700576bdf))
+
+
+### Documentation
+
+* add in license file ([54c7e83](https://github.com/michaeltchuang/a-day-in-my-bobalife/commit/54c7e83881f598de443a54e4449acde2164fbc07))
+* fix log formatting ([49963a8](https://github.com/michaeltchuang/a-day-in-my-bobalife/commit/49963a87802baa9ed0e0c514755d30565bc4b03f))
+* update readme for latest changes ([898e651](https://github.com/michaeltchuang/a-day-in-my-bobalife/commit/898e651d431ace91f26172743e3c6ea65a9685f3))
+
+
+### Updates & Maintenance
+
+* add gradle to greeting job ([0ba7e7b](https://github.com/michaeltchuang/a-day-in-my-bobalife/commit/0ba7e7b2b1bf6a35a8942fac11c3248e44dffc57))
+* add in more github action flows ([b199b02](https://github.com/michaeltchuang/a-day-in-my-bobalife/commit/b199b02ecc2a2fa2068bea5ef71fdfd79e1697bb))
+* add missing gradle-wrapper.jar file ([436aae9](https://github.com/michaeltchuang/a-day-in-my-bobalife/commit/436aae93588ab89248c65d059cde33c35bc558a3))
+* bump org.jlleitschuh.gradle.ktlint from 11.0.0 to 11.3.1 in /DisneyScenicRides ([#2](https://github.com/michaeltchuang/a-day-in-my-bobalife/issues/2)) ([e5662c9](https://github.com/michaeltchuang/a-day-in-my-bobalife/commit/e5662c9c5e8b17eca696cc7a8c659b7447d95f93))
+* bump org.jlleitschuh.gradle.ktlint from 11.0.0 to 11.3.1 in /HaveAMagicalDay ([#1](https://github.com/michaeltchuang/a-day-in-my-bobalife/issues/1)) ([a6f9b9b](https://github.com/michaeltchuang/a-day-in-my-bobalife/commit/a6f9b9b8261c6ed7f3b567fc77825fc6fe55d25f))
+* change dependabot time on second job ([9834d04](https://github.com/michaeltchuang/a-day-in-my-bobalife/commit/9834d04411616ef7b4fdad8d16cb7ec69d63f53b))
+* fix date commit syntax ([e7bcc2c](https://github.com/michaeltchuang/a-day-in-my-bobalife/commit/e7bcc2c4cd9d308cb8a0c8e5961da052d162d916))
+* fix ktlint errors ([d36aacf](https://github.com/michaeltchuang/a-day-in-my-bobalife/commit/d36aacf087befb06b865207892b5ae526bb45724))
+* fix typo for workflow path ([0e6e035](https://github.com/michaeltchuang/a-day-in-my-bobalife/commit/0e6e035479858ac07e01dee5cf63d997e82feed0))
+* log greeting (2023-03-16) ([6fa5bfc](https://github.com/michaeltchuang/a-day-in-my-bobalife/commit/6fa5bfcebe7b109f40e4603e99e1c6811b5765a0))
+* log greeting (2023-03-16) ([acc696c](https://github.com/michaeltchuang/a-day-in-my-bobalife/commit/acc696c7501de027c3dff0786339962b0a426fe1))
+* log greeting (2023-03-17) ([54c90a1](https://github.com/michaeltchuang/a-day-in-my-bobalife/commit/54c90a1949209c58fd6d410f2e164f36deb33f91))
+* log greeting (2023-03-18) ([964adcf](https://github.com/michaeltchuang/a-day-in-my-bobalife/commit/964adcf12ef3b1de5c81a133aa87830efcd89109))
+* log greeting (2023-03-19) ([62a127c](https://github.com/michaeltchuang/a-day-in-my-bobalife/commit/62a127c51999e045fe081ac4aa851f152639a55a))
+* log greeting (2023-03-20) ([7ecfc5b](https://github.com/michaeltchuang/a-day-in-my-bobalife/commit/7ecfc5b57fab42e1c813dcbfa2f52f9b426e4442))
+* move greet job out of daily ([6a7fa08](https://github.com/michaeltchuang/a-day-in-my-bobalife/commit/6a7fa08b4b1ea1ffd35ef200cd80367fe21c7baf))
+* target Java 11 ([ccdb929](https://github.com/michaeltchuang/a-day-in-my-bobalife/commit/ccdb929b00357377118e89a3a196e4c27712a49c))
+* try another date syntax ([b704dc0](https://github.com/michaeltchuang/a-day-in-my-bobalife/commit/b704dc013708cd88f710c55280439083ae7dd62b))
+* update CI and fix ktlint issues ([b6ea969](https://github.com/michaeltchuang/a-day-in-my-bobalife/commit/b6ea9698a625e255cfc7a0a9ac37ff1dba379187))
+
 ## [2023.10.0](https://github.com/michaeltchuang/a-day-in-my-bobalife/compare/v2023.9.0...v2023.10.0) (2023-03-14)
 
 
