@@ -9,6 +9,7 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
+import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
@@ -38,6 +39,7 @@ import androidx.compose.ui.unit.dp
 import androidx.databinding.DataBindingUtil
 import com.michaeltchuang.ride.R
 import com.michaeltchuang.ride.data.DataProvider
+import com.michaeltchuang.ride.data.DataProvider.videos
 import com.michaeltchuang.ride.data.models.Video
 
 class MainActivity : AppCompatActivity() {
@@ -56,10 +58,8 @@ class MainActivity : AppCompatActivity() {
 
     @Composable
     fun MainActivityComposable() {
-
         Column(
             horizontalAlignment = Alignment.CenterHorizontally,
-            verticalArrangement = Arrangement.SpaceEvenly,
             modifier = Modifier
                 .fillMaxWidth()
                 .fillMaxHeight()
@@ -67,17 +67,24 @@ class MainActivity : AppCompatActivity() {
                 .padding(50.dp)
         ) {
             VideoHub()
-            Image(
-                painter = painterResource(id = R.drawable.xmas),
-                contentDescription = null,
-                modifier = Modifier
-                    .fillMaxHeight()
+            Row(
+                Modifier
                     .fillMaxWidth()
-                    .paint(
-                        painter = painterResource(R.drawable.xmas),
-                        contentScale = ContentScale.FillWidth
-                    )
-            )
+                    .fillMaxHeight()
+            ) {
+                Image(
+                    painter = painterResource(id = R.drawable.xmas),
+                    contentDescription = null,
+                    modifier = Modifier
+                        .fillMaxHeight()
+                        .fillMaxWidth()
+                        .paint(
+                            painter = painterResource(R.drawable.xmas),
+                            contentScale = ContentScale.Fit
+                        )
+                )
+            }
+
         }
     }
 
@@ -85,7 +92,7 @@ class MainActivity : AppCompatActivity() {
     fun VideoHub() {
         val videos = remember { DataProvider.videos }
         LazyRow(
-            modifier = Modifier.fillMaxWidth(),
+            modifier = Modifier.fillMaxWidth().height(60.dp),
             horizontalArrangement = Arrangement.spacedBy(space = 24.dp),
             contentPadding = PaddingValues(horizontal = 8.dp, vertical = 8.dp)
         ) {
