@@ -1,3 +1,21 @@
+## [2023.12.0](https://github.com/michaeltchuang/a-day-in-my-bobalife/compare/v2023.11.0...v2023.12.0) (2023-03-30)
+
+
+### Features
+
+* add lazy row for video hub ([7d61a61](https://github.com/michaeltchuang/a-day-in-my-bobalife/commit/7d61a61ed0329e3bfac838b0fd22efd9fee82a7c))
+
+
+### Updates & Maintenance
+
+* log greeting (2023-03-21) ([9355fcf](https://github.com/michaeltchuang/a-day-in-my-bobalife/commit/9355fcf8df8862cee77ffa67689d312db2954759))
+* log greeting (2023-03-22) ([d22ce99](https://github.com/michaeltchuang/a-day-in-my-bobalife/commit/d22ce99b1ff9604b155f694733c0f750e829f872))
+* log greeting (2023-03-23) ([a8365b0](https://github.com/michaeltchuang/a-day-in-my-bobalife/commit/a8365b0d6e2d4dcfb74fbbc4c6ad09f15da32c1d))
+* log greeting (2023-03-24) ([8bdd818](https://github.com/michaeltchuang/a-day-in-my-bobalife/commit/8bdd818d9403f6b0dca9146c736e7b0c117e6218))
+* log greeting (2023-03-25) ([ba3453c](https://github.com/michaeltchuang/a-day-in-my-bobalife/commit/ba3453c64bdb9a3fa945a2894b2ba7b3b441372c))
+* log greeting (2023-03-26) ([c631210](https://github.com/michaeltchuang/a-day-in-my-bobalife/commit/c6312101cd727d32cbb666e8c1b00d35b9d8aa14))
+* log greeting (2023-03-27) ([18aaaca](https://github.com/michaeltchuang/a-day-in-my-bobalife/commit/18aaacac70017b2fb6e5c44d25a0f7a8be47914d))
+
 ## [2023.11.0](https://github.com/michaeltchuang/a-day-in-my-bobalife/compare/v2023.10.0...v2023.11.0) (2023-03-30)
 
 
