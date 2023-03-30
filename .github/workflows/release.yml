@@ -1,6 +1,10 @@
 name: "Release SDK"
 
 on:
+  # no timezone support so cron runs in UTC time for now
+  schedule:
+    - cron: "8 17 * * 1"
+
   workflow_dispatch:
   workflow_call:
 
