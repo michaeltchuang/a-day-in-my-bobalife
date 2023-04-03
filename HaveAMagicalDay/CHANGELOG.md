@@ -1,3 +1,23 @@
+## [2023.13.0](https://github.com/michaeltchuang/a-day-in-my-bobalife/compare/v2023.12.0...v2023.13.0) (2023-04-03)
+
+
+### Bug Fixes
+
+* force landscape mode only ([3f5c01d](https://github.com/michaeltchuang/a-day-in-my-bobalife/commit/3f5c01d08964499f5a4aa040d5a8059996fd5660))
+
+
+### Updates & Maintenance
+
+* cut new release every monday ([f2c84bb](https://github.com/michaeltchuang/a-day-in-my-bobalife/commit/f2c84bb7c23635948ca214d3783d496421b8b453))
+* log greeting (2023-03-28) ([db6f304](https://github.com/michaeltchuang/a-day-in-my-bobalife/commit/db6f304133c100b79a73dd6c82dcdf84d200f013))
+* log greeting (2023-03-29) ([7384d09](https://github.com/michaeltchuang/a-day-in-my-bobalife/commit/7384d090a1562ce375a0d32fa7c2b0c9f3bc4f58))
+* log greeting (2023-03-30) ([28a6dcb](https://github.com/michaeltchuang/a-day-in-my-bobalife/commit/28a6dcb284c7965eedf939d3abf6125fbac23675))
+* log greeting (2023-03-31) ([ca1bfaf](https://github.com/michaeltchuang/a-day-in-my-bobalife/commit/ca1bfaf1d88e6983e4d3a8d608abecb8738f3955))
+* log greeting (2023-04-01) ([095d556](https://github.com/michaeltchuang/a-day-in-my-bobalife/commit/095d55630995de2bda3914b44beb42a1129b07f6))
+* log greeting (2023-04-02) ([3a3f3f3](https://github.com/michaeltchuang/a-day-in-my-bobalife/commit/3a3f3f3e790c502353645921b4047d9072c158ff))
+* log greeting (2023-04-03) ([9f32537](https://github.com/michaeltchuang/a-day-in-my-bobalife/commit/9f325370437df1de0d211ebca9e4314cbff97f37))
+* update build.gradle.kts dependency versions ([603d7d3](https://github.com/michaeltchuang/a-day-in-my-bobalife/commit/603d7d3c9259751500b76c2b689fe3d282c5893e))
+
 ## [2023.12.0](https://github.com/michaeltchuang/a-day-in-my-bobalife/compare/v2023.11.0...v2023.12.0) (2023-03-30)
 
 
