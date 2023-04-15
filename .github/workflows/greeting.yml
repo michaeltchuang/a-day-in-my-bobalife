@@ -37,11 +37,11 @@ jobs:
           passphrase: ${{ secrets.GPG_PASSPHRASE }}
           git_user_signingkey: true
           git_commit_gpgsign: true
-      - name: "Install JDK 11"
+      - name: "Install JDK 17"
         uses: actions/setup-java@v3
         with:
           distribution: "zulu"
-          java-version: "11"
+          java-version: "17"
           cache: "gradle"
       - name: Get current date
         id: currentdate
