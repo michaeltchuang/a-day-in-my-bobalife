@@ -1,3 +1,23 @@
+## [2023.15.0](https://github.com/michaeltchuang/a-day-in-my-bobalife/compare/v2023.14.0...v2023.15.0) (2023-04-17)
+
+
+### Bug Fixes
+
+* bump up kotlin target to java 17 for have a magical day cron ([1d622f6](https://github.com/michaeltchuang/a-day-in-my-bobalife/commit/1d622f667495f4fc459b06efd7f6e2c60bf133ee))
+
+
+### Updates & Maintenance
+
+* bump org.jetbrains.kotlin.jvm from 1.8.10 to 1.8.20 in /HaveAMagicalDay ([#4](https://github.com/michaeltchuang/a-day-in-my-bobalife/issues/4)) ([a2fced9](https://github.com/michaeltchuang/a-day-in-my-bobalife/commit/a2fced9b6d4e5f61d9c1a9a4fa200358951ed3bc))
+* log greeting (2023-04-11) ([19488cd](https://github.com/michaeltchuang/a-day-in-my-bobalife/commit/19488cd37cbcb856a1407965db3ed6e4bf6428fd))
+* log greeting (2023-04-12) ([919d65e](https://github.com/michaeltchuang/a-day-in-my-bobalife/commit/919d65e068eaeb8cf1b40ad1519e4fd043968186))
+* log greeting (2023-04-13) ([6a4b8ae](https://github.com/michaeltchuang/a-day-in-my-bobalife/commit/6a4b8aebf5d481aed142406b27489fa93b1bfdf8))
+* log greeting (2023-04-14) ([b735898](https://github.com/michaeltchuang/a-day-in-my-bobalife/commit/b7358981ed5884494b93990b3b4acdcad0162885))
+* log greeting (2023-04-15) ([27f1de5](https://github.com/michaeltchuang/a-day-in-my-bobalife/commit/27f1de562371bb8fa553f43f8e42987d5f4ee91e))
+* log greeting (2023-04-16) ([cd5c5c2](https://github.com/michaeltchuang/a-day-in-my-bobalife/commit/cd5c5c2a35658b636703217ec30fdf644ac557fc))
+* log greeting (2023-04-17) ([b69e167](https://github.com/michaeltchuang/a-day-in-my-bobalife/commit/b69e16738e99b5f441c8d223bf7595c66b31f279))
+* update gradle version for HaveAMagicalDay ([73ca9ad](https://github.com/michaeltchuang/a-day-in-my-bobalife/commit/73ca9ade87afab14aa639555a28c261ecdb9b128))
+
 ## [2023.14.0](https://github.com/michaeltchuang/a-day-in-my-bobalife/compare/v2023.13.0...v2023.14.0) (2023-04-10)
 
 
