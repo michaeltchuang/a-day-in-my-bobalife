@@ -1,3 +1,19 @@
+## [2023.17.0](https://github.com/michaeltchuang/a-day-in-my-bobalife/compare/v2023.16.0...v2023.17.0) (2023-05-01)
+
+
+### Updates & Maintenance
+
+* bump org.jetbrains.kotlin.jvm from 1.8.20 to 1.8.21 in /HaveAMagicalDay ([#9](https://github.com/michaeltchuang/a-day-in-my-bobalife/issues/9)) ([deb7507](https://github.com/michaeltchuang/a-day-in-my-bobalife/commit/deb750715aac970affee3806ef39868c8b20536b))
+* bump org.jlleitschuh.gradle.ktlint from 11.3.1 to 11.3.2 in /DisneyScenicRides ([#6](https://github.com/michaeltchuang/a-day-in-my-bobalife/issues/6)) ([35f4ab8](https://github.com/michaeltchuang/a-day-in-my-bobalife/commit/35f4ab80beab27c03e3f88b331eeaa14b0bf9122))
+* bump org.jlleitschuh.gradle.ktlint from 11.3.1 to 11.3.2 in /HaveAMagicalDay ([#7](https://github.com/michaeltchuang/a-day-in-my-bobalife/issues/7)) ([4ca8375](https://github.com/michaeltchuang/a-day-in-my-bobalife/commit/4ca8375949ba308bdacb7620a2cc257797eb3b24))
+* log greeting (2023-04-25) ([20dcd18](https://github.com/michaeltchuang/a-day-in-my-bobalife/commit/20dcd182d74d268b7c9709c3eb7c926b4c967eda))
+* log greeting (2023-04-26) ([21b542b](https://github.com/michaeltchuang/a-day-in-my-bobalife/commit/21b542b2e46c4a511595567a176679856fd199e1))
+* log greeting (2023-04-27) ([b6d86ae](https://github.com/michaeltchuang/a-day-in-my-bobalife/commit/b6d86ae2599b948bc59b0132190628c40d13f584))
+* log greeting (2023-04-28) ([a775f8b](https://github.com/michaeltchuang/a-day-in-my-bobalife/commit/a775f8b092ea551b22957f86d5156024cc015678))
+* log greeting (2023-04-29) ([ea75755](https://github.com/michaeltchuang/a-day-in-my-bobalife/commit/ea75755014bb12c6ab2df0ee4f053979fa5ee19f))
+* log greeting (2023-04-30) ([8da338f](https://github.com/michaeltchuang/a-day-in-my-bobalife/commit/8da338fb11963caff8960aa119d725cb5b7b3b3f))
+* log greeting (2023-05-01) ([d4cf51a](https://github.com/michaeltchuang/a-day-in-my-bobalife/commit/d4cf51a83e994151d737808c8c104e9d1bcc308a))
+
 ## [2023.16.0](https://github.com/michaeltchuang/a-day-in-my-bobalife/compare/v2023.15.0...v2023.16.0) (2023-04-24)
 
 
