@@ -6,7 +6,11 @@ import android.view.MenuItem
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.constraintlayout.widget.ConstraintLayout
-import com.google.android.youtube.player.*
+import com.google.android.material.R as materialR
+import com.google.android.youtube.player.YouTubeBaseActivity
+import com.google.android.youtube.player.YouTubeInitializationResult
+import com.google.android.youtube.player.YouTubePlayer
+import com.google.android.youtube.player.YouTubePlayerView
 import com.michaeltchuang.ride.R
 
 class VideoPlayerActivity : YouTubeBaseActivity(), YouTubePlayer.OnInitializedListener {
@@ -21,10 +25,10 @@ class VideoPlayerActivity : YouTubeBaseActivity(), YouTubePlayer.OnInitializedLi
     private var mYouTubeId: String? = null
     public override fun onCreate(savedInstanceState: Bundle?) {
         requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_USER
-        setTheme(R.style.ThemeOverlay_AppCompat_Dark)
+        setTheme(materialR.style.ThemeOverlay_AppCompat_Dark)
         super.onCreate(savedInstanceState)
 
-        val layout = layoutInflater.inflate(R.layout.activity_video_player, null) as ConstraintLayout
+        val layout = layoutInflater.inflate(com.michaeltchuang.ride.R.layout.activity_video_player, null) as ConstraintLayout
         setContentView(layout)
         val videoTitle = intent.getStringExtra(VIDEO_TITLE_KEY)
         mYouTubeId = intent.getStringExtra(VIDEO_YOUTUBE_ID_KEY)
