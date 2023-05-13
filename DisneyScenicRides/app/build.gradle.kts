@@ -34,7 +34,7 @@ android {
         compose = true
     }
     composeOptions {
-        kotlinCompilerExtensionVersion = "1.4.6"
+        kotlinCompilerExtensionVersion = "1.4.7"
     }
     kotlin {
         jvmToolchain(17)
@@ -52,16 +52,16 @@ android {
 dependencies {
     implementation(files("src/main/libs/YouTubeAndroidPlayerApi.jar"))
 
-    implementation("androidx.core:core-ktx:1.10.0")
+    implementation("androidx.core:core-ktx:1.10.1")
     implementation("androidx.appcompat:appcompat:1.6.1")
-    implementation("androidx.compose.runtime:runtime:1.4.2")
-    implementation("androidx.compose.runtime:runtime-livedata:1.4.2")
-    implementation("androidx.compose.material3:material3:1.0.1")
-    implementation("androidx.compose.ui:ui:1.4.2")
-    implementation("androidx.compose.ui:ui-tooling:1.4.2")
-    implementation("androidx.compose.foundation:foundation:1.4.2")
-    implementation("androidx.compose.foundation:foundation-layout:1.4.2")
-    implementation("com.google.android.material:material:1.8.0")
+    implementation("androidx.compose.runtime:runtime:1.4.3")
+    implementation("androidx.compose.runtime:runtime-livedata:1.4.3")
+    implementation("androidx.compose.material3:material3:1.1.0")
+    implementation("androidx.compose.ui:ui:1.4.3")
+    implementation("androidx.compose.ui:ui-tooling:1.4.3")
+    implementation("androidx.compose.foundation:foundation:1.4.3")
+    implementation("androidx.compose.foundation:foundation-layout:1.4.3")
+    implementation("com.google.android.material:material:1.9.0")
     implementation("androidx.constraintlayout:constraintlayout:2.1.4")
     implementation("androidx.lifecycle:lifecycle-livedata-ktx:2.6.1")
     implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:2.6.1")
