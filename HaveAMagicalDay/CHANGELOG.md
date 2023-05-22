@@ -1,3 +1,16 @@
+## [2023.20.0](https://github.com/michaeltchuang/a-day-in-my-bobalife/compare/v2023.19.0...v2023.20.0) (2023-05-22)
+
+
+### Updates & Maintenance
+
+* log greeting (2023-05-16) ([84ee122](https://github.com/michaeltchuang/a-day-in-my-bobalife/commit/84ee122b303ac749d5e812a99072c36bd64cba56))
+* log greeting (2023-05-17) ([3763c9f](https://github.com/michaeltchuang/a-day-in-my-bobalife/commit/3763c9f7877ffee9046c86b72f89278fa741a651))
+* log greeting (2023-05-18) ([afc33bd](https://github.com/michaeltchuang/a-day-in-my-bobalife/commit/afc33bdac14fa28e1e7d1de21ab1d766c30b4a79))
+* log greeting (2023-05-19) ([af0d70e](https://github.com/michaeltchuang/a-day-in-my-bobalife/commit/af0d70e3020d506b27424686e1d5b7d817154c50))
+* log greeting (2023-05-20) ([d207b52](https://github.com/michaeltchuang/a-day-in-my-bobalife/commit/d207b52e620ce3f00ee6ca2515247fdc493780c2))
+* log greeting (2023-05-21) ([c9fa85c](https://github.com/michaeltchuang/a-day-in-my-bobalife/commit/c9fa85cd8629276e2181ea7474524cf13e065b18))
+* log greeting (2023-05-22) ([22b32ed](https://github.com/michaeltchuang/a-day-in-my-bobalife/commit/22b32edc0fc41ffc622713f4dc359d91198b98b1))
+
 ## [2023.19.0](https://github.com/michaeltchuang/a-day-in-my-bobalife/compare/v2023.18.0...v2023.19.0) (2023-05-15)
 
 
