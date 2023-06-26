@@ -1,3 +1,22 @@
+## [2023.25.0](https://github.com/michaeltchuang/a-day-in-my-bobalife/compare/v2023.24.0...v2023.25.0) (2023-06-26)
+
+
+### Updates & Maintenance
+
+* bump com.github.ajalt.clikt:clikt from 3.5.2 to 3.5.3 in /HaveAMagicalDay ([#18](https://github.com/michaeltchuang/a-day-in-my-bobalife/issues/18)) ([27e4261](https://github.com/michaeltchuang/a-day-in-my-bobalife/commit/27e426198a99aeff380a85a552fb0dc1e0d42a81))
+* bump com.github.ajalt.clikt:clikt from 3.5.3 to 3.5.4 in /HaveAMagicalDay ([#20](https://github.com/michaeltchuang/a-day-in-my-bobalife/issues/20)) ([dcb1507](https://github.com/michaeltchuang/a-day-in-my-bobalife/commit/dcb1507fff7796ca79e03881f21ea5e5a120c88b))
+* bump org.jlleitschuh.gradle.ktlint from 11.4.0 to 11.4.1 in /DisneyScenicRides ([#21](https://github.com/michaeltchuang/a-day-in-my-bobalife/issues/21)) ([3e951fa](https://github.com/michaeltchuang/a-day-in-my-bobalife/commit/3e951faa139aa10798517d067ae16e600ff7ecdf))
+* bump org.jlleitschuh.gradle.ktlint from 11.4.0 to 11.4.1 in /HaveAMagicalDay ([#19](https://github.com/michaeltchuang/a-day-in-my-bobalife/issues/19)) ([f4ea338](https://github.com/michaeltchuang/a-day-in-my-bobalife/commit/f4ea338078f3e2a0ff53957cf66c16e94ec1c19f))
+* bump org.jlleitschuh.gradle.ktlint from 11.4.1 to 11.4.2 in /DisneyScenicRides ([#22](https://github.com/michaeltchuang/a-day-in-my-bobalife/issues/22)) ([79e728d](https://github.com/michaeltchuang/a-day-in-my-bobalife/commit/79e728dbff2122b7bff95de6591fe1cff0d575c9))
+* bump org.jlleitschuh.gradle.ktlint from 11.4.1 to 11.4.2 in /HaveAMagicalDay ([#23](https://github.com/michaeltchuang/a-day-in-my-bobalife/issues/23)) ([bbcd7c6](https://github.com/michaeltchuang/a-day-in-my-bobalife/commit/bbcd7c6eb77b82d8725da8b288b8df1756c0ab07))
+* log greeting (2023-06-20) ([8fe0bec](https://github.com/michaeltchuang/a-day-in-my-bobalife/commit/8fe0bec6d944b739518f94f3727099c6b01af33b))
+* log greeting (2023-06-21) ([67b77ca](https://github.com/michaeltchuang/a-day-in-my-bobalife/commit/67b77cad7d575e1c1092fe6d58d49a1349ccdebd))
+* log greeting (2023-06-22) ([fc6e8a3](https://github.com/michaeltchuang/a-day-in-my-bobalife/commit/fc6e8a3a54f50181fe016bda24066f4f4988ed1c))
+* log greeting (2023-06-23) ([d89dfcd](https://github.com/michaeltchuang/a-day-in-my-bobalife/commit/d89dfcda7c64e62d47619204c8d70555402f2355))
+* log greeting (2023-06-24) ([1b3dbcb](https://github.com/michaeltchuang/a-day-in-my-bobalife/commit/1b3dbcb5c73ebb42d2b95816e62761cea1632dfe))
+* log greeting (2023-06-25) ([6f988bb](https://github.com/michaeltchuang/a-day-in-my-bobalife/commit/6f988bba5905a826a2a87b09ef3e540e44558ff4))
+* log greeting (2023-06-26) ([9c9eb15](https://github.com/michaeltchuang/a-day-in-my-bobalife/commit/9c9eb158c3a326c00bb8a56fdba7c10442aebfc8))
+
 ## [2023.24.0](https://github.com/michaeltchuang/a-day-in-my-bobalife/compare/v2023.23.0...v2023.24.0) (2023-06-19)
 
 
