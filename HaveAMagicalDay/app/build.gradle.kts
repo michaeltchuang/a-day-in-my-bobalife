@@ -14,7 +14,7 @@ application {
 
 dependencies {
     implementation("com.github.ajalt.clikt:clikt:4.2.1")
-    implementation("com.algorand:algosdk:2.3.0")
+    implementation("com.algorand:algosdk:2.4.0")
     testImplementation("junit:junit:4.13.2")
 }
 
