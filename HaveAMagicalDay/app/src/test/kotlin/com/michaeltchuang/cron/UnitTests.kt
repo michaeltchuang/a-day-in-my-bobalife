@@ -1,20 +1,19 @@
 package com.michaeltchuang.cron
 
 import com.michaeltchuang.cron.utils.Constants
+import com.michaeltchuang.cron.utils.Constants.VOL2_VLOG1_DATE
+import com.michaeltchuang.cron.utils.Constants.VOL2_VLOG22_DATE
+import com.michaeltchuang.cron.utils.Constants.VOL2_VLOG23_DATE
+import com.michaeltchuang.cron.utils.Constants.VOL2_VLOG24_DATE
+import com.michaeltchuang.cron.utils.Constants.VOL2_VLOG25_DATE
+import com.michaeltchuang.cron.utils.Constants.VOL2_VLOG31_DATE
+import com.michaeltchuang.cron.utils.Constants.VOL2_VLOG39_DATE
+import com.michaeltchuang.cron.utils.Constants.VOL2_VLOG42_DATE
 import com.michaeltchuang.cron.utils.DateUtils
 import org.junit.Assert.assertEquals
 import org.junit.Test
 
 class UnitTests {
-    val VOL2_VLOG1_DATE = "2023-02-21"
-    val VOL2_VLOG22_DATE = "2023-03-12"
-    val VOL2_VLOG23_DATE = "2023-03-13"
-    val VOL2_VLOG24_DATE = "2023-03-13"
-    val VOL2_VLOG25_DATE = "2023-03-14"
-    val VOL2_VLOG31_DATE = "2023-03-20"
-    val VOL2_VLOG39_DATE = "2023-03-27"
-    val VOL2_VLOG42_DATE = "2023-03-29"
-
     @Test
     fun vlog1() {
         val output = DateUtils().calculateVlogNum(false, Constants.VOL2_START_DATE, VOL2_VLOG1_DATE)

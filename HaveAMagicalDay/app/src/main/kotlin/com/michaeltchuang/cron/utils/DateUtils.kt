@@ -4,7 +4,11 @@ import java.time.Duration
 import java.time.LocalDateTime
 
 class DateUtils() {
-    fun calculateVlogNum(returnEighth: Boolean, startDateStr: String, endDateStr: String): Int {
+    fun calculateVlogNum(
+        returnEighth: Boolean,
+        startDateStr: String,
+        endDateStr: String,
+    ): Int {
         val from = LocalDateTime.parse(startDateStr + Constants.DEFAULT_VLOG_TIME)
         val to = LocalDateTime.parse(endDateStr + Constants.DEFAULT_VLOG_TIME)
         val days = Duration.between(from, to).toDays()
@@ -19,7 +23,11 @@ class DateUtils() {
         }
     }
 
-    fun calculateVolumeNum(returnEighth: Boolean, startDateStr: String, endDateStr: String): Int {
+    fun calculateVolumeNum(
+        returnEighth: Boolean,
+        startDateStr: String,
+        endDateStr: String,
+    ): Int {
         // hardcode to volume 2 for now
         return 2
     }

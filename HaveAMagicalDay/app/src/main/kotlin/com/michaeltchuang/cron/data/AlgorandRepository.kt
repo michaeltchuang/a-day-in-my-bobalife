@@ -12,13 +12,13 @@ import com.algorand.algosdk.v2.client.model.TransactionParametersResponse
 import com.michaeltchuang.cron.utils.Constants
 
 class AlgorandRepository() {
-    private val TAG: String = "AlgorandRepository"
-    private var client: AlgodClient = AlgodClient(
-        Constants.ALGOD_API_ADDR,
-        Constants.ALGOD_PORT,
-        Constants.ALGOD_API_TOKEN,
-        Constants.ALGOD_API_TOKEN_KEY
-    )
+    private var client: AlgodClient =
+        AlgodClient(
+            Constants.ALGOD_API_ADDR,
+            Constants.ALGOD_PORT,
+            Constants.ALGOD_API_TOKEN,
+            Constants.ALGOD_API_TOKEN_KEY,
+        )
 
     val txHeaders = arrayOf("Content-Type")
     val txValues = arrayOf("application/x-binary")
@@ -32,7 +32,12 @@ class AlgorandRepository() {
         }
     }
 
-    fun sendPayment(account: Account, appId: Long, amount: Int, note: String): String? {
+    fun sendPayment(
+        account: Account,
+        appId: Long,
+        amount: Int,
+        note: String,
+    ): String? {
         try {
             val respAcct = client.AccountInformation(account.getAddress()).execute()
             if (!respAcct.isSuccessful) {
@@ -44,25 +49,28 @@ class AlgorandRepository() {
             if (!resp.isSuccessful()) {
                 throw java.lang.Exception(resp.message())
             }
-            val sp: TransactionParametersResponse = resp.body()
-                ?: throw java.lang.Exception("Params retrieval error")
+            val sp: TransactionParametersResponse =
+                resp.body()
+                    ?: throw java.lang.Exception("Params retrieval error")
 
             // Create a transaction
-            val ptxn = PaymentTransactionBuilder.Builder()
-                .suggestedParams(sp)
-                .amount(amount)
-                .sender(account.address)
-                .receiver(Address.forApplication(appId))
-                .noteUTF8(note)
-                .build()
+            val ptxn =
+                PaymentTransactionBuilder.Builder()
+                    .suggestedParams(sp)
+                    .amount(amount)
+                    .sender(account.address)
+                    .receiver(Address.forApplication(appId))
+                    .noteUTF8(note)
+                    .build()
 
             // sign transaction
             val signedTxn: SignedTransaction = account.signTransaction(ptxn)
 
             // send to network
             val encodedTxBytes: ByteArray = Encoder.encodeToMsgPack(signedTxn)
-            val txnId = client.RawTransaction().rawtxn(encodedTxBytes)
-                .execute(txHeaders, txValues).body().txId
+            val txnId =
+                client.RawTransaction().rawtxn(encodedTxBytes)
+                    .execute(txHeaders, txValues).body().txId
 
             // Wait for transaction confirmation
             val pTrx: PendingTransactionResponse = Utils.waitForConfirmation(client, txnId, 10)
