@@ -1,3 +1,22 @@
+## [2024.0.0](https://github.com/michaeltchuang/a-day-in-my-bobalife/compare/v2023.51.0...v2024.0.0) (2024-01-01)
+
+
+### Breaking
+
+* update repo with latest sdk versions ([bada2f0](https://github.com/michaeltchuang/a-day-in-my-bobalife/commit/bada2f02aef4a68b1131676f38d47b5c825d0440))
+
+
+### Updates & Maintenance
+
+* downgrade kotlin version ([8884779](https://github.com/michaeltchuang/a-day-in-my-bobalife/commit/888477905bfa89efbfbff9a666f1acf6d3ec81fd))
+* log greeting (2023-12-26) ([6154bea](https://github.com/michaeltchuang/a-day-in-my-bobalife/commit/6154bead0272c8c27aa9ef94e8d1a11eb08ed083))
+* log greeting (2023-12-27) ([946c38a](https://github.com/michaeltchuang/a-day-in-my-bobalife/commit/946c38a705ce663be52ac30b4fa2aad4ef4e16ba))
+* log greeting (2023-12-28) ([d19cb09](https://github.com/michaeltchuang/a-day-in-my-bobalife/commit/d19cb09966648324ba647cdc9638326e66fb7d66))
+* log greeting (2023-12-29) ([dc85ccd](https://github.com/michaeltchuang/a-day-in-my-bobalife/commit/dc85ccd51365af44dc80233c260dbd57c5a0835b))
+* log greeting (2023-12-30) ([30dd963](https://github.com/michaeltchuang/a-day-in-my-bobalife/commit/30dd963b9383771ed57b06391ee0b7ced079ef65))
+* log greeting (2023-12-31) ([ca26fe7](https://github.com/michaeltchuang/a-day-in-my-bobalife/commit/ca26fe7062ae6c8489d001ab9f053156ada334de))
+* log greeting (2024-01-01) ([bb2a8de](https://github.com/michaeltchuang/a-day-in-my-bobalife/commit/bb2a8deafde8f66c7b61bb81a7324c4df384bce0))
+
 ## [2023.51.0](https://github.com/michaeltchuang/a-day-in-my-bobalife/compare/v2023.50.0...v2023.51.0) (2023-12-25)
 
 
