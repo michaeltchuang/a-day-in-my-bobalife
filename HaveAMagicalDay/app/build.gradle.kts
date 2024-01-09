@@ -4,7 +4,7 @@ import java.util.TimeZone
 
 plugins {
     id("org.jetbrains.kotlin.jvm") version "1.9.22"
-    id("org.jlleitschuh.gradle.ktlint") version "12.0.3"
+    id("org.jlleitschuh.gradle.ktlint") version "12.1.0"
     application
 }
 
