@@ -60,7 +60,7 @@ dependencies {
     implementation("androidx.compose.ui:ui:1.5.4")
     implementation("androidx.compose.ui:ui-tooling:1.5.4")
     implementation("androidx.compose.foundation:foundation:1.5.4")
-    implementation("androidx.compose.foundation:foundation-layout:1.5.4")
+    implementation("androidx.compose.foundation:foundation-layout:1.6.0")
     implementation("com.google.android.material:material:1.11.0")
     implementation("androidx.constraintlayout:constraintlayout:2.1.4")
     implementation("androidx.lifecycle:lifecycle-livedata-ktx:2.6.2")
