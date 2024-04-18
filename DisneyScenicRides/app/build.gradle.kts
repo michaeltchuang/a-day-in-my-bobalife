@@ -52,7 +52,7 @@ android {
 dependencies {
     implementation(files("src/main/libs/YouTubeAndroidPlayerApi.jar"))
 
-    implementation("androidx.core:core-ktx:1.12.0")
+    implementation("androidx.core:core-ktx:1.13.0")
     implementation("androidx.appcompat:appcompat:1.6.1")
     implementation("androidx.compose.runtime:runtime:1.6.6")
     implementation("androidx.compose.runtime:runtime-livedata:1.6.6")
