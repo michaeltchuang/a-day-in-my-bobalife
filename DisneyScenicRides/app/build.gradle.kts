@@ -54,8 +54,8 @@ dependencies {
 
     implementation("androidx.core:core-ktx:1.13.0")
     implementation("androidx.appcompat:appcompat:1.6.1")
-    implementation("androidx.compose.runtime:runtime:1.6.6")
-    implementation("androidx.compose.runtime:runtime-livedata:1.6.6")
+    implementation("androidx.compose.runtime:runtime:1.6.7")
+    implementation("androidx.compose.runtime:runtime-livedata:1.6.7")
     implementation("androidx.compose.material3:material3:1.2.1")
     implementation("androidx.compose.ui:ui:1.6.6")
     implementation("androidx.compose.ui:ui-tooling:1.6.6")
