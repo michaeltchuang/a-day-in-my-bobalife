@@ -6,23 +6,24 @@ import android.view.MenuItem
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.constraintlayout.widget.ConstraintLayout
-import com.google.android.material.R as materialR
 import com.google.android.youtube.player.YouTubeBaseActivity
 import com.google.android.youtube.player.YouTubeInitializationResult
 import com.google.android.youtube.player.YouTubePlayer
 import com.google.android.youtube.player.YouTubePlayerView
 import com.michaeltchuang.ride.R
+import com.google.android.material.R as materialR
 
 class VideoPlayerActivity : YouTubeBaseActivity(), YouTubePlayer.OnInitializedListener {
-
     companion object {
         private val TAG = VideoPlayerActivity::class.java.simpleName
         const val VIDEO_TITLE_KEY = "videoTitle"
         const val VIDEO_YOUTUBE_ID_KEY = "youtubeVideoId"
         private const val YOUTUBE_KEY_IGNORE = "michaeltchuang"
+        private val REQUEST_CODE = 1
     }
 
     private var mYouTubeId: String? = null
+
     public override fun onCreate(savedInstanceState: Bundle?) {
         requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_USER
         setTheme(materialR.style.ThemeOverlay_AppCompat_Dark)
@@ -34,8 +35,10 @@ class VideoPlayerActivity : YouTubeBaseActivity(), YouTubePlayer.OnInitializedLi
         mYouTubeId = intent.getStringExtra(VIDEO_YOUTUBE_ID_KEY)
 
         val playerView = YouTubePlayerView(this)
-        playerView.layoutParams = ConstraintLayout.LayoutParams(
-            ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT)
+        playerView.layoutParams =
+            ConstraintLayout.LayoutParams(
+                ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT,
+            )
         layout.addView(playerView)
 
         playerView.initialize(YOUTUBE_KEY_IGNORE, this)
@@ -57,23 +60,28 @@ class VideoPlayerActivity : YouTubeBaseActivity(), YouTubePlayer.OnInitializedLi
         return super.onOptionsItemSelected(item)
     }
 
-    override fun onInitializationSuccess(provider: YouTubePlayer.Provider,
-                                         youTubePlayer: YouTubePlayer,
-                                         wasRestored: Boolean) {
+    override fun onInitializationSuccess(
+        provider: YouTubePlayer.Provider,
+        youTubePlayer: YouTubePlayer,
+        wasRestored: Boolean,
+    ) {
         if (!wasRestored) {
             youTubePlayer.loadVideo(mYouTubeId)
         }
     }
 
-    override fun onInitializationFailure(provider: YouTubePlayer.Provider?,
-                                         youTubeInitializationResult: YouTubeInitializationResult?) {
-        val REQUEST_CODE = 1
-
+    override fun onInitializationFailure(
+        provider: YouTubePlayer.Provider?,
+        youTubeInitializationResult: YouTubeInitializationResult?,
+    ) {
         if (youTubeInitializationResult?.isUserRecoverableError == true) {
             youTubeInitializationResult.getErrorDialog(this, REQUEST_CODE).show()
         } else {
-            val errorMessage = String.format(getString(R.string.error_player),
-                youTubeInitializationResult.toString())
+            val errorMessage =
+                String.format(
+                    getString(R.string.error_player),
+                    youTubeInitializationResult.toString(),
+                )
             Toast.makeText(this, errorMessage, Toast.LENGTH_LONG).show()
         }
     }

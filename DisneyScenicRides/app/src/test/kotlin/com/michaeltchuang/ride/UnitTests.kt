@@ -11,7 +11,7 @@ import org.junit.Test
  */
 class UnitTests {
     @Test
-    fun VideoHubNotEmpty() {
+    fun videoHubNotEmpty() {
         Assert.assertNotNull(DataProvider.videos.size)
     }
 }
