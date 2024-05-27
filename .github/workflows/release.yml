@@ -26,14 +26,14 @@ jobs:
       GIT_COMMITTER_EMAIL: github@michaeltchuang.com
     steps:
       - name: "Checkout main branch"
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
         with:
           token: ${{ secrets.MICHAELTCHUANG_BOT }}
           repository: michaeltchuang/a-day-in-my-bobalife
           ref: main
           submodules: recursive
       - name: "Import GPG Key"
-        uses: crazy-max/ghaction-import-gpg@v5
+        uses: crazy-max/ghaction-import-gpg@v6
         with:
           gpg_private_key: ${{ secrets.GPG_PRIVATE_KEY }}
           passphrase: ${{ secrets.GPG_PASSPHRASE }}
@@ -56,13 +56,13 @@ jobs:
       GIT_COMMITTER_EMAIL: github@michaeltchuang.com
     steps:
       - name: "Checkout main branch"
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
         with:
           token: ${{ secrets.MICHAELTCHUANG_BOT }}
           fetch-depth: 0
           ref: main
       - name: "Import GPG Key"
-        uses: crazy-max/ghaction-import-gpg@v5
+        uses: crazy-max/ghaction-import-gpg@v6
         with:
           gpg_private_key: ${{ secrets.GPG_PRIVATE_KEY }}
           passphrase: ${{ secrets.GPG_PASSPHRASE }}
@@ -80,7 +80,7 @@ jobs:
           -p @semantic-release/changelog@5 \
           -p @semantic-release/git@9 \
           -p @semantic-release/exec@5 \
-          -p conventional-changelog-conventionalcommits \
+          -p conventional-changelog-conventionalcommits@7.0.2 \
           semantic-release
       - name: "Push automated release commits to release branch"
         run: |
@@ -92,7 +92,7 @@ jobs:
       runs-on: ubuntu-latest
       steps:
         - name: "Checkout main branch"
-          uses: actions/checkout@v3
+          uses: actions/checkout@v4
           with:
             fetch-depth: 0
             repository: ${{ github.repository }}
