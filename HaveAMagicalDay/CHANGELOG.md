@@ -1,3 +1,28 @@
+## [2024.21.0](https://github.com/michaeltchuang/a-day-in-my-bobalife/compare/v2024.20.0...v2024.21.0) (2024-05-27)
+
+
+### Features
+
+* update codebase to latest libraries ([389ff67](https://github.com/michaeltchuang/a-day-in-my-bobalife/commit/389ff6755456a8e6f3c846d74af9906981d4db6b))
+
+
+### Bug Fixes
+
+* ktlint issues ([708dee2](https://github.com/michaeltchuang/a-day-in-my-bobalife/commit/708dee265ba3d65375f294d4cceab134727146c0))
+
+
+### Updates & Maintenance
+
+* fix dates in changelog ([42e710e](https://github.com/michaeltchuang/a-day-in-my-bobalife/commit/42e710ee9c47652b822a7b3369e7f6ca22d27910))
+* log greeting (2024-05-21) ([574e402](https://github.com/michaeltchuang/a-day-in-my-bobalife/commit/574e402b7cfda62fdb8397e9f6e158d6d5fe97de))
+* log greeting (2024-05-22) ([004d1f4](https://github.com/michaeltchuang/a-day-in-my-bobalife/commit/004d1f43f3a9eb2477a6b89d245acc88cf2e9e93))
+* log greeting (2024-05-23) ([25bfe7d](https://github.com/michaeltchuang/a-day-in-my-bobalife/commit/25bfe7db4f4d8fcbcbf7d49763bc42c745eacd40))
+* log greeting (2024-05-24) ([ce88976](https://github.com/michaeltchuang/a-day-in-my-bobalife/commit/ce88976aada7e48fa7213dac4ddad78752b52f03))
+* log greeting (2024-05-25) ([3f8f8fc](https://github.com/michaeltchuang/a-day-in-my-bobalife/commit/3f8f8fc138c68d8d77630d229a5a3e57e260874a))
+* log greeting (2024-05-26) ([3a6dab8](https://github.com/michaeltchuang/a-day-in-my-bobalife/commit/3a6dab88f8f48b557e403863472120309beac3df))
+* log greeting (2024-05-27) ([8024374](https://github.com/michaeltchuang/a-day-in-my-bobalife/commit/802437423075b48216dc6a59f9e59cbe50be1813))
+* lower minimum OS version ([ebbdfed](https://github.com/michaeltchuang/a-day-in-my-bobalife/commit/ebbdfed8426265e7a582b95b28136b499d0d8efc))
+
 ## [2024.20.0](https://github.com/michaeltchuang/a-day-in-my-bobalife/compare/v2024.19.0...v2024.20.0) (2024-05-27)
 
 
