@@ -24,21 +24,21 @@ jobs:
       GIT_COMMITTER_EMAIL: github@michaeltchuang.com
     steps:
       - name: "Checkout main branch"
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
         with:
           token: ${{ secrets.MICHAELTCHUANG_BOT }}
           repository: michaeltchuang/a-day-in-my-bobalife
           ref: main
           submodules: recursive
       - name: "Import GPG Key"
-        uses: crazy-max/ghaction-import-gpg@v5
+        uses: crazy-max/ghaction-import-gpg@v6
         with:
           gpg_private_key: ${{ secrets.GPG_PRIVATE_KEY }}
           passphrase: ${{ secrets.GPG_PASSPHRASE }}
           git_user_signingkey: true
           git_commit_gpgsign: true
       - name: "Install JDK 17"
-        uses: actions/setup-java@v3
+        uses: actions/setup-java@v4
         with:
           distribution: "zulu"
           java-version: "17"
