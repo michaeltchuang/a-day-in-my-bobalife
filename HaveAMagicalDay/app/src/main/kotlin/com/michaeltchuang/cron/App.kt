@@ -18,7 +18,7 @@ val currentDateStr = LocalDate.now(tz.toZoneId()).format(dateFormatter).toString
 
 fun main() {
     val repository = AlgorandRepository()
-    val account = repository.recoverAccount("${Constants.TEST_PASSPHRASE_PART1} ${Constants.TEST_PASSPHRASE_PART2}")
+    val account = repository.recoverAccount(System.getenv("CLIKT_PASSPHRASE"))
 
     if (account == null) {
         throw Exception("Could not find account")

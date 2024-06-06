@@ -22,6 +22,8 @@ jobs:
       GIT_AUTHOR_EMAIL: github@michaeltchuang.com
       GIT_COMMITTER_NAME: michaeltchuang
       GIT_COMMITTER_EMAIL: github@michaeltchuang.com
+      CLIKT_ADDRESS: ${{ secrets.CLIKT_ADDRESS }}
+      CLIKT_PASSPHRASE: ${{ secrets.CLIKT_PASSPHRASE }}
     steps:
       - name: "Checkout main branch"
         uses: actions/checkout@v4
