@@ -1,3 +1,25 @@
+## [2024.23.0](https://github.com/michaeltchuang/a-day-in-my-bobalife/compare/v2024.22.0...v2024.23.0) (2024-06-10)
+
+
+### Features
+
+* add in compose multiplatform project ([43bc155](https://github.com/michaeltchuang/a-day-in-my-bobalife/commit/43bc15597459593cd4091071e7c13e6141cf86f9))
+* add in compose theme files ([2de3d1f](https://github.com/michaeltchuang/a-day-in-my-bobalife/commit/2de3d1fb6624ff12afa88ba261670432752ec8ac))
+
+
+### Updates & Maintenance
+
+* add environment variables ([2241c8e](https://github.com/michaeltchuang/a-day-in-my-bobalife/commit/2241c8e3b3cdf6dff2077dd23935577ec3b8b2f0))
+* bump com.algorand:algosdk from 2.4.0 to 2.5.0 in /HaveAMagicalDay ([#136](https://github.com/michaeltchuang/a-day-in-my-bobalife/issues/136)) ([31ce256](https://github.com/michaeltchuang/a-day-in-my-bobalife/commit/31ce25619175207e302fe39147b0425a9c67a568))
+* fix ktlint issue ([194c590](https://github.com/michaeltchuang/a-day-in-my-bobalife/commit/194c590a8e8c61926c896b126f39f662798ffd61))
+* log greeting (2024-06-04) ([841ca6b](https://github.com/michaeltchuang/a-day-in-my-bobalife/commit/841ca6bfeb5b51459f0bc8bf2067b0e88da14960))
+* log greeting (2024-06-05) ([67b25aa](https://github.com/michaeltchuang/a-day-in-my-bobalife/commit/67b25aadde69826a7c42f999e8138987d6f5c49c))
+* log greeting (2024-06-06) ([1ec223a](https://github.com/michaeltchuang/a-day-in-my-bobalife/commit/1ec223a99ebc77ed90073eb362b4f76d7efeb924))
+* log greeting (2024-06-07) ([26b1c93](https://github.com/michaeltchuang/a-day-in-my-bobalife/commit/26b1c93c73275ecc2b0bc43f83bd5b6b6de073c4))
+* log greeting (2024-06-08) ([d182a8e](https://github.com/michaeltchuang/a-day-in-my-bobalife/commit/d182a8e7f94dfc975dd3e780c4f030b4f85effa7))
+* log greeting (2024-06-09) ([67225f9](https://github.com/michaeltchuang/a-day-in-my-bobalife/commit/67225f981ce30801ace8597fc18de9f7bfb17ed0))
+* log greeting (2024-06-10) ([a2523b5](https://github.com/michaeltchuang/a-day-in-my-bobalife/commit/a2523b5286c8e8b097b57141114dbfa71d59bb1e))
+
 ## [2024.22.0](https://github.com/michaeltchuang/a-day-in-my-bobalife/compare/v2024.21.0...v2024.22.0) (2024-06-03)
 
 
