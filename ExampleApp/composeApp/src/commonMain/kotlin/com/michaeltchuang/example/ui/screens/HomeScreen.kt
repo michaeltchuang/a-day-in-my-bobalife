@@ -6,7 +6,15 @@ import androidx.compose.animation.core.infiniteRepeatable
 import androidx.compose.animation.core.rememberInfiniteTransition
 import androidx.compose.animation.core.tween
 import androidx.compose.foundation.Image
-import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.WindowInsets
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.safeDrawing
+import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.widthIn
+import androidx.compose.foundation.layout.windowInsetsPadding
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.ElevatedButton
 import androidx.compose.material3.Icon
@@ -24,10 +32,9 @@ import androidx.compose.ui.draw.rotate
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
-import androidx.navigation.NavController
 import com.michaeltchuang.example.openUrl
-import com.michaeltchuang.example.theme.AppTheme
-import com.michaeltchuang.example.theme.LocalThemeIsDark
+import com.michaeltchuang.example.ui.theme.AppTheme
+import com.michaeltchuang.example.ui.theme.LocalThemeIsDark
 import example_app.composeapp.generated.resources.IndieFlower_Regular
 import example_app.composeapp.generated.resources.Res
 import example_app.composeapp.generated.resources.cyclone
@@ -44,7 +51,7 @@ import org.jetbrains.compose.resources.stringResource
 import org.jetbrains.compose.resources.vectorResource
 
 @Composable
-fun HomeScreen(navController: NavController) {
+fun HomeScreen() {
     AppTheme {
         Column(
             modifier =
@@ -62,7 +69,7 @@ fun HomeScreen(navController: NavController) {
             )
 
             var isAnimate by remember { mutableStateOf(false) }
-            val transition = rememberInfiniteTransition()
+            val transition = rememberInfiniteTransition(label = "")
             val rotate by transition.animateFloat(
                 initialValue = 0f,
                 targetValue = 360f,
@@ -70,6 +77,7 @@ fun HomeScreen(navController: NavController) {
                     infiniteRepeatable(
                         animation = tween(1000, easing = LinearEasing),
                     ),
+                label = "",
             )
 
             Image(

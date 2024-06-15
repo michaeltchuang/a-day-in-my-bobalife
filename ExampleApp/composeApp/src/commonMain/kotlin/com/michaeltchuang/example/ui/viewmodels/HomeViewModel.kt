@@ -1,18 +1,18 @@
 package com.michaeltchuang.example.ui.viewmodels
 
+import androidx.lifecycle.ViewModel
 import com.michaeltchuang.example.data.models.ApiResponse
 import com.michaeltchuang.example.data.repositories.ApiStatus
 import com.michaeltchuang.example.data.repositories.NetworkRepository
 import com.michaeltchuang.example.data.repositories.NetworkResult
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.IO
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
 
-class HomeViewModel(private val networkRepository: NetworkRepository) {
+class HomeViewModel(private val networkRepository: NetworkRepository) : ViewModel() {
     private val _homeState = MutableStateFlow(HomeState())
     private val _homeViewState: MutableStateFlow<HomeScreenState> = MutableStateFlow(HomeScreenState.Loading)
     val homeViewState = _homeViewState.asStateFlow()

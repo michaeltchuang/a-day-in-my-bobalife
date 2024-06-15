@@ -13,15 +13,19 @@ kotlinx-coroutines = "1.9.0-RC"
 ktor = "3.0.0-wasm2"
 kotlinx-serialization = "1.7.0-RC"
 kotlinx-datetime = "0.6.0"
+lifecycleRuntimeCompose = "2.8.2"
 multiplatformSettings = "1.1.1"
+koin-bom = "3.6.0-Beta4"
 koin = "3.6.0-wasm-alpha2"
 ktlint = "12.1.1"
+napier = "2.7.1"
 voyager = "1.1.0-beta01"
 navigationCompose = "2.7.0-alpha07"
 
 [libraries]
 algosdk = { module = "com.algorand:algosdk", version.ref = "algosdk" }
 androidx-activityCompose = { module = "androidx.activity:activity-compose", version.ref = "androidx-activityCompose" }
+androidx-lifecycle-runtime-compose = { module = "androidx.lifecycle:lifecycle-runtime-compose", version.ref = "lifecycleRuntimeCompose" }
 androidx-navigation-compose = { group = "org.jetbrains.androidx.navigation", name = "navigation-compose", version.ref = "navigationCompose" }
 androidx-testManifest = { module = "androidx.compose.ui:ui-test-manifest", version.ref = "androidx-uiTest" }
 androidx-junit4 = { module = "androidx.compose.ui:ui-test-junit4", version.ref = "androidx-uiTest" }
@@ -32,9 +36,10 @@ kotlinx-coroutines-android = { module = "org.jetbrains.kotlinx:kotlinx-coroutine
 kotlinx-coroutines-test = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-test", version.ref = "kotlinx-coroutines" }
 kotlinx-datetime = { module = "org.jetbrains.kotlinx:kotlinx-datetime", version.ref = "kotlinx-datetime" }
 kotlinx-serialization-json = { module = "org.jetbrains.kotlinx:kotlinx-serialization-json", version.ref = "kotlinx-serialization" }
-koin-core = { module = "io.insert-koin:koin-core", version.ref = "koin" }
+koin-bom = { module = "io.insert-koin:koin-bom", version.ref = "koin-bom" }
+koin-core = { module = "io.insert-koin:koin-core", version.ref = "koin-bom" }
 koin-compose = { module = "io.insert-koin:koin-compose", version.ref = "koin" }
-koin-android = { module = "io.insert-koin:koin-android", version.ref = "koin" }
+koin-android = { module = "io.insert-koin:koin-android", version.ref = "koin-bom" }
 ktor-core = { module = "io.ktor:ktor-client-core", version.ref = "ktor" }
 ktor-client-android = { module = "io.ktor:ktor-client-android", version.ref = "ktor" }
 ktor-client-darwin = { module = "io.ktor:ktor-client-darwin", version.ref = "ktor" }
@@ -42,6 +47,7 @@ ktor-client-okhttp = { module = "io.ktor:ktor-client-okhttp", version.ref = "kto
 ktor-client-content-negotiation = {module = "io.ktor:ktor-client-content-negotiation", version.ref= "ktor"}
 ktor-kotlinx-serialization = {module = "io.ktor:ktor-serialization-kotlinx-json", version.ref="ktor"}
 multiplatformSettings = { module = "com.russhwolf:multiplatform-settings", version.ref = "multiplatformSettings" }
+napier = { module = "io.github.aakira:napier", version.ref = "napier" }
 voyager-bottom-sheet-navigator = { module = "cafe.adriel.voyager:voyager-bottom-sheet-navigator", version.ref = "voyager" }
 voyager-navigator = { module = "cafe.adriel.voyager:voyager-navigator", version.ref = "voyager" }
 voyager-tab-navigator = { module = "cafe.adriel.voyager:voyager-tab-navigator", version.ref = "voyager" }

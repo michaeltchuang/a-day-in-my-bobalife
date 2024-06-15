@@ -34,16 +34,16 @@ kotlin {
         }
     }
 
-    listOf(
-        iosX64(),
-        iosArm64(),
-        iosSimulatorArm64(),
-    ).forEach {
-        it.binaries.framework {
-            baseName = "ComposeApp"
-            isStatic = true
-        }
-    }
+//    listOf(
+//        iosX64(),
+//        iosArm64(),
+//        iosSimulatorArm64(),
+//    ).forEach {
+//        it.binaries.framework {
+//            baseName = "ComposeApp"
+//            isStatic = true
+//        }
+//    }
 
     sourceSets {
         commonMain.dependencies {
@@ -54,18 +54,19 @@ kotlin {
             implementation(compose.material3)
             implementation(compose.runtime)
 
+            implementation(libs.androidx.lifecycle.runtime.compose)
             implementation(libs.androidx.navigation.compose)
+            implementation(libs.bundles.koin)
             // implementation(libs.coil)
             implementation(libs.kamel.image)
             implementation(libs.kotlinx.coroutines.core)
             implementation(libs.kotlinx.serialization.json)
             implementation(libs.kotlinx.datetime)
-            implementation(libs.bundles.koin)
             implementation(libs.ktor.client.content.negotiation)
             implementation(libs.ktor.core)
             implementation(libs.ktor.kotlinx.serialization)
             implementation(libs.multiplatformSettings)
-
+            implementation(libs.napier)
 //            implementation(libs.bundles.voyager)
         }
 
@@ -87,10 +88,11 @@ kotlin {
             implementation(libs.koin.android)
         }
 
-        iosMain.dependencies {
-            implementation(libs.ktor.client.darwin)
-        }
+//        iosMain.dependencies {
+//            implementation(libs.ktor.client.darwin)
+//        }
     }
+    task("testClasses")
 }
 
 android {

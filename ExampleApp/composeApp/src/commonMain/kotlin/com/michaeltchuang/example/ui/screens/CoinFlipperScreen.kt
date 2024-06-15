@@ -1,37 +1,48 @@
 package com.michaeltchuang.example.ui.screens
 
-import androidx.compose.foundation.layout.*
-import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
+import androidx.compose.material3.TopAppBar
+import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.runtime.Composable
-import androidx.compose.ui.Alignment
-import androidx.compose.ui.Modifier
-import androidx.compose.ui.text.font.FontFamily
-import androidx.compose.ui.text.style.TextAlign
-import androidx.compose.ui.unit.dp
-import androidx.navigation.NavController
-import com.michaeltchuang.example.theme.AppTheme
-import example_app.composeapp.generated.resources.IndieFlower_Regular
+import androidx.compose.runtime.getValue
+import androidx.compose.ui.graphics.Color
+import androidx.lifecycle.compose.collectAsStateWithLifecycle
+import com.michaeltchuang.example.ui.navigation.CoinFlipperNavigation
+import com.michaeltchuang.example.ui.theme.md_theme_light_primary
+import com.michaeltchuang.example.ui.viewmodels.BaseViewModel
 import example_app.composeapp.generated.resources.Res
-import org.jetbrains.compose.resources.Font
+import example_app.composeapp.generated.resources.app_name
+import org.jetbrains.compose.resources.stringResource
+import org.koin.compose.getKoin
 
+@OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun CoinFlipperScreen(navController: NavController) {
-    AppTheme {
-        Column(
-            modifier =
-                Modifier
-                    .fillMaxSize()
-                    .windowInsetsPadding(WindowInsets.safeDrawing)
-                    .padding(16.dp),
-            horizontalAlignment = Alignment.CenterHorizontally,
-        ) {
-            Text(
-                text = "CoinFlipper",
-                fontFamily = FontFamily(Font(Res.font.IndieFlower_Regular)),
-                style = MaterialTheme.typography.displayLarge,
-                textAlign = TextAlign.Center,
+fun CoinFlipperScreen() {
+    Scaffold(
+        topBar = {
+            TopAppBar(
+                colors =
+                    TopAppBarDefaults.topAppBarColors(
+                        containerColor = md_theme_light_primary,
+                        titleContentColor = Color.White,
+                    ),
+                title = {
+                    Text(
+                        stringResource(resource = Res.string.app_name),
+                        maxLines = 1,
+                    )
+                },
             )
+        },
+    ) { innerPadding ->
+        val activityViewModel: BaseViewModel = getKoin().get()
+        val account by activityViewModel.accountStateFlow.collectAsStateWithLifecycle()
+        if (account == null) {
+            LoginScreen(innerPadding, activityViewModel)
+        } else {
+            CoinFlipperNavigation(innerPadding, activityViewModel)
         }
     }
 }

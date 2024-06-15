@@ -6,9 +6,15 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Home
 import androidx.compose.material.icons.filled.PlayArrow
 import androidx.compose.material.icons.filled.Search
-import androidx.compose.material3.*
-import androidx.compose.runtime.*
+import androidx.compose.material3.Icon
+import androidx.compose.material3.NavigationBar
+import androidx.compose.material3.NavigationBarItem
+import androidx.compose.material3.Scaffold
+import androidx.compose.material3.Text
+import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.navigation.NavGraph.Companion.findStartDestination
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
@@ -59,19 +65,13 @@ fun BottomNavigationBar() {
             modifier = Modifier.padding(paddingValues = paddingValues),
         ) {
             composable(Screen.Home.route) {
-                HomeScreen(
-                    navController,
-                )
+                HomeScreen()
             }
             composable(Screen.CoinFlipper.route) {
-                CoinFlipperScreen(
-                    navController,
-                )
+                CoinFlipperScreen()
             }
             composable(Screen.ValidatorsList.route) {
-                ValidatorsListScreen(
-                    navController,
-                )
+                ValidatorsListScreen()
             }
         }
     }
@@ -95,4 +95,18 @@ fun bottomNavigationItems(): List<BottomNavigationItem> {
             route = Screen.ValidatorsList.route,
         ),
     )
+}
+
+data class BottomNavigationItem(
+    val label: String = "",
+    val icon: ImageVector = Icons.Filled.Home,
+    val route: String = "",
+)
+
+sealed class Screen(val route: String) {
+    object Home : Screen("home_screen")
+
+    object CoinFlipper : Screen("coinflipper_screen")
+
+    object ValidatorsList : Screen("validators_list_screen")
 }

@@ -7,8 +7,8 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import com.michaeltchuang.example.di.appModule
-import com.michaeltchuang.example.theme.AppTheme
 import com.michaeltchuang.example.ui.navigation.BottomNavigationBar
+import com.michaeltchuang.example.ui.theme.AppTheme
 import org.koin.compose.KoinApplication
 
 @Composable
