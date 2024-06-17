@@ -10,13 +10,14 @@ import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
 
-open class BaseViewModel(private val repository: AlgorandRepository) : ViewModel() {
-    open val TAG: String = "LoginViewModel"
+open class BaseViewModel(
+    private val repository: AlgorandRepository,
+) : ViewModel() {
+    open val TAG: String = "BaseViewModel"
 
     var account: Account? = null
     var _account = MutableStateFlow<Account?>(null)
     var accountStateFlow = _account.asStateFlow()
-
 
     var _appOptInState = MutableStateFlow<Boolean>(false)
     var appOptInStateFlow = _appOptInState.asStateFlow()
@@ -120,4 +121,12 @@ open class BaseViewModel(private val repository: AlgorandRepository) : ViewModel
             }
         }
     }
+}
+
+sealed class ScreenState {
+    data object Loading : ScreenState()
+
+    data class Error(val errorMessage: String) : ScreenState()
+
+    data class Success(val responseData: Any) : ScreenState()
 }

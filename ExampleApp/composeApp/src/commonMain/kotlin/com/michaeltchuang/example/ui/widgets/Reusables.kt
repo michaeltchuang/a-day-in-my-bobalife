@@ -53,10 +53,11 @@ fun AlgorandButton(
 @Composable
 fun AlgorandDivider() {
     HorizontalDivider(
-        modifier = Modifier
-            .width(300.dp),
+        modifier =
+            Modifier
+                .width(300.dp),
         thickness = 1.dp,
-        color = Color.Gray
+        color = Color.Gray,
     )
 }
 

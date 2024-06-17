@@ -1,66 +1,130 @@
 package com.michaeltchuang.example.ui.widgets
 
-import androidx.compose.foundation.background
-import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.clickable
+import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.height
-import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.foundation.text.KeyboardActions
+import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.text.KeyboardOptions
-import androidx.compose.material3.MaterialTheme
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Clear
+import androidx.compose.material.icons.filled.Search
+import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.Icon
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextField
-import androidx.compose.material3.TextFieldDefaults
 import androidx.compose.runtime.Composable
-import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.draw.clip
-import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.platform.LocalSoftwareKeyboardController
-import androidx.compose.ui.text.input.ImeAction.Companion.Done
-import androidx.compose.ui.unit.dp
+import androidx.compose.ui.text.input.ImeAction
+import androidx.compose.ui.text.input.KeyboardType
+import androidx.lifecycle.compose.collectAsStateWithLifecycle
+import com.michaeltchuang.example.data.local.entities.ValidatorEntity
+import com.michaeltchuang.example.data.models.Validator
+import com.michaeltchuang.example.ui.viewmodels.ValidatorsListUIState
+import com.michaeltchuang.example.ui.viewmodels.ValidatorsListViewModel
+import org.koin.compose.viewmodel.koinViewModel
+import org.koin.core.annotation.KoinExperimentalAPI
 
-
+@OptIn(ExperimentalMaterial3Api::class, KoinExperimentalAPI::class)
 @Composable
-fun SearchableToolbar() {
-    Row(
-        modifier = Modifier
-            .fillMaxWidth()
-            .height(84.dp)
-            .clip(RoundedCornerShape(bottomEnd = 24.dp, bottomStart = 24.dp))
-            .background(Color.Green),
-        verticalAlignment = Alignment.CenterVertically,
-        horizontalArrangement = Arrangement.SpaceEvenly
-    ) {
-        val keyboardController = LocalSoftwareKeyboardController.current
+fun SearchableToolbar(
+    onPlayerSelected: (validator: Validator) -> Unit,
+    onShowSettings: () -> Unit,
+) {
+    val validatorsListViewModel = koinViewModel<ValidatorsListViewModel>()
+    val validatorListUIState = validatorsListViewModel.validatorsListUIState.collectAsStateWithLifecycle()
+
+    val allValidators = validatorsListViewModel.validatorsFromDb.collectAsStateWithLifecycle()
+    val validatorSearchQuery = validatorsListViewModel.searchQuery.collectAsStateWithLifecycle()
+
+    Column {
+        val isDataLoading = allValidators.value.isEmpty()
         TextField(
-            value = "algo",
-            onValueChange = {
-                //onQueryUpdated.invoke(it)
+            singleLine = true,
+            value = validatorSearchQuery.value,
+            modifier =
+                Modifier
+                    .fillMaxWidth(),
+            label = {
+                Text(text = "Search")
             },
-            keyboardOptions = KeyboardOptions(imeAction = Done),
-            keyboardActions = KeyboardActions(
-                onDone = {
-                    keyboardController?.hide()
-                }
-            ),
-            textStyle = MaterialTheme.typography.headlineMedium,
-            placeholder = {
-                Text(
-                    text = "",
-                    style = MaterialTheme.typography.headlineMedium
+            leadingIcon = {
+                Icon(
+                    imageVector = Icons.Default.Search,
+                    contentDescription = "Search",
                 )
             },
-            singleLine = true,
-            maxLines = 1,
-            shape = RoundedCornerShape(32.dp),
-            modifier = Modifier
-                .fillMaxWidth(0.8f)
-                .height(54.dp),
-            colors = TextFieldDefaults.colors(),
+            keyboardOptions =
+                KeyboardOptions(
+                    keyboardType = KeyboardType.Text,
+                    imeAction = ImeAction.Search,
+                ),
+            onValueChange = { searchQuery ->
+                validatorsListViewModel.onValidatorSearchQueryChange(searchQuery)
+            },
+            trailingIcon = {
+                if (validatorSearchQuery.value.isNotEmpty()) {
+                    Icon(
+                        modifier =
+                            Modifier.clickable {
+                                validatorsListViewModel.onValidatorSearchQueryChange("")
+                            },
+                        imageVector = Icons.Default.Clear,
+                        contentDescription = "Clear search",
+                    )
+                }
+            },
         )
 
-        //Icon()
+        when (val uiState = validatorListUIState.value) {
+            is ValidatorsListUIState.Error -> {
+                Text("Error: ${uiState.message}")
+            }
+
+            is ValidatorsListUIState.Loading -> {
+                // show placeholder UI
+                LazyColumn {
+                    items(
+                        items = placeHolderValidatorList,
+                        itemContent = { validator ->
+                            ListItem(validator)
+                        },
+                    )
+                }
+            }
+
+            is ValidatorsListUIState.Success -> {
+                LazyColumn {
+                    items(
+                        items = uiState.result,
+                        itemContent = { validator ->
+                            ListItem(validator)
+                        },
+                    )
+                }
+            }
+        }
     }
 }
+
+private val placeHolderValidatorList =
+    listOf(
+        ValidatorEntity(
+            id = 1,
+            name = "reti.algo",
+            algoStaked = 25000,
+            apr = 3.03,
+            percentToValidator = 5,
+            epochRoundLength = 1296,
+            minEntryStake = 5,
+        ),
+        ValidatorEntity(
+            id = 2,
+            name = "test2.algo",
+            algoStaked = 25000,
+            apr = 3.03,
+            percentToValidator = 5,
+            epochRoundLength = 1296,
+            minEntryStake = 5,
+        ),
+    )

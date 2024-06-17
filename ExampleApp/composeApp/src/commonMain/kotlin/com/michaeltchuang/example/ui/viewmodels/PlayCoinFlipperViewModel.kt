@@ -1,5 +1,6 @@
 package com.michaeltchuang.example.ui.viewmodels
 
+import android.app.GameState
 import android.util.Log
 import androidx.lifecycle.viewModelScope
 import com.michaeltchuang.example.data.repositories.CoinFlipperRepository
@@ -9,14 +10,16 @@ import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
 import java.math.BigInteger
 
-class PlayCoinFlipperViewModel(private val repository: CoinFlipperRepository) : BaseViewModel(repository) {
+class PlayCoinFlipperViewModel(
+    private val repository: CoinFlipperRepository,
+) : BaseViewModel(repository) {
+    override val TAG = "PlayCoinFlipperViewModel"
+
     enum class GameState {
         BET,
         PENDING,
         SETTLE,
     }
-
-    override val TAG = "PlayCoinFlipperViewModel"
 
     var _appGameState = MutableStateFlow<GameState>(GameState.BET)
     var appGameStateFlow = _appGameState.asStateFlow()

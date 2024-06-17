@@ -7,10 +7,14 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
+import com.michaeltchuang.example.di.initKoin
 import org.bouncycastle.jce.provider.BouncyCastleProvider
+import org.koin.android.ext.koin.androidContext
+import org.koin.android.ext.koin.androidLogger
+import org.koin.core.component.KoinComponent
 import java.security.Security
 
-class AndroidApp : Application() {
+class AndroidApp : Application(), KoinComponent {
     companion object {
         lateinit var INSTANCE: AndroidApp
     }
@@ -18,6 +22,11 @@ class AndroidApp : Application() {
     override fun onCreate() {
         super.onCreate()
         INSTANCE = this
+
+        initKoin {
+            androidLogger()
+            androidContext(this@AndroidApp)
+        }
     }
 }
 

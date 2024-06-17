@@ -2,6 +2,7 @@ package com.michaeltchuang.example.ui.screens
 
 import android.content.Context
 import android.util.Log
+import androidx.activity.ComponentActivity
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
@@ -25,6 +26,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.alpha
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.StrokeCap
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
@@ -54,17 +56,26 @@ import example_app.composeapp.generated.resources.play_waiting_round
 import org.jetbrains.compose.resources.stringResource
 import org.jetbrains.compose.resources.vectorResource
 import org.koin.compose.getKoin
+import org.koin.compose.viewmodel.koinViewModel
+import org.koin.core.annotation.KoinExperimentalAPI
 
+@OptIn(KoinExperimentalAPI::class)
 @Composable
-fun PlayCoinFlipperScreen(activityViewModel: BaseViewModel) {
-    PlayFragmentComposable(activityViewModel)
-}
+fun PlayCoinFlipperScreen() {
+    val TAG = "PlayCoinFlipperScreen"
 
-@Composable
-fun PlayFragmentComposable(activityViewModel: BaseViewModel) {
-    val playCoinFlipperViewModel: PlayCoinFlipperViewModel = getKoin().get()
-    val appOptInStateFlow by playCoinFlipperViewModel.appOptInStateFlow.collectAsStateWithLifecycle()
-    val snackBarStateFlow by playCoinFlipperViewModel.snackBarStateFlow.collectAsStateWithLifecycle()
+    val activityViewModel: BaseViewModel =
+        koinViewModel(
+            viewModelStoreOwner = LocalContext.current as ComponentActivity,
+        )
+    if (activityViewModel.account == null) {
+        Log.d(TAG, "No account detected")
+        null.also { activityViewModel._account.value = it }
+    }
+
+    val viewmodel: PlayCoinFlipperViewModel = getKoin().get()
+    val appOptInStateFlow by viewmodel.appOptInStateFlow.collectAsStateWithLifecycle()
+    val snackBarStateFlow by viewmodel.snackBarStateFlow.collectAsStateWithLifecycle()
 
     Column(
         horizontalAlignment = Alignment.CenterHorizontally,
@@ -89,7 +100,7 @@ fun PlayFragmentComposable(activityViewModel: BaseViewModel) {
                                 .height(400.dp)
                                 .fillMaxWidth(),
                     ) {
-                        CoinFlipGameComposable(playCoinFlipperViewModel)
+                        CoinFlipGameComposable(viewmodel)
                     }
                     Row(
                         horizontalArrangement = Arrangement.Center,
@@ -111,9 +122,9 @@ fun PlayFragmentComposable(activityViewModel: BaseViewModel) {
                             AlgorandButton(
                                 stringResourceId = Res.string.play_button_close_out,
                                 onClick = {
-                                    activityViewModel.accountInfo?.let {
-                                        activityViewModel.closeOutApp(
-                                            activityViewModel._account.value!!,
+                                    viewmodel.accountInfo?.let {
+                                        viewmodel.closeOutApp(
+                                            viewmodel._account.value!!,
                                             Constants.COINFLIP_APP_ID_TESTNET,
                                         )
                                     }
@@ -137,9 +148,9 @@ fun PlayFragmentComposable(activityViewModel: BaseViewModel) {
                     AlgorandButton(
                         stringResourceId = Res.string.play_button_opt_in,
                         onClick = {
-                            activityViewModel.accountInfo?.let {
-                                activityViewModel.appOptIn(
-                                    activityViewModel._account.value!!,
+                            viewmodel.accountInfo?.let {
+                                viewmodel.appOptIn(
+                                    viewmodel._account.value!!,
                                     Constants.COINFLIP_APP_ID_TESTNET,
                                 )
                             }

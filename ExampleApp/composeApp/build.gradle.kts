@@ -2,6 +2,7 @@ import com.android.build.api.dsl.ManagedVirtualDevice
 import org.jetbrains.compose.ExperimentalComposeLibrary
 import org.jetbrains.kotlin.gradle.ExperimentalKotlinGradlePluginApi
 import org.jetbrains.kotlin.gradle.dsl.JvmTarget
+import org.jetbrains.kotlin.gradle.dsl.KotlinVersion
 import org.jetbrains.kotlin.gradle.plugin.KotlinSourceSetTree
 
 plugins {
@@ -11,6 +12,8 @@ plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlinx.serialization)
     alias(libs.plugins.ktlint)
+    alias(libs.plugins.ksp)
+    alias(libs.plugins.room)
 }
 
 kotlin {
@@ -42,10 +45,21 @@ kotlin {
 //        it.binaries.framework {
 //            baseName = "ComposeApp"
 //            isStatic = true
+//      Required when using NativeSQLiteDriver
+//      linkerOpts.add("-lsqlite3")
 //        }
 //    }
 
+    @OptIn(ExperimentalKotlinGradlePluginApi::class)
+    compilerOptions {
+        languageVersion.set(KotlinVersion.KOTLIN_2_0)
+    }
+
     sourceSets {
+//        sourceSets.commonMain {
+//            kotlin.srcDir("build/generated/ksp/metadata")
+//        }
+
         commonMain.dependencies {
             implementation(compose.animation)
             implementation(compose.components.resources)
@@ -58,6 +72,7 @@ kotlin {
             implementation(libs.androidx.navigation.compose)
             implementation(libs.bundles.koin)
             // implementation(libs.coil)
+            implementation(libs.datastore.preferences)
             implementation(libs.kamel.image)
             implementation(libs.kotlinx.coroutines.core)
             implementation(libs.kotlinx.serialization.json)
@@ -67,7 +82,8 @@ kotlin {
             implementation(libs.ktor.kotlinx.serialization)
             implementation(libs.multiplatformSettings)
             implementation(libs.napier)
-//            implementation(libs.bundles.voyager)
+            implementation(libs.androidx.room.runtime)
+            implementation(libs.sqlite.bundled)
         }
 
         commonTest.dependencies {
@@ -132,4 +148,25 @@ android {
         // enables a Compose tooling support in the AndroidStudio
         compose = true
     }
+//    dependencies {
+//        ksp(libs.androidx.room.compiler)
+//    }
 }
+
+room {
+    schemaDirectory("$projectDir/schemas")
+}
+
+dependencies {
+    add("kspAndroid", libs.androidx.room.compiler)
+    // add("kspIosSimulatorArm64", libs.androidx.room.compiler)
+    // add("kspIosX64", libs.androidx.room.compiler)
+    // add("kspIosArm64", libs.androidx.room.compiler)
+    // add("kspCommonMainMetadata", libs.androidx.room.compiler)
+}
+
+// tasks.withType<org.jetbrains.kotlin.gradle.dsl.KotlinCompile<*>>().configureEach {
+//    if (name != "kspCommonMainKotlinMetadata" ) {
+//        dependsOn("kspCommonMainKotlinMetadata")
+//    }
+// }

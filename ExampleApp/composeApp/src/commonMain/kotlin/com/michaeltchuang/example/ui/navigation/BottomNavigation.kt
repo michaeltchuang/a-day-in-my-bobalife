@@ -21,7 +21,9 @@ import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
 import com.michaeltchuang.example.ui.screens.AlgorandExperienceScreen
 import com.michaeltchuang.example.ui.screens.HomeScreen
+import org.koin.core.annotation.KoinExperimentalAPI
 
+@OptIn(KoinExperimentalAPI::class)
 @Composable
 fun BottomNavigationBar() {
     val navController = rememberNavController()
@@ -83,7 +85,7 @@ fun bottomNavigationItems(): List<BottomNavigationItem> {
             label = "Algorand Experience",
             icon = Icons.Filled.ShoppingCart,
             route = Screen.CoinFlipper.route,
-        )
+        ),
     )
 }
 
@@ -97,6 +99,4 @@ sealed class Screen(val route: String) {
     object Home : Screen("home_screen")
 
     object CoinFlipper : Screen("coinflipper_screen")
-
-    object ValidatorsList : Screen("validators_list_screen")
 }

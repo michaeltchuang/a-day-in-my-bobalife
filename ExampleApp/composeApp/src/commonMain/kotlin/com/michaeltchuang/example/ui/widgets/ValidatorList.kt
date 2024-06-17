@@ -21,14 +21,14 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import com.michaeltchuang.example.data.models.Validator
+import com.michaeltchuang.example.data.local.entities.ValidatorEntity
 import example_app.composeapp.generated.resources.Res
 import example_app.composeapp.generated.resources.coin_heads
 import example_app.composeapp.generated.resources.login_guest_message
 import org.jetbrains.compose.resources.painterResource
 
 @Composable
-fun ValidatorCards(list: List<Validator>) {
+fun ValidatorCards(list: List<ValidatorEntity>) {
     LazyVerticalGrid(
         columns = GridCells.Fixed(1),
         verticalArrangement = Arrangement.spacedBy(5.dp),
@@ -43,58 +43,62 @@ fun ValidatorCards(list: List<Validator>) {
     )
 }
 
-
 @Composable
-fun ListItem(entity: Validator) {
+fun ListItem(entity: ValidatorEntity) {
     Row(
-        modifier = Modifier
-            .height(100.dp)
-            .fillMaxWidth(),
-        horizontalArrangement = Arrangement.SpaceEvenly) {
+        modifier =
+            Modifier
+                .height(100.dp)
+                .fillMaxWidth(),
+        horizontalArrangement = Arrangement.SpaceEvenly,
+    ) {
         Column(
-            modifier = Modifier.padding(end = 4.dp)
+            modifier = Modifier.padding(end = 4.dp),
         ) {
             Image(
                 painter = painterResource(Res.drawable.coin_heads),
                 contentDescription = Res.string.login_guest_message.toString(),
                 modifier =
-                Modifier
-                    .wrapContentSize()
-                    .wrapContentHeight()
-                    .wrapContentWidth()
-                    .size(50.dp),
+                    Modifier
+                        .wrapContentSize()
+                        .wrapContentHeight()
+                        .wrapContentWidth()
+                        .size(50.dp),
             )
         }
         Column(
             modifier = Modifier.padding(end = 4.dp),
         ) {
             Text(
-                text = entity.name
+                text = entity.name,
             )
         }
         Column(
             horizontalAlignment = Alignment.End,
-            modifier = Modifier
-                .width(width = 100.dp),
+            modifier =
+                Modifier
+                    .width(width = 100.dp),
         ) {
             Text(
-                text = entity.apr.toString()
+                text = entity.apr.toString(),
             )
         }
     }
 }
 
-
 @Preview
 @Composable
-fun RowExample(validator: Validator = Validator(
-    id = 1,
-    name = "reti.algo",
-    algoStaked = 25000,
-    apr = 3.03,
-    percentToValidator = 5,
-    epochRoundLength = 1296,
-    minEntryStake = 5
-)) {
+fun RowExample(
+    validator: ValidatorEntity =
+        ValidatorEntity(
+            id = 1,
+            name = "reti.algo",
+            algoStaked = 25000,
+            apr = 3.03,
+            percentToValidator = 5,
+            epochRoundLength = 1296,
+            minEntryStake = 5,
+        ),
+) {
     ListItem(validator)
 }

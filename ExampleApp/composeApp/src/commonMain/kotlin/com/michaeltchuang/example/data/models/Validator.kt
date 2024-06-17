@@ -4,7 +4,7 @@ import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
 @Serializable
-data class Validator (
+data class Validator(
     @SerialName("id")
     val id: Int,
     @SerialName("name")
@@ -19,9 +19,7 @@ data class Validator (
     val epochRoundLength: Int,
     @SerialName("minEntryFee")
     val minEntryStake: Int,
-
-
-    //val config: ValidatorConfig,
+    // val config: ValidatorConfig,
     // val state: ValidatorState,
     // val pools: PoolInfo[],
     // val nodePoolAssignment: NodePoolAssignmentConfig,

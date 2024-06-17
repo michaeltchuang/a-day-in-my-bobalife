@@ -1,5 +1,6 @@
 [versions]
 algosdk = "2.5.0"
+androidx-room = "2.7.0-alpha04"
 agp = "8.4.2"
 apollo = "4.0.0-beta.6"
 androidx-activityCompose = "1.9.0"
@@ -7,29 +8,40 @@ androidx-uiTest = "1.6.8"
 buildConfig = "4.1.1"
 coil = "2.6.0"
 compose = "1.6.10"
+datastore = "1.1.1"
 kamelImage = "0.9.5"
 kotlin = "2.0.0"
 kotlinx-coroutines = "1.9.0-RC"
 ktor = "3.0.0-wasm2"
 kotlinx-serialization = "1.7.0-RC"
 kotlinx-datetime = "0.6.0"
+ksp = "2.0.0-1.0.22"
 lifecycleRuntimeCompose = "2.8.2"
 multiplatformSettings = "1.1.1"
 koin-bom = "3.6.0-Beta4"
-koin = "3.6.0-wasm-alpha2"
+koin = "1.2.0-Beta4"
 ktlint = "12.1.1"
 napier = "2.7.1"
+sqlite = "2.5.0-SNAPSHOT"
 voyager = "1.1.0-beta01"
 navigationCompose = "2.7.0-alpha07"
+
+
+
 
 [libraries]
 algosdk = { module = "com.algorand:algosdk", version.ref = "algosdk" }
 androidx-activityCompose = { module = "androidx.activity:activity-compose", version.ref = "androidx-activityCompose" }
 androidx-lifecycle-runtime-compose = { module = "androidx.lifecycle:lifecycle-runtime-compose", version.ref = "lifecycleRuntimeCompose" }
 androidx-navigation-compose = { group = "org.jetbrains.androidx.navigation", name = "navigation-compose", version.ref = "navigationCompose" }
+androidx-room-compiler = { group = "androidx.room", name = "room-compiler", version.ref = "androidx-room" }
+androidx-room-runtime = { group = "androidx.room", name = "room-runtime", version.ref = "androidx-room" }
 androidx-testManifest = { module = "androidx.compose.ui:ui-test-manifest", version.ref = "androidx-uiTest" }
 androidx-junit4 = { module = "androidx.compose.ui:ui-test-junit4", version.ref = "androidx-uiTest" }
 coil = { module = "io.coil-kt:coil", version.ref = "coil" }
+
+datastore-preferences = { module = "androidx.datastore:datastore-preferences-core", version.ref = "datastore" }
+
 kamel-image = { module = "media.kamel:kamel-image", version.ref = "kamelImage" }
 kotlinx-coroutines-core = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-core", version.ref = "kotlinx-coroutines" }
 kotlinx-coroutines-android = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-android", version.ref = "kotlinx-coroutines" }
@@ -39,6 +51,7 @@ kotlinx-serialization-json = { module = "org.jetbrains.kotlinx:kotlinx-serializa
 koin-bom = { module = "io.insert-koin:koin-bom", version.ref = "koin-bom" }
 koin-core = { module = "io.insert-koin:koin-core", version.ref = "koin-bom" }
 koin-compose = { module = "io.insert-koin:koin-compose", version.ref = "koin" }
+koin-compose-viewmodel = { module = "io.insert-koin:koin-compose-viewmodel", version.ref = "koin" }
 koin-android = { module = "io.insert-koin:koin-android", version.ref = "koin-bom" }
 ktor-core = { module = "io.ktor:ktor-client-core", version.ref = "ktor" }
 ktor-client-android = { module = "io.ktor:ktor-client-android", version.ref = "ktor" }
@@ -48,6 +61,7 @@ ktor-client-content-negotiation = {module = "io.ktor:ktor-client-content-negotia
 ktor-kotlinx-serialization = {module = "io.ktor:ktor-serialization-kotlinx-json", version.ref="ktor"}
 multiplatformSettings = { module = "com.russhwolf:multiplatform-settings", version.ref = "multiplatformSettings" }
 napier = { module = "io.github.aakira:napier", version.ref = "napier" }
+sqlite-bundled = { module = "androidx.sqlite:sqlite-bundled", version.ref = "sqlite" }
 voyager-bottom-sheet-navigator = { module = "cafe.adriel.voyager:voyager-bottom-sheet-navigator", version.ref = "voyager" }
 voyager-navigator = { module = "cafe.adriel.voyager:voyager-navigator", version.ref = "voyager" }
 voyager-tab-navigator = { module = "cafe.adriel.voyager:voyager-tab-navigator", version.ref = "voyager" }
@@ -55,7 +69,7 @@ voyager-transitions = { module = "cafe.adriel.voyager:voyager-transitions", vers
 
 
 [bundles]
-koin = ["koin-core", "koin-compose"]
+koin = ["koin-core", "koin-compose", "koin-compose-viewmodel"]
 voyager = ["voyager-navigator", "voyager-bottom-sheet-navigator", "voyager-tab-navigator", "voyager-transitions"]
 
 [plugins]
@@ -67,5 +81,7 @@ compose = { id = "org.jetbrains.compose", version.ref = "compose" }
 buildConfig = { id = "com.github.gmazzo.buildconfig", version.ref = "buildConfig" }
 kotlinx-serialization = { id = "org.jetbrains.kotlin.plugin.serialization", version.ref = "kotlin" }
 ktlint = { id = "org.jlleitschuh.gradle.ktlint", version.ref = "ktlint" }
+ksp = { id = "com.google.devtools.ksp", version.ref = "ksp" }
 multiplatform = { id = "org.jetbrains.kotlin.multiplatform", version.ref = "kotlin" }
+room = { id = "androidx.room", version.ref = "androidx-room" }
 

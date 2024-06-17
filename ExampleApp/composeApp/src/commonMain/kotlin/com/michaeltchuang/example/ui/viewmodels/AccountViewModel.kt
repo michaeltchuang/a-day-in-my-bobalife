@@ -2,8 +2,8 @@ package com.michaeltchuang.example.ui.viewmodels
 
 import com.michaeltchuang.example.data.repositories.AlgorandRepository
 
-class LoginViewModel(
+class AccountViewModel(
     private val repository: AlgorandRepository,
 ) : BaseViewModel(repository) {
-    override val TAG: String = "LoginViewModel"
+    override val TAG: String = "AccountViewModel"
 }

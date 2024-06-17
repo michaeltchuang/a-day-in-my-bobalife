@@ -21,15 +21,11 @@ import androidx.compose.ui.Modifier
 import com.michaeltchuang.example.ui.screens.AccountScreen
 import com.michaeltchuang.example.ui.screens.PlayCoinFlipperScreen
 import com.michaeltchuang.example.ui.screens.ValidatorsListScreen
-import com.michaeltchuang.example.ui.viewmodels.BaseViewModel
 
 @Composable
-fun AlgorandExperienceNavigation(
-    innerPadding: PaddingValues,
-    activityViewModel: BaseViewModel,
-) {
+fun AlgorandExperienceNavigation(innerPadding: PaddingValues) {
     var tabIndex by remember { mutableStateOf(0) }
-    val tabs = listOf("Coin Flipper", "Validators", "Account")
+    val tabs = listOf("Account", "Coin Flipper", "Validators")
 
     Column(
         modifier =
@@ -45,18 +41,18 @@ fun AlgorandExperienceNavigation(
                     onClick = { tabIndex = index },
                     icon = {
                         when (index) {
-                            0 -> Icon(imageVector = Icons.Default.PlayArrow, contentDescription = null)
-                            1 -> Icon(imageVector = Icons.Default.Search, contentDescription = null)
-                            2 -> Icon(imageVector = Icons.Default.AccountCircle, contentDescription = null)
+                            0 -> Icon(imageVector = Icons.Default.AccountCircle, contentDescription = null)
+                            1 -> Icon(imageVector = Icons.Default.PlayArrow, contentDescription = null)
+                            2 -> Icon(imageVector = Icons.Default.Search, contentDescription = null)
                         }
                     },
                 )
             }
         }
         when (tabIndex) {
-            0 -> PlayCoinFlipperScreen(activityViewModel)
-            1 -> ValidatorsListScreen(activityViewModel)
-            2 -> AccountScreen(activityViewModel)
+            0 -> AccountScreen()
+            1 -> PlayCoinFlipperScreen()
+            2 -> ValidatorsListScreen()
         }
     }
 }

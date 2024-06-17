@@ -187,6 +187,4 @@ open class AlgorandRepository {
             }
         }
     }
-
-
 }

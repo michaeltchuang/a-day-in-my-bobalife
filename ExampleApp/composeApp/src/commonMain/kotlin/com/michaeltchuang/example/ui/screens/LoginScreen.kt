@@ -1,5 +1,6 @@
 package com.michaeltchuang.example.ui.screens
 
+import androidx.activity.ComponentActivity
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -19,6 +20,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.alpha
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
@@ -44,12 +46,14 @@ import example_app.composeapp.generated.resources.login_restore_textfield_value
 import example_app.composeapp.generated.resources.login_restore_textifield_title
 import org.jetbrains.compose.resources.painterResource
 import org.jetbrains.compose.resources.stringResource
+import org.koin.compose.viewmodel.koinViewModel
 
 @Composable
-fun LoginScreen(
-    innerPadding: PaddingValues,
-    activityViewModel: BaseViewModel,
-) {
+fun LoginScreen(innerPadding: PaddingValues) {
+    val activityViewModel: BaseViewModel =
+        koinViewModel(
+            viewModelStoreOwner = LocalContext.current as ComponentActivity,
+        )
     val account by activityViewModel.accountStateFlow.collectAsStateWithLifecycle()
     if (account == null) {
         ShowSnackbar(stringResource(resource = Res.string.error_account))
