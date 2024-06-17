@@ -26,13 +26,13 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
-import com.algorand.example.coinflipper.utils.Constants
 import com.michaeltchuang.example.ui.viewmodels.BaseViewModel
 import com.michaeltchuang.example.ui.widgets.AlgorandButton
 import com.michaeltchuang.example.ui.widgets.AlgorandDivider
 import com.michaeltchuang.example.ui.widgets.PassphraseField
 import com.michaeltchuang.example.ui.widgets.ShowSnackbar
 import com.michaeltchuang.example.ui.widgets.passphraseTextField
+import com.michaeltchuang.example.utils.Constants
 import example_app.composeapp.generated.resources.Res
 import example_app.composeapp.generated.resources.coin_heads
 import example_app.composeapp.generated.resources.error_account

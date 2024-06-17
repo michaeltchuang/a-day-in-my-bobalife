@@ -1,11 +1,12 @@
 package com.michaeltchuang.example.di
 
 import com.michaeltchuang.example.data.repositories.AlgorandRepository
-import com.michaeltchuang.example.data.repositories.NetworkRepository
+import com.michaeltchuang.example.data.repositories.CoinFlipperRepository
+import com.michaeltchuang.example.data.repositories.ValidatorRepository
 import com.michaeltchuang.example.ui.viewmodels.BaseViewModel
-import com.michaeltchuang.example.ui.viewmodels.HomeViewModel
 import com.michaeltchuang.example.ui.viewmodels.LoginViewModel
 import com.michaeltchuang.example.ui.viewmodels.PlayCoinFlipperViewModel
+import com.michaeltchuang.example.ui.viewmodels.ValidatorsListViewModel
 import io.ktor.client.HttpClient
 import io.ktor.client.plugins.contentnegotiation.ContentNegotiation
 import io.ktor.http.ContentType
@@ -27,15 +28,16 @@ val provideHttpClientModule =
 val provideRepositoryModule =
     module {
         single<AlgorandRepository> { AlgorandRepository() }
-        single<NetworkRepository> { NetworkRepository(get()) }
+        single<CoinFlipperRepository> { CoinFlipperRepository() }
+        single<ValidatorRepository> { ValidatorRepository() }
     }
 
 val provideViewModelModule =
     module {
         single { BaseViewModel(get()) }
-        single { HomeViewModel(get()) }
         single { LoginViewModel(get()) }
         single { PlayCoinFlipperViewModel(get()) }
+        single { ValidatorsListViewModel(get()) }
     }
 
 fun appModule() = listOf(provideHttpClientModule, provideRepositoryModule, provideViewModelModule)

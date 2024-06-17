@@ -4,27 +4,42 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
-import com.michaeltchuang.example.ui.viewmodels.HomeViewModel
+import androidx.compose.ui.platform.LocalContext
+import com.michaeltchuang.example.ui.viewmodels.BaseViewModel
+import com.michaeltchuang.example.ui.viewmodels.ValidatorsListViewModel
 import com.michaeltchuang.example.ui.widgets.PiProgressIndicator
-import com.michaeltchuang.example.ui.widgets.ProductCard
+import com.michaeltchuang.example.ui.widgets.SearchableToolbar
+import com.michaeltchuang.example.ui.widgets.ValidatorCards
 import org.koin.compose.getKoin
 
 @Composable
-fun ValidatorsListScreen() {
-    val viewModel: HomeViewModel = getKoin().get()
-    val homeScreenState by viewModel.homeViewState.collectAsState()
+fun ValidatorsListScreen(activityViewModel: BaseViewModel) {
+    SearchableToolbar()
+
+    val validatorListViewModel: ValidatorsListViewModel = getKoin().get()
+    val screenState by validatorListViewModel.validatorsListViewState.collectAsState()
+    validatorListViewModel.abiContract = getJsonDataFromAsset(
+        LocalContext.current, "ValidatorRegistry.arc4.json",
+    ) ?: ""
+    validatorListViewModel.account = activityViewModel.account
+    validatorListViewModel.abiContract = getJsonDataFromAsset(
+        LocalContext.current, "ValidatorRegistry.arc4.json",
+    ) ?: ""
+
     LaunchedEffect(Unit) {
-        viewModel.getProducts()
+        validatorListViewModel.getValidators()
+        validatorListViewModel.fetchValidatorCount()
     }
-    when (homeScreenState) {
-        is HomeViewModel.HomeScreenState.Loading -> {
+    when (screenState) {
+        is ValidatorsListViewModel.ValidatorsListScreenState .Loading -> {
             PiProgressIndicator()
         }
-        is HomeViewModel.HomeScreenState.Success -> {
-            val products = (homeScreenState as HomeViewModel.HomeScreenState.Success).responseData.list
-            ProductCard(products)
+        is ValidatorsListViewModel.ValidatorsListScreenState.Success -> {
+            val validators = (screenState as ValidatorsListViewModel.ValidatorsListScreenState.Success)
+                .responseData
+            ValidatorCards(validators)
         }
-        is HomeViewModel.HomeScreenState.Error -> {
+        is ValidatorsListViewModel.ValidatorsListScreenState.Error -> {
             // show Error
         }
     }

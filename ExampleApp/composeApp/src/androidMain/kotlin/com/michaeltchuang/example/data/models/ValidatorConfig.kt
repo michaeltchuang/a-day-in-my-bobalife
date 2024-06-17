@@ -1,4 +1,4 @@
-package com.algorand.example.coinflipper.data.model
+package com.michaeltchuang.example.data.model
 
 import java.math.BigInteger
 

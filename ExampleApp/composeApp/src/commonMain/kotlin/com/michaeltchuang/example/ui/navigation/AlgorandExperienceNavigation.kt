@@ -5,8 +5,9 @@ import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.Home
-import androidx.compose.material.icons.filled.Person
+import androidx.compose.material.icons.filled.AccountCircle
+import androidx.compose.material.icons.filled.PlayArrow
+import androidx.compose.material.icons.filled.Search
 import androidx.compose.material3.Icon
 import androidx.compose.material3.Tab
 import androidx.compose.material3.TabRow
@@ -19,15 +20,16 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import com.michaeltchuang.example.ui.screens.AccountScreen
 import com.michaeltchuang.example.ui.screens.PlayCoinFlipperScreen
+import com.michaeltchuang.example.ui.screens.ValidatorsListScreen
 import com.michaeltchuang.example.ui.viewmodels.BaseViewModel
 
 @Composable
-fun CoinFlipperNavigation(
+fun AlgorandExperienceNavigation(
     innerPadding: PaddingValues,
     activityViewModel: BaseViewModel,
 ) {
     var tabIndex by remember { mutableStateOf(0) }
-    val tabs = listOf("Home", "About")
+    val tabs = listOf("Coin Flipper", "Validators", "Account")
 
     Column(
         modifier =
@@ -43,8 +45,9 @@ fun CoinFlipperNavigation(
                     onClick = { tabIndex = index },
                     icon = {
                         when (index) {
-                            0 -> Icon(imageVector = Icons.Default.Home, contentDescription = null)
-                            1 -> Icon(imageVector = Icons.Default.Person, contentDescription = null)
+                            0 -> Icon(imageVector = Icons.Default.PlayArrow, contentDescription = null)
+                            1 -> Icon(imageVector = Icons.Default.Search, contentDescription = null)
+                            2 -> Icon(imageVector = Icons.Default.AccountCircle, contentDescription = null)
                         }
                     },
                 )
@@ -52,7 +55,8 @@ fun CoinFlipperNavigation(
         }
         when (tabIndex) {
             0 -> PlayCoinFlipperScreen(activityViewModel)
-            1 -> AccountScreen(activityViewModel)
+            1 -> ValidatorsListScreen(activityViewModel)
+            2 -> AccountScreen(activityViewModel)
         }
     }
 }

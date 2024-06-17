@@ -17,7 +17,7 @@ package com.michaeltchuang.example.data.respositories
 // import com.algorand.algosdk.v2.client.common.Response
 // import com.algorand.algosdk.v2.client.model.PendingTransactionResponse
 // import com.algorand.algosdk.v2.client.model.TransactionParametersResponse
-// import com.algorand.example.coinflipper.utils.Constants
+// import com.michaeltchuang.example.utils.Constants
 // import kotlinx.coroutines.Dispatchers
 // import kotlinx.coroutines.withContext
 // import java.math.BigInteger

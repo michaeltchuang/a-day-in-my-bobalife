@@ -2,14 +2,14 @@ package com.michaeltchuang.example.ui.viewmodels
 
 import android.util.Log
 import androidx.lifecycle.viewModelScope
-import com.algorand.example.coinflipper.utils.Constants
-import com.michaeltchuang.example.data.repositories.AlgorandRepository
+import com.michaeltchuang.example.data.repositories.CoinFlipperRepository
+import com.michaeltchuang.example.utils.Constants
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
 import java.math.BigInteger
 
-class PlayCoinFlipperViewModel(private val repository: AlgorandRepository) : BaseViewModel(repository) {
+class PlayCoinFlipperViewModel(private val repository: CoinFlipperRepository) : BaseViewModel(repository) {
     enum class GameState {
         BET,
         PENDING,

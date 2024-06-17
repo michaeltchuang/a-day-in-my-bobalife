@@ -4,8 +4,8 @@ import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.algorand.algosdk.account.Account
-import com.algorand.example.coinflipper.utils.Constants
 import com.michaeltchuang.example.data.repositories.AlgorandRepository
+import com.michaeltchuang.example.utils.Constants
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
@@ -13,8 +13,10 @@ import kotlinx.coroutines.launch
 open class BaseViewModel(private val repository: AlgorandRepository) : ViewModel() {
     open val TAG: String = "LoginViewModel"
 
+    var account: Account? = null
     var _account = MutableStateFlow<Account?>(null)
     var accountStateFlow = _account.asStateFlow()
+
 
     var _appOptInState = MutableStateFlow<Boolean>(false)
     var appOptInStateFlow = _appOptInState.asStateFlow()
@@ -28,6 +30,7 @@ open class BaseViewModel(private val repository: AlgorandRepository) : ViewModel
             val result = repository.generateAlgodPair()
             result.let {
                 _account.value = it
+                account = it
             }
         }
     }
@@ -37,6 +40,7 @@ open class BaseViewModel(private val repository: AlgorandRepository) : ViewModel
         appOptInStateCheck: Boolean,
     ) {
         if (passphrase == null) {
+            account = null
             _account.value = null
         }
 
@@ -45,6 +49,7 @@ open class BaseViewModel(private val repository: AlgorandRepository) : ViewModel
                 val result = repository.recoverAccount(passphrase)
                 result?.let { r ->
                     _account.value = r
+                    account = r
                     accountInfo = r.let { repository.getAccountInfo(it) }
 
                     // auto opt into app if account exists

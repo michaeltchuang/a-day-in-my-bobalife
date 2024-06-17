@@ -4,8 +4,7 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Home
-import androidx.compose.material.icons.filled.PlayArrow
-import androidx.compose.material.icons.filled.Search
+import androidx.compose.material.icons.filled.ShoppingCart
 import androidx.compose.material3.Icon
 import androidx.compose.material3.NavigationBar
 import androidx.compose.material3.NavigationBarItem
@@ -20,9 +19,8 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
-import com.michaeltchuang.example.ui.screens.CoinFlipperScreen
+import com.michaeltchuang.example.ui.screens.AlgorandExperienceScreen
 import com.michaeltchuang.example.ui.screens.HomeScreen
-import com.michaeltchuang.example.ui.screens.ValidatorsListScreen
 
 @Composable
 fun BottomNavigationBar() {
@@ -68,10 +66,7 @@ fun BottomNavigationBar() {
                 HomeScreen()
             }
             composable(Screen.CoinFlipper.route) {
-                CoinFlipperScreen()
-            }
-            composable(Screen.ValidatorsList.route) {
-                ValidatorsListScreen()
+                AlgorandExperienceScreen()
             }
         }
     }
@@ -85,15 +80,10 @@ fun bottomNavigationItems(): List<BottomNavigationItem> {
             route = Screen.Home.route,
         ),
         BottomNavigationItem(
-            label = "Coin Flipper Game",
-            icon = Icons.Filled.PlayArrow,
+            label = "Algorand Experience",
+            icon = Icons.Filled.ShoppingCart,
             route = Screen.CoinFlipper.route,
-        ),
-        BottomNavigationItem(
-            label = "Search",
-            icon = Icons.Filled.Search,
-            route = Screen.ValidatorsList.route,
-        ),
+        )
     )
 }
 
