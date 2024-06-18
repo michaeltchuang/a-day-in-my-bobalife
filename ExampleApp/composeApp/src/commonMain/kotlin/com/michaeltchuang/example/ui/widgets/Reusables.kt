@@ -1,12 +1,12 @@
 package com.michaeltchuang.example.ui.widgets
 
+import android.annotation.SuppressLint
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Button
-import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedTextField
@@ -33,6 +33,7 @@ import org.jetbrains.compose.resources.stringResource
 
 var passphraseTextField: String = ""
 
+@SuppressLint("ComposableNaming")
 @Composable
 fun AlgorandButton(
     stringResourceId: StringResource,
@@ -55,6 +56,7 @@ fun AlgorandButton(
     }
 }
 
+@SuppressLint("ComposableNaming")
 @Composable
 fun AlgorandDivider() {
     HorizontalDivider(
@@ -66,7 +68,7 @@ fun AlgorandDivider() {
     )
 }
 
-@OptIn(ExperimentalMaterial3Api::class)
+@SuppressLint("ComposableNaming")
 @Composable
 fun PassphraseField(
     label: String,
@@ -94,27 +96,25 @@ fun PassphraseField(
     )
 }
 
+@SuppressLint("ComposableNaming")
 @Composable
-fun ShowSnackbar(
-    message: String
-) {
-
+fun ShowSnackbar(message: String) {
     val snackState = remember { SnackbarHostState() }
     val snackScope = rememberCoroutineScope()
 
     SnackbarHost(
         modifier = Modifier,
-        hostState = snackState
-    ){
+        hostState = snackState,
+    ) {
         Snackbar(
             snackbarData = it,
             containerColor = Color.White,
-            contentColor = Color.Black
+            contentColor = Color.Black,
         )
     }
 
     LaunchedEffect(Unit) {
         snackScope.launch { snackState.showSnackbar(message) }
-        //openSnackbar(false)
+        // openSnackbar(false)
     }
 }

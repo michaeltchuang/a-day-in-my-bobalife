@@ -42,7 +42,10 @@ class PlayCoinFlipperViewModel(
     var abiContract = "CoinFlipper.arc4.json"
 
     fun hasExistingBetState() {
-        algorandBaseViewModel?.accountInfo?.appsLocalState?.firstOrNull({ it.id == Constants.COINFLIP_APP_ID_TESTNET })
+        algorandBaseViewModel
+            ?.accountInfo
+            ?.appsLocalState
+            ?.firstOrNull({ it.id == Constants.COINFLIP_APP_ID_TESTNET })
             .let { applicationLocalState ->
                 // first matching app id
                 // Log.d(TAG, "User's application local state: ${applicationLocalState?.keyValue.toString()}")
@@ -63,7 +66,7 @@ class PlayCoinFlipperViewModel(
         } else if (_currentRound.value == 0L || commitmentRound == 0L) {
             // skip if network error
         } else {
-            _appGameState.value  = GameState.SETTLE
+            _appGameState.value = GameState.SETTLE
         }
     }
 
@@ -73,13 +76,20 @@ class PlayCoinFlipperViewModel(
                 GameState.BET -> {
                     val acct = algorandBaseViewModel?.account
                     acct?.apply {
-                        val result = repository.appFlipCoin(acct, Constants.COINFLIP_APP_ID_TESTNET, abiContract, betMicroAlgosAmount, isHeads)
+                        val result =
+                            repository.appFlipCoin(
+                                acct,
+                                Constants.COINFLIP_APP_ID_TESTNET,
+                                abiContract,
+                                betMicroAlgosAmount,
+                                isHeads,
+                            )
                         if (result?.confirmedRound != null) {
                             commitmentRound = (result.methodResults.get(0).value as BigInteger).toLong()
                             algorandBaseViewModel?.hasExistingBet = true
                             _appGameState.value = GameState.PENDING
                         } else {
-                            algorandBaseViewModel?._snackBarMessage?.value = "Could not submit bet on chain.  Please check logs for issue"
+                            setSnackBarMessage("Could not submit bet on chain.  Please check logs for issue")
                             _appGameState.value = GameState.BET
                         }
                     }
@@ -99,15 +109,14 @@ class PlayCoinFlipperViewModel(
                                 BigInteger.valueOf(Constants.RANDOM_BEACON_APPID),
                             )
                         if (result?.confirmedRound == null) {
-                            algorandBaseViewModel?._snackBarMessage?.value = "Could not settle bet on chain.  Please check logs for issue"
+                            setSnackBarMessage("Could not settle bet on chain.  Please check logs for issue")
                         } else if (result.methodResults == null) {
-                            algorandBaseViewModel?._snackBarMessage?.value = "Unexpected server response.  Please check logs for detail"
+                            setSnackBarMessage("Unexpected server response.  Please check logs for detail")
                         } else {
                             // successful result
                             val betResult = result.methodResults?.get(0)?.value as Array<*>
                             launch {
-                                delay(2000L)
-                                _snackbarMessage.value = createAlertMessage(betResult)
+                                setSnackBarMessage(createAlertMessage(betResult))
                             }
                             resetGame()
                         }
@@ -119,20 +128,36 @@ class PlayCoinFlipperViewModel(
                         // Clicked Bet Form
                         val acct = algorandBaseViewModel?.account
                         acct?.apply {
-                            val result = repository.appFlipCoin(acct, Constants.COINFLIP_APP_ID_TESTNET, abiContract, betMicroAlgosAmount, isHeads)
+                            val result =
+                                repository.appFlipCoin(
+                                    acct,
+                                    Constants.COINFLIP_APP_ID_TESTNET,
+                                    abiContract,
+                                    betMicroAlgosAmount,
+                                    isHeads,
+                                )
                             if (result?.confirmedRound != null) {
                                 _currentRound.value = repository.getCurrentRound(acct, Constants.COINFLIP_APP_ID_TESTNET)
                                 commitmentRound = (result.methodResults.get(0).value as BigInteger).toLong()
                                 algorandBaseViewModel?.hasExistingBet = true
                                 _appGameState.value = GameState.PENDING
                             } else {
-                                algorandBaseViewModel?._snackBarMessage?.value = "Could not submit bet on chain.  Please check logs for issue"
+                                algorandBaseViewModel?._snackBarMessage?.value =
+                                    "Could not submit bet on chain.  Please check logs for issue"
                                 _appGameState.value = GameState.BET
                             }
                         }
                     }
                 }
             }
+        }
+    }
+
+    fun setSnackBarMessage(str: String) {
+        _snackbarMessage.value = str
+        viewModelScope.launch {
+            delay(3000L)
+            _snackbarMessage.value = ""
         }
     }
 

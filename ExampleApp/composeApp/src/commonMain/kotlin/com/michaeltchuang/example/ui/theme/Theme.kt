@@ -1,5 +1,6 @@
 package com.michaeltchuang.example.ui.theme
 
+import android.annotation.SuppressLint
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
@@ -80,6 +81,7 @@ private val DarkColorScheme =
 
 internal val LocalThemeIsDark = compositionLocalOf { mutableStateOf(true) }
 
+@SuppressLint("ComposableNaming")
 @Composable
 internal fun AppTheme(
     content:

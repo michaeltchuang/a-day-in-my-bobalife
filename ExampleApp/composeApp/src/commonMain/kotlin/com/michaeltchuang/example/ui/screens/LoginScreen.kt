@@ -1,5 +1,6 @@
 package com.michaeltchuang.example.ui.screens
 
+import android.annotation.SuppressLint
 import androidx.activity.ComponentActivity
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Arrangement
@@ -50,6 +51,7 @@ import org.koin.compose.viewmodel.koinViewModel
 import org.koin.core.annotation.KoinExperimentalAPI
 
 @OptIn(KoinExperimentalAPI::class)
+@SuppressLint("ComposableNaming")
 @Composable
 fun LoginScreen(innerPadding: PaddingValues) {
     val algorandBaseViewModel: AlgorandBaseViewModel =

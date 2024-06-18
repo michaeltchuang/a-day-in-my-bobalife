@@ -70,21 +70,20 @@ fun AlgorandExperienceScreen() {
 
         val snackBarStateFlow by algorandBaseViewModel.snackBarStateFlow.collectAsStateWithLifecycle()
         if (snackBarStateFlow.trim().length > 0) {
-            //val context = LocalContext.current
+            // val context = LocalContext.current
             LaunchedEffect(Unit) {
                 scope.launch {
                     snackbarHostState.showSnackbar(
                         duration = SnackbarDuration.Short,
-                        message = snackBarStateFlow
+                        message = snackBarStateFlow,
                     )
-                    //oast.makeText(context, snackBarStateFlow, Toast.LENGTH_SHORT).show()
+                    // Toast.makeText(context, snackBarStateFlow, Toast.LENGTH_SHORT).show()
                     launch {
                         delay(1000L)
                         algorandBaseViewModel.setSnackBarMessage("")
                     }
                 }
             }
-
         }
     }
 }

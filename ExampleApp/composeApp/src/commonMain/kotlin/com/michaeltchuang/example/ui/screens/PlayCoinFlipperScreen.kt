@@ -1,5 +1,6 @@
 package com.michaeltchuang.example.ui.screens
 
+import android.annotation.SuppressLint
 import android.os.Handler
 import android.os.Looper
 import android.util.Log
@@ -65,6 +66,7 @@ import org.koin.compose.viewmodel.koinViewModel
 import org.koin.core.annotation.KoinExperimentalAPI
 
 @OptIn(KoinExperimentalAPI::class)
+@SuppressLint("ComposableNaming")
 @Composable
 fun PlayCoinFlipperScreen() {
     val TAG = "PlayCoinFlipperScreen"
@@ -83,7 +85,8 @@ fun PlayCoinFlipperScreen() {
     val playCoinFlipperViewModel: PlayCoinFlipperViewModel = getKoin().get()
     playCoinFlipperViewModel.algorandBaseViewModel = algorandBaseViewModel
     playCoinFlipperViewModel.abiContract = getJsonDataFromAsset(
-        LocalContext.current, "CoinFlipper.arc4.json",
+        LocalContext.current,
+        "CoinFlipper.arc4.json",
     ) ?: ""
     val snackbarMessageStateFlow by playCoinFlipperViewModel.snackBarMessageStateFlow.collectAsStateWithLifecycle()
     algorandBaseViewModel.setSnackBarMessage(snackbarMessageStateFlow)
@@ -103,9 +106,9 @@ fun PlayCoinFlipperScreen() {
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.SpaceEvenly,
         modifier =
-        Modifier
-            .fillMaxWidth()
-            .fillMaxHeight(),
+            Modifier
+                .fillMaxWidth()
+                .fillMaxHeight(),
     ) {
         when (appOptInStateFlow) {
             true -> {
@@ -186,9 +189,12 @@ fun PlayCoinFlipperScreen() {
     }
 }
 
-@OptIn(KoinExperimentalAPI::class)
+@SuppressLint("ComposableNaming")
 @Composable
-fun CoinFlipGameComposable(algorandBaseViewModel: AlgorandBaseViewModel, playCoinFlipperViewModel: PlayCoinFlipperViewModel) {
+fun CoinFlipGameComposable(
+    algorandBaseViewModel: AlgorandBaseViewModel,
+    playCoinFlipperViewModel: PlayCoinFlipperViewModel,
+) {
     val appGameStateFlow: PlayCoinFlipperViewModel.GameState by playCoinFlipperViewModel.appGameStateFlow.collectAsStateWithLifecycle()
 
     when (appGameStateFlow) {
@@ -216,8 +222,12 @@ fun CoinFlipGameComposable(algorandBaseViewModel: AlgorandBaseViewModel, playCoi
     }
 }
 
+@SuppressLint("ComposableNaming")
 @Composable
-fun BetViewComposable(algorandBaseViewModel: AlgorandBaseViewModel, playCoinFlipperViewModel: PlayCoinFlipperViewModel) {
+fun BetViewComposable(
+    algorandBaseViewModel: AlgorandBaseViewModel,
+    playCoinFlipperViewModel: PlayCoinFlipperViewModel,
+) {
     Column(
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.SpaceEvenly,
@@ -339,6 +349,7 @@ fun BetViewComposable(algorandBaseViewModel: AlgorandBaseViewModel, playCoinFlip
     }
 }
 
+@SuppressLint("ComposableNaming")
 @Composable
 fun PendingViewComposable(playCoinFlipperViewModel: PlayCoinFlipperViewModel) {
     Column(
@@ -357,9 +368,12 @@ fun PendingViewComposable(playCoinFlipperViewModel: PlayCoinFlipperViewModel) {
     }
 }
 
-@OptIn(KoinExperimentalAPI::class)
+@SuppressLint("ComposableNaming")
 @Composable
-fun SettleViewComposable(algorandBaseViewModel: AlgorandBaseViewModel, playCoinFlipperViewModel: PlayCoinFlipperViewModel) {
+fun SettleViewComposable(
+    algorandBaseViewModel: AlgorandBaseViewModel,
+    playCoinFlipperViewModel: PlayCoinFlipperViewModel,
+) {
     Column(
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.SpaceEvenly,
@@ -379,14 +393,14 @@ fun SettleViewComposable(algorandBaseViewModel: AlgorandBaseViewModel, playCoinF
     }
 }
 
-
+@SuppressLint("ComposableNaming")
 @Composable
 fun ProgressComposable(playCoinFlipperViewModel: PlayCoinFlipperViewModel) {
     val currentRound by playCoinFlipperViewModel.currentRoundStateFlow.collectAsStateWithLifecycle()
 
     if (currentRound != 0L) {
         Text(
-            stringResource(Res.string.play_current_round) + " ${currentRound}",
+            stringResource(Res.string.play_current_round) + " $currentRound",
             color = Color.Black,
             fontWeight = FontWeight.Bold,
             style =
@@ -426,5 +440,3 @@ fun ProgressComposable(playCoinFlipperViewModel: PlayCoinFlipperViewModel) {
         AlgorandDivider()
     }
 }
-
-

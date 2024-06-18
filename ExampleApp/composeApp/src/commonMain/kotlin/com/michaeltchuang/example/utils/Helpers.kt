@@ -9,7 +9,11 @@ fun getJsonDataFromAsset(
 ): String? {
     val jsonString: String
     try {
-        jsonString = context.assets.open(fileName).bufferedReader().use { it.readText() }
+        jsonString =
+            context.assets
+                .open(fileName)
+                .bufferedReader()
+                .use { it.readText() }
     } catch (e: Exception) {
         Log.e("PlayCoinFlipperScreen", e.toString())
         return null

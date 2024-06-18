@@ -1,5 +1,6 @@
 package com.michaeltchuang.example.ui.widgets
 
+import android.annotation.SuppressLint
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -27,6 +28,7 @@ import example_app.composeapp.generated.resources.coin_heads
 import example_app.composeapp.generated.resources.login_guest_message
 import org.jetbrains.compose.resources.painterResource
 
+@SuppressLint("ComposableNaming")
 @Composable
 fun ValidatorCards(list: List<ValidatorEntity>) {
     LazyVerticalGrid(
@@ -43,6 +45,7 @@ fun ValidatorCards(list: List<ValidatorEntity>) {
     )
 }
 
+@SuppressLint("ComposableNaming")
 @Composable
 fun ListItem(entity: ValidatorEntity) {
     Row(
@@ -87,6 +90,7 @@ fun ListItem(entity: ValidatorEntity) {
 }
 
 @Preview
+@SuppressLint("ComposableNaming")
 @Composable
 fun RowExample(
     validator: ValidatorEntity =

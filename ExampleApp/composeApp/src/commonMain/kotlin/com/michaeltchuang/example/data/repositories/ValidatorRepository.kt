@@ -26,7 +26,8 @@ import java.util.function.Consumer
 
 class ValidatorRepository(
     context: Context,
-) : AlgorandRepository(), KoinComponent {
+) : AlgorandRepository(),
+    KoinComponent {
     companion object {
         private const val TAG: String = "ValidatorRepository"
     }
@@ -51,119 +52,120 @@ class ValidatorRepository(
     }
 
     fun loadValidatorDataIntoDb() {
-        val validatorList: List<ValidatorEntity> = listOf(
-            ValidatorEntity(
-                id = 1,
-                name = "reti.algo",
-                algoStaked = 25000,
-                apr = 3.03,
-                percentToValidator = 5,
-                epochRoundLength = 1296,
-                minEntryStake = 5,
-            ),
-            ValidatorEntity(
-                id = 2,
-                name = "steventest.algo",
-                algoStaked = 25000,
-                apr = 3.03,
-                percentToValidator = 1,
-                epochRoundLength = 32000,
-                minEntryStake = 1000,
-            ),
-            ValidatorEntity(
-                id = 3,
-                name = "algoleaguestestnet.algo",
-                algoStaked = 25000,
-                apr = 3.03,
-                percentToValidator = 5,
-                epochRoundLength = 10000,
-                minEntryStake = 10,
-            ),
-            ValidatorEntity(
-                id = 7,
-                name = "DTM6B4ZQ5HC7SMDG3INL672WWWPRIXZUSABXHMIMDXGUXU63PPD7S7KLBA",
-                algoStaked = null,
-                apr = null,
-                percentToValidator = 1,
-                epochRoundLength = 31104,
-                minEntryStake = 1,
-            ),
-            ValidatorEntity(
-                id = 8,
-                name = "reti.algo",
-                algoStaked = 25000,
-                apr = 3.03,
-                percentToValidator = 5,
-                epochRoundLength = 1296,
-                minEntryStake = 5,
-            ),
-            ValidatorEntity(
-                id = 9,
-                name = "steventest.algo",
-                algoStaked = 25000,
-                apr = 3.03,
-                percentToValidator = 1,
-                epochRoundLength = 32000,
-                minEntryStake = 1000,
-            ),
-            ValidatorEntity(
-                id = 10,
-                name = "algoleaguestestnet.algo",
-                algoStaked = 25000,
-                apr = 3.03,
-                percentToValidator = 5,
-                epochRoundLength = 10000,
-                minEntryStake = 10,
-            ),
-            ValidatorEntity(
-                id = 11,
-                name = "DTM6B4ZQ5HC7SMDG3INL672WWWPRIXZUSABXHMIMDXGUXU63PPD7S7KLBA",
-                algoStaked = null,
-                apr = null,
-                percentToValidator = 1,
-                epochRoundLength = 31104,
-                minEntryStake = 1,
-            ),
-            ValidatorEntity(
-                id = 12,
-                name = "reti.algo",
-                algoStaked = 25000,
-                apr = 3.03,
-                percentToValidator = 5,
-                epochRoundLength = 1296,
-                minEntryStake = 5,
-            ),
-            ValidatorEntity(
-                id = 13,
-                name = "steventest.algo",
-                algoStaked = 25000,
-                apr = 3.03,
-                percentToValidator = 1,
-                epochRoundLength = 32000,
-                minEntryStake = 1000,
-            ),
-            ValidatorEntity(
-                id = 14,
-                name = "algoleaguestestnet.algo",
-                algoStaked = 25000,
-                apr = 3.03,
-                percentToValidator = 5,
-                epochRoundLength = 10000,
-                minEntryStake = 10,
-            ),
-            ValidatorEntity(
-                id = 15,
-                name = "DTM6B4ZQ5HC7SMDG3INL672WWWPRIXZUSABXHMIMDXGUXU63PPD7S7KLBA",
-                algoStaked = null,
-                apr = null,
-                percentToValidator = 1,
-                epochRoundLength = 31104,
-                minEntryStake = 1,
-            ),
-        )
+        val validatorList: List<ValidatorEntity> =
+            listOf(
+                ValidatorEntity(
+                    id = 1,
+                    name = "reti.algo",
+                    algoStaked = 25000,
+                    apr = 3.03,
+                    percentToValidator = 5,
+                    epochRoundLength = 1296,
+                    minEntryStake = 5,
+                ),
+                ValidatorEntity(
+                    id = 2,
+                    name = "steventest.algo",
+                    algoStaked = 25000,
+                    apr = 3.03,
+                    percentToValidator = 1,
+                    epochRoundLength = 32000,
+                    minEntryStake = 1000,
+                ),
+                ValidatorEntity(
+                    id = 3,
+                    name = "algoleaguestestnet.algo",
+                    algoStaked = 25000,
+                    apr = 3.03,
+                    percentToValidator = 5,
+                    epochRoundLength = 10000,
+                    minEntryStake = 10,
+                ),
+                ValidatorEntity(
+                    id = 7,
+                    name = "DTM6B4ZQ5HC7SMDG3INL672WWWPRIXZUSABXHMIMDXGUXU63PPD7S7KLBA",
+                    algoStaked = null,
+                    apr = null,
+                    percentToValidator = 1,
+                    epochRoundLength = 31104,
+                    minEntryStake = 1,
+                ),
+                ValidatorEntity(
+                    id = 8,
+                    name = "reti.algo",
+                    algoStaked = 25000,
+                    apr = 3.03,
+                    percentToValidator = 5,
+                    epochRoundLength = 1296,
+                    minEntryStake = 5,
+                ),
+                ValidatorEntity(
+                    id = 9,
+                    name = "steventest.algo",
+                    algoStaked = 25000,
+                    apr = 3.03,
+                    percentToValidator = 1,
+                    epochRoundLength = 32000,
+                    minEntryStake = 1000,
+                ),
+                ValidatorEntity(
+                    id = 10,
+                    name = "algoleaguestestnet.algo",
+                    algoStaked = 25000,
+                    apr = 3.03,
+                    percentToValidator = 5,
+                    epochRoundLength = 10000,
+                    minEntryStake = 10,
+                ),
+                ValidatorEntity(
+                    id = 11,
+                    name = "DTM6B4ZQ5HC7SMDG3INL672WWWPRIXZUSABXHMIMDXGUXU63PPD7S7KLBA",
+                    algoStaked = null,
+                    apr = null,
+                    percentToValidator = 1,
+                    epochRoundLength = 31104,
+                    minEntryStake = 1,
+                ),
+                ValidatorEntity(
+                    id = 12,
+                    name = "reti.algo",
+                    algoStaked = 25000,
+                    apr = 3.03,
+                    percentToValidator = 5,
+                    epochRoundLength = 1296,
+                    minEntryStake = 5,
+                ),
+                ValidatorEntity(
+                    id = 13,
+                    name = "steventest.algo",
+                    algoStaked = 25000,
+                    apr = 3.03,
+                    percentToValidator = 1,
+                    epochRoundLength = 32000,
+                    minEntryStake = 1000,
+                ),
+                ValidatorEntity(
+                    id = 14,
+                    name = "algoleaguestestnet.algo",
+                    algoStaked = 25000,
+                    apr = 3.03,
+                    percentToValidator = 5,
+                    epochRoundLength = 10000,
+                    minEntryStake = 10,
+                ),
+                ValidatorEntity(
+                    id = 15,
+                    name = "DTM6B4ZQ5HC7SMDG3INL672WWWPRIXZUSABXHMIMDXGUXU63PPD7S7KLBA",
+                    algoStaked = null,
+                    apr = null,
+                    percentToValidator = 1,
+                    epochRoundLength = 31104,
+                    minEntryStake = 1,
+                ),
+            )
 
         coroutineScope.launch {
-            validatorList.forEach() {
+            validatorList.forEach {
                 database.insertValidator(it)
             }
         }
@@ -175,9 +177,7 @@ class ValidatorRepository(
         }
 
     // get data from db
-    fun getAllValidatorsFromDb(): Flow<List<ValidatorEntity>> {
-        return database.getAllValidatorsAsFlow()
-    }
+    fun getAllValidatorsFromDb(): Flow<List<ValidatorEntity>> = database.getAllValidatorsAsFlow()
 
     suspend fun getNumberOfValidators(
         account: Account,
@@ -230,8 +230,8 @@ class ValidatorRepository(
         return validatorCount.toLong()
     }
 
-    suspend fun getValidatorsList(): Flow<NetworkResult<List<Validator>>> {
-        return toResultFlow {
+    suspend fun getValidatorsList(): Flow<NetworkResult<List<Validator>>> =
+        toResultFlow {
             val validatorList = mutableListOf<Validator>()
             withContext(Dispatchers.IO) {
                 var validator =
@@ -281,5 +281,4 @@ class ValidatorRepository(
 
             NetworkResult.Success(validatorList)
         }
-    }
 }

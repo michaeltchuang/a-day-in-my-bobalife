@@ -25,5 +25,5 @@ actual fun providePlatformModules() =
 
 fun provideDataStore(context: Context): DataStore<Preferences> =
     createDataStore(
-        producePath = { context.filesDir.resolve("fpl.preferences_pb").absolutePath },
+        producePath = { context.filesDir.resolve("example_app.preferences_pb").absolutePath },
     )

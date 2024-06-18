@@ -14,14 +14,16 @@ import org.koin.android.ext.koin.androidLogger
 import org.koin.core.component.KoinComponent
 import java.security.Security
 
-class AndroidApp : Application(), KoinComponent {
+class AndroidApp :
+    Application(),
+    KoinComponent {
     companion object {
-        lateinit var INSTANCE: AndroidApp
+        lateinit var instance: AndroidApp
     }
 
     override fun onCreate() {
         super.onCreate()
-        INSTANCE = this
+        instance = this
 
         initKoin {
             androidLogger()
@@ -48,5 +50,5 @@ internal actual fun openUrl(url: String?) {
             data = uri
             addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
         }
-    AndroidApp.INSTANCE.startActivity(intent)
+    AndroidApp.instance.startActivity(intent)
 }

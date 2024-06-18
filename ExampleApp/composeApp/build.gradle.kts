@@ -11,7 +11,7 @@ plugins {
     alias(libs.plugins.compose)
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlinx.serialization)
-    alias(libs.plugins.ktlint)
+    alias(libs.plugins.ktlintCheck)
     alias(libs.plugins.ksp)
     alias(libs.plugins.room)
 }
@@ -154,6 +154,15 @@ android {
 
 room {
     schemaDirectory("$projectDir/schemas")
+}
+
+ktlint {
+    version.set(libs.versions.ktlint)
+    coloredOutput.set(true)
+    filter {
+        exclude("**/generated/**")
+        exclude { element -> element.file.path.contains("generated/") }
+    }
 }
 
 dependencies {

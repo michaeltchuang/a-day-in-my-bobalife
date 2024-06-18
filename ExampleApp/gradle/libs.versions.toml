@@ -19,7 +19,8 @@ lifecycleRuntimeCompose = "2.8.2"
 multiplatformSettings = "1.1.1"
 koin-bom = "3.6.0-Beta4"
 koin = "1.2.0-Beta4"
-ktlint = "12.1.1"
+ktlint = "1.3.0"
+ktlintCheck = "12.1.1"
 napier = "2.7.1"
 sqlite = "2.5.0-SNAPSHOT"
 voyager = "1.1.0-beta01"
@@ -78,7 +79,7 @@ compose-compiler = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "
 compose = { id = "org.jetbrains.compose", version.ref = "compose" }
 buildConfig = { id = "com.github.gmazzo.buildconfig", version.ref = "buildConfig" }
 kotlinx-serialization = { id = "org.jetbrains.kotlin.plugin.serialization", version.ref = "kotlin" }
-ktlint = { id = "org.jlleitschuh.gradle.ktlint", version.ref = "ktlint" }
+ktlintCheck = { id = "org.jlleitschuh.gradle.ktlint", version.ref = "ktlintCheck" }
 ksp = { id = "com.google.devtools.ksp", version.ref = "ksp" }
 multiplatform = { id = "org.jetbrains.kotlin.multiplatform", version.ref = "kotlin" }
 room = { id = "androidx.room", version.ref = "androidx-room" }

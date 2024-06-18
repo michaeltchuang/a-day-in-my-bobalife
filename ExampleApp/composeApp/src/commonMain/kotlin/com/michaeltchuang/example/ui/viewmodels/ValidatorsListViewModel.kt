@@ -20,9 +20,13 @@ import kotlinx.coroutines.launch
 sealed class ValidatorsListUIState {
     object Loading : ValidatorsListUIState()
 
-    data class Error(val message: String) : ValidatorsListUIState()
+    data class Error(
+        val message: String,
+    ) : ValidatorsListUIState()
 
-    data class Success(val result: List<ValidatorEntity>) : ValidatorsListUIState()
+    data class Success(
+        val result: List<ValidatorEntity>,
+    ) : ValidatorsListUIState()
 }
 
 @OptIn(FlowPreview::class, ExperimentalCoroutinesApi::class)
@@ -38,24 +42,27 @@ open class ValidatorsListViewModel(
     var abiContract = "ValidatorRegistry.arc4.json"
 
     val validatorsFromDb =
-        validatorRepository.getAllValidatorsFromDb()
+        validatorRepository
+            .getAllValidatorsFromDb()
             .stateIn(viewModelScope, SharingStarted.WhileSubscribed(5000), emptyList())
 
     val searchQuery = MutableStateFlow("")
     val validatorsListUIState: StateFlow<ValidatorsListUIState> =
-        searchQuery.debounce(250).flatMapLatest { searchQuery ->
-            validatorsFromDb.mapLatest { validatorList ->
-                if (validatorList.isNotEmpty()) {
-                    val validators =
-                        validatorList
-                            .filter { it.name.contains(searchQuery, ignoreCase = true) }
-                            .sortedByDescending { it.name }
-                    ValidatorsListUIState.Success(validators)
-                } else {
-                    ValidatorsListUIState.Loading
+        searchQuery
+            .debounce(250)
+            .flatMapLatest { searchQuery ->
+                validatorsFromDb.mapLatest { validatorList ->
+                    if (validatorList.isNotEmpty()) {
+                        val validators =
+                            validatorList
+                                .filter { it.name.contains(searchQuery, ignoreCase = true) }
+                                .sortedByDescending { it.name }
+                        ValidatorsListUIState.Success(validators)
+                    } else {
+                        ValidatorsListUIState.Loading
+                    }
                 }
-            }
-        }.stateIn(viewModelScope, SharingStarted.Lazily, ValidatorsListUIState.Loading)
+            }.stateIn(viewModelScope, SharingStarted.Lazily, ValidatorsListUIState.Loading)
 
     fun onValidatorSearchQueryChange(query: String) {
         searchQuery.value = query

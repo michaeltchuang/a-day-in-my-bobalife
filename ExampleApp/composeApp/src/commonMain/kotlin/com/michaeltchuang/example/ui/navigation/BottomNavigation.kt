@@ -21,9 +21,7 @@ import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
 import com.michaeltchuang.example.ui.screens.AlgorandExperienceScreen
 import com.michaeltchuang.example.ui.screens.HomeScreen
-import org.koin.core.annotation.KoinExperimentalAPI
 
-@OptIn(KoinExperimentalAPI::class)
 @Composable
 fun BottomNavigationBar() {
     val navController = rememberNavController()
@@ -74,8 +72,8 @@ fun BottomNavigationBar() {
     }
 }
 
-fun bottomNavigationItems(): List<BottomNavigationItem> {
-    return listOf(
+fun bottomNavigationItems(): List<BottomNavigationItem> =
+    listOf(
         BottomNavigationItem(
             label = "Home",
             icon = Icons.Filled.Home,
@@ -87,7 +85,6 @@ fun bottomNavigationItems(): List<BottomNavigationItem> {
             route = Screen.CoinFlipper.route,
         ),
     )
-}
 
 data class BottomNavigationItem(
     val label: String = "",
@@ -95,7 +92,9 @@ data class BottomNavigationItem(
     val route: String = "",
 )
 
-sealed class Screen(val route: String) {
+sealed class Screen(
+    val route: String,
+) {
     object Home : Screen("home_screen")
 
     object CoinFlipper : Screen("coinflipper_screen")

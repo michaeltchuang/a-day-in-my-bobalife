@@ -1,5 +1,6 @@
 package com.michaeltchuang.example.ui.screens
 
+import android.annotation.SuppressLint
 import android.util.Log
 import androidx.activity.ComponentActivity
 import androidx.compose.runtime.Composable
@@ -14,6 +15,7 @@ import org.koin.compose.viewmodel.koinViewModel
 import org.koin.core.annotation.KoinExperimentalAPI
 
 @OptIn(KoinExperimentalAPI::class)
+@SuppressLint("ComposableNaming")
 @Composable
 fun ValidatorsListScreen() {
     val TAG = "ValidatorsListScreen"
@@ -32,7 +34,8 @@ fun ValidatorsListScreen() {
     validatorListViewModel.algorandBaseViewModel = algorandBaseViewModel
     // validatorListViewModel.context = WeakReference(LocalContext.current)
     validatorListViewModel.abiContract = getJsonDataFromAsset(
-        LocalContext.current, "ValidatorRegistry.arc4.json",
+        LocalContext.current,
+        "ValidatorRegistry.arc4.json",
     ) ?: ""
 
     LaunchedEffect(Unit) {

@@ -118,7 +118,8 @@ fun HomeScreen() {
 
             ElevatedButton(
                 modifier =
-                    Modifier.padding(horizontal = 8.dp, vertical = 4.dp)
+                    Modifier
+                        .padding(horizontal = 8.dp, vertical = 4.dp)
                         .widthIn(min = 200.dp),
                 onClick = { isDark = !isDark },
                 content = {
@@ -130,7 +131,8 @@ fun HomeScreen() {
 
             TextButton(
                 modifier =
-                    Modifier.padding(horizontal = 8.dp, vertical = 4.dp)
+                    Modifier
+                        .padding(horizontal = 8.dp, vertical = 4.dp)
                         .widthIn(min = 200.dp),
                 onClick = { openUrl("https://github.com/michaeltchuang/a-day-in-my-bobalife") },
             ) {

@@ -24,8 +24,8 @@ class CoinFlipperRepository : AlgorandRepository() {
         contractStr: String,
         amount: Int,
         isHeads: Boolean,
-    ): AtomicTransactionComposer.ExecuteResult? {
-        return withContext(Dispatchers.IO) {
+    ): AtomicTransactionComposer.ExecuteResult? =
+        withContext(Dispatchers.IO) {
             try {
                 val contract: Contract = Encoder.decodeFromJson(contractStr, Contract::class.java)
 
@@ -65,15 +65,14 @@ class CoinFlipperRepository : AlgorandRepository() {
                 null
             }
         }
-    }
 
     suspend fun appSettleBet(
         account: Account,
         appId: Long,
         contractStr: String,
         randomBeaconApp: BigInteger,
-    ): AtomicTransactionComposer.ExecuteResult? {
-        return withContext(Dispatchers.IO) {
+    ): AtomicTransactionComposer.ExecuteResult? =
+        withContext(Dispatchers.IO) {
             try {
                 val contract: Contract = Encoder.decodeFromJson(contractStr, Contract::class.java)
 
@@ -111,5 +110,4 @@ class CoinFlipperRepository : AlgorandRepository() {
                 null
             }
         }
-    }
 }

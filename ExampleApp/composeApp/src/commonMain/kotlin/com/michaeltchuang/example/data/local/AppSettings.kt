@@ -13,7 +13,9 @@ fun createDataStore(producePath: () -> String): DataStore<Preferences> =
         produceFile = { producePath().toPath() },
     )
 
-class AppSettings(private val dataStore: DataStore<Preferences>) {
+class AppSettings(
+    private val dataStore: DataStore<Preferences>,
+) {
     companion object {
         val EXAMPLE_APP_SETTING = stringPreferencesKey("example_app")
     }

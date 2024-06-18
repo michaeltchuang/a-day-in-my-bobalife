@@ -1,5 +1,6 @@
 package com.michaeltchuang.example.ui.navigation
 
+import android.annotation.SuppressLint
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -22,6 +23,7 @@ import com.michaeltchuang.example.ui.screens.AccountScreen
 import com.michaeltchuang.example.ui.screens.PlayCoinFlipperScreen
 import com.michaeltchuang.example.ui.screens.ValidatorsListScreen
 
+@SuppressLint("ComposableNaming")
 @Composable
 fun AlgorandExperienceNavigation(innerPadding: PaddingValues) {
     var tabIndex by remember { mutableStateOf(0) }

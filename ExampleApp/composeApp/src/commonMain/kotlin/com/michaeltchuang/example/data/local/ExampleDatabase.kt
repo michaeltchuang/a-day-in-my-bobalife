@@ -15,20 +15,21 @@ abstract class ExampleDatabase : RoomDatabase() {
         // Singleton prevents multiple instances of database opening at the
         // same time.
         @Volatile
-        private var INSTANCE: ExampleDatabase? = null
+        private var database: ExampleDatabase? = null
 
         fun getDatabase(context: Context): ExampleDatabase {
             // if the INSTANCE is not null, then return it,
             // if it is, then create the database
-            return INSTANCE ?: synchronized(this) {
+            return database ?: synchronized(this) {
                 val instance =
                     Room
                         .databaseBuilder(
-                        context.applicationContext,
-                        ExampleDatabase::class.java,
-                        "dbMp",
-                    ).fallbackToDestructiveMigration(true).build()
-                INSTANCE = instance
+                            context.applicationContext,
+                            ExampleDatabase::class.java,
+                            "dbMp",
+                        ).fallbackToDestructiveMigration(true)
+                        .build()
+                database = instance
                 // return instance
                 instance
             }

@@ -34,9 +34,7 @@ open class AlgorandRepository {
     val txHeaders = arrayOf("Content-Type")
     val txValues = arrayOf("application/x-binary")
 
-    fun generateAlgodPair(): Account {
-        return Account()
-    }
+    fun generateAlgodPair(): Account = Account()
 
     fun recoverAccount(passPhrase: String): Account? {
         try {
@@ -46,8 +44,8 @@ open class AlgorandRepository {
         }
     }
 
-    suspend fun getAccountInfo(account: Account): AccountInfo? {
-        return withContext(Dispatchers.IO) {
+    suspend fun getAccountInfo(account: Account): AccountInfo? =
+        withContext(Dispatchers.IO) {
             try {
                 val respAcct = client.AccountInformation(account.getAddress()).execute()
                 val accountInfo = respAcct.body()
@@ -58,13 +56,12 @@ open class AlgorandRepository {
                 null
             }
         }
-    }
 
     suspend fun appOptIn(
         account: Account,
         appId: Long,
-    ): PendingTransactionResponse? {
-        return withContext(Dispatchers.IO) {
+    ): PendingTransactionResponse? =
+        withContext(Dispatchers.IO) {
             try {
                 // define sender as creator
                 val sender: Address = account.address
@@ -73,7 +70,8 @@ open class AlgorandRepository {
 
                 // create unsigned transaction
                 val txn: Transaction =
-                    Transaction.ApplicationOptInTransactionBuilder()
+                    Transaction
+                        .ApplicationOptInTransactionBuilder()
                         .sender(sender)
                         .suggestedParams(params)
                         .applicationId(appId)
@@ -85,8 +83,12 @@ open class AlgorandRepository {
                 // send to network
                 val encodedTxBytes: ByteArray = Encoder.encodeToMsgPack(signedTxn)
                 val txnId: String =
-                    client.RawTransaction().rawtxn(encodedTxBytes).execute(txHeaders, txValues)
-                        .body().txId
+                    client
+                        .RawTransaction()
+                        .rawtxn(encodedTxBytes)
+                        .execute(txHeaders, txValues)
+                        .body()
+                        .txId
                 Log.d(TAG, "Transaction $txnId")
 
                 // Wait for transaction confirmation
@@ -98,13 +100,12 @@ open class AlgorandRepository {
                 null
             }
         }
-    }
 
     suspend fun closeOutApp(
         account: Account,
         appId: Long,
-    ): PendingTransactionResponse? {
-        return withContext(Dispatchers.IO) {
+    ): PendingTransactionResponse? =
+        withContext(Dispatchers.IO) {
             try {
                 // define sender as creator
                 val sender: Address = account.address
@@ -113,7 +114,8 @@ open class AlgorandRepository {
 
                 // create unsigned transaction
                 val txn: Transaction =
-                    Transaction.ApplicationCloseTransactionBuilder()
+                    Transaction
+                        .ApplicationCloseTransactionBuilder()
                         .sender(sender)
                         .suggestedParams(params)
                         .applicationId(appId)
@@ -125,8 +127,12 @@ open class AlgorandRepository {
                 // send to network
                 val encodedTxBytes: ByteArray = Encoder.encodeToMsgPack(signedTxn)
                 val txnId: String =
-                    client.RawTransaction().rawtxn(encodedTxBytes).execute(txHeaders, txValues)
-                        .body().txId
+                    client
+                        .RawTransaction()
+                        .rawtxn(encodedTxBytes)
+                        .execute(txHeaders, txValues)
+                        .body()
+                        .txId
                 Log.d(TAG, "Transaction $txnId")
 
                 // Wait for transaction confirmation
@@ -138,31 +144,31 @@ open class AlgorandRepository {
                 null
             }
         }
-    }
 
     suspend fun getCurrentRound(
         account: Account,
         appId: Long,
-    ): Long {
-        return withContext(Dispatchers.IO) {
+    ): Long =
+        withContext(Dispatchers.IO) {
             try {
                 val params: TransactionParametersResponse =
                     client.TransactionParams().execute().body()
-                        ?: client.TransactionParams().execute().body() ?: client.TransactionParams()
-                        .execute().body()
+                        ?: client.TransactionParams().execute().body() ?: client
+                        .TransactionParams()
+                        .execute()
+                        .body()
                 params.lastRound
             } catch (e: Exception) {
                 0L
             }
         }
-    }
 
     suspend fun createTransactionWithSigner(
         account: Account,
         appId: Long,
         amount: Int,
-    ): TransactionWithSigner? {
-        return withContext(Dispatchers.IO) {
+    ): TransactionWithSigner? =
+        withContext(Dispatchers.IO) {
             try {
                 // Get suggested params from client
                 val rsp: Response<TransactionParametersResponse> =
@@ -171,7 +177,8 @@ open class AlgorandRepository {
 
                 // Create a transaction
                 val ptxn =
-                    PaymentTransactionBuilder.Builder()
+                    PaymentTransactionBuilder
+                        .Builder()
                         .suggestedParams(sp)
                         .amount(amount)
                         .sender(account.address)
@@ -186,5 +193,4 @@ open class AlgorandRepository {
                 null
             }
         }
-    }
 }

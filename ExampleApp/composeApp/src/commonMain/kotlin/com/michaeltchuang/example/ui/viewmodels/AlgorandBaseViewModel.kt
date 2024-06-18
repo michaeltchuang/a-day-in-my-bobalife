@@ -142,7 +142,11 @@ open class AlgorandBaseViewModel(
 sealed class ScreenState {
     data object Loading : ScreenState()
 
-    data class Error(val errorMessage: String) : ScreenState()
+    data class Error(
+        val errorMessage: String,
+    ) : ScreenState()
 
-    data class Success(val responseData: Any) : ScreenState()
+    data class Success(
+        val responseData: Any,
+    ) : ScreenState()
 }
