@@ -73,7 +73,6 @@ kotlin {
             implementation(libs.bundles.koin)
             // implementation(libs.coil)
             implementation(libs.datastore.preferences)
-            implementation(libs.kamel.image)
             implementation(libs.kotlinx.coroutines.core)
             implementation(libs.kotlinx.serialization.json)
             implementation(libs.kotlinx.datetime)

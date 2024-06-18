@@ -47,33 +47,131 @@ class ValidatorRepository(
 
     init {
         database = ExampleDatabase.getDatabase(context).getDao()
+        loadValidatorDataIntoDb()
     }
 
-    fun insertValidatorIntoDb() =
-        coroutineScope.launch {
-            var validator =
-                ValidatorEntity(
-                    id = 1,
-                    name = "reti.algo",
-                    algoStaked = 25000,
-                    apr = 3.03,
-                    percentToValidator = 5,
-                    epochRoundLength = 1296,
-                    minEntryStake = 5,
-                )
-            database.insertValidator(validator)
+    fun loadValidatorDataIntoDb() {
+        val validatorList: List<ValidatorEntity> = listOf(
+            ValidatorEntity(
+                id = 1,
+                name = "reti.algo",
+                algoStaked = 25000,
+                apr = 3.03,
+                percentToValidator = 5,
+                epochRoundLength = 1296,
+                minEntryStake = 5,
+            ),
+            ValidatorEntity(
+                id = 2,
+                name = "steventest.algo",
+                algoStaked = 25000,
+                apr = 3.03,
+                percentToValidator = 1,
+                epochRoundLength = 32000,
+                minEntryStake = 1000,
+            ),
+            ValidatorEntity(
+                id = 3,
+                name = "algoleaguestestnet.algo",
+                algoStaked = 25000,
+                apr = 3.03,
+                percentToValidator = 5,
+                epochRoundLength = 10000,
+                minEntryStake = 10,
+            ),
+            ValidatorEntity(
+                id = 7,
+                name = "DTM6B4ZQ5HC7SMDG3INL672WWWPRIXZUSABXHMIMDXGUXU63PPD7S7KLBA",
+                algoStaked = null,
+                apr = null,
+                percentToValidator = 1,
+                epochRoundLength = 31104,
+                minEntryStake = 1,
+            ),
+            ValidatorEntity(
+                id = 8,
+                name = "reti.algo",
+                algoStaked = 25000,
+                apr = 3.03,
+                percentToValidator = 5,
+                epochRoundLength = 1296,
+                minEntryStake = 5,
+            ),
+            ValidatorEntity(
+                id = 9,
+                name = "steventest.algo",
+                algoStaked = 25000,
+                apr = 3.03,
+                percentToValidator = 1,
+                epochRoundLength = 32000,
+                minEntryStake = 1000,
+            ),
+            ValidatorEntity(
+                id = 10,
+                name = "algoleaguestestnet.algo",
+                algoStaked = 25000,
+                apr = 3.03,
+                percentToValidator = 5,
+                epochRoundLength = 10000,
+                minEntryStake = 10,
+            ),
+            ValidatorEntity(
+                id = 11,
+                name = "DTM6B4ZQ5HC7SMDG3INL672WWWPRIXZUSABXHMIMDXGUXU63PPD7S7KLBA",
+                algoStaked = null,
+                apr = null,
+                percentToValidator = 1,
+                epochRoundLength = 31104,
+                minEntryStake = 1,
+            ),
+            ValidatorEntity(
+                id = 12,
+                name = "reti.algo",
+                algoStaked = 25000,
+                apr = 3.03,
+                percentToValidator = 5,
+                epochRoundLength = 1296,
+                minEntryStake = 5,
+            ),
+            ValidatorEntity(
+                id = 13,
+                name = "steventest.algo",
+                algoStaked = 25000,
+                apr = 3.03,
+                percentToValidator = 1,
+                epochRoundLength = 32000,
+                minEntryStake = 1000,
+            ),
+            ValidatorEntity(
+                id = 14,
+                name = "algoleaguestestnet.algo",
+                algoStaked = 25000,
+                apr = 3.03,
+                percentToValidator = 5,
+                epochRoundLength = 10000,
+                minEntryStake = 10,
+            ),
+            ValidatorEntity(
+                id = 15,
+                name = "DTM6B4ZQ5HC7SMDG3INL672WWWPRIXZUSABXHMIMDXGUXU63PPD7S7KLBA",
+                algoStaked = null,
+                apr = null,
+                percentToValidator = 1,
+                epochRoundLength = 31104,
+                minEntryStake = 1,
+            ),
+        )
 
-            validator =
-                ValidatorEntity(
-                    id = 2,
-                    name = "steventest.algo",
-                    algoStaked = 25000,
-                    apr = 3.03,
-                    percentToValidator = 5,
-                    epochRoundLength = 1296,
-                    minEntryStake = 5,
-                )
-            database.insertValidator(validator)
+        coroutineScope.launch {
+            validatorList.forEach() {
+                database.insertValidator(it)
+            }
+        }
+    }
+
+    fun insertValidatorIntoDb(validatorEntity: ValidatorEntity) =
+        coroutineScope.launch {
+            database.insertValidator(validatorEntity)
         }
 
     // get data from db

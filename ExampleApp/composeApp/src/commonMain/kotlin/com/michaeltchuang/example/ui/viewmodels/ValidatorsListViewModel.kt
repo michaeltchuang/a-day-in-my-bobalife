@@ -1,5 +1,6 @@
 package com.michaeltchuang.example.ui.viewmodels
 
+import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.michaeltchuang.example.data.local.entities.ValidatorEntity
 import com.michaeltchuang.example.data.repositories.ValidatorRepository
@@ -15,8 +16,6 @@ import kotlinx.coroutines.flow.flatMapLatest
 import kotlinx.coroutines.flow.mapLatest
 import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.launch
-import org.koin.core.component.KoinComponent
-import org.koin.core.component.inject
 
 sealed class ValidatorsListUIState {
     object Loading : ValidatorsListUIState()
@@ -29,18 +28,17 @@ sealed class ValidatorsListUIState {
 @OptIn(FlowPreview::class, ExperimentalCoroutinesApi::class)
 open class ValidatorsListViewModel(
     private val validatorRepository: ValidatorRepository,
-) : BaseViewModel(validatorRepository), KoinComponent {
-    override val TAG: String = "ValidatorsListViewModel"
+) : ViewModel() {
+    val TAG: String = "ValidatorsListViewModel"
+    var algorandBaseViewModel: AlgorandBaseViewModel?? = null
 
     // private val _validatorsListState = MutableStateFlow(ValidatorsListState())
     // private val _validatorsListViewState: MutableStateFlow<ScreenState> = MutableStateFlow(ScreenState.Loading)
     // val validatorsListViewState = _validatorsListViewState.asStateFlow()
     var abiContract = "ValidatorRegistry.arc4.json"
 
-    private val repository: ValidatorRepository by inject()
-
     val validatorsFromDb =
-        repository.getAllValidatorsFromDb()
+        validatorRepository.getAllValidatorsFromDb()
             .stateIn(viewModelScope, SharingStarted.WhileSubscribed(5000), emptyList())
 
     val searchQuery = MutableStateFlow("")
@@ -63,13 +61,9 @@ open class ValidatorsListViewModel(
         searchQuery.value = query
     }
 
-    fun insertValidatorIntoDb() {
-        repository.insertValidatorIntoDb()
-    }
-
     suspend fun fetchValidatorCount() {
         viewModelScope.launch {
-            val acct = account
+            val acct = algorandBaseViewModel?.account
             acct?.apply {
                 val validatorCount =
                     validatorRepository.getNumberOfValidators(

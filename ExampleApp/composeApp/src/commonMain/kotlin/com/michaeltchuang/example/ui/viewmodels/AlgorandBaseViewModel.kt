@@ -9,11 +9,13 @@ import com.michaeltchuang.example.utils.Constants
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
+import org.jetbrains.compose.resources.StringResource
+import org.jetbrains.compose.resources.getString
 
-open class BaseViewModel(
+open class AlgorandBaseViewModel(
     private val repository: AlgorandRepository,
 ) : ViewModel() {
-    open val TAG: String = "BaseViewModel"
+    open val TAG: String = "AlgorandBaseViewModel"
 
     var account: Account? = null
     var _account = MutableStateFlow<Account?>(null)
@@ -22,9 +24,11 @@ open class BaseViewModel(
     var _appOptInState = MutableStateFlow<Boolean>(false)
     var appOptInStateFlow = _appOptInState.asStateFlow()
 
+    var _snackBarMessage = MutableStateFlow<String>("")
+    var snackBarStateFlow = _snackBarMessage.asStateFlow()
+
     var accountInfo: com.algorand.algosdk.v2.client.model.Account? = null
     var hasExistingBet = false
-    var commitmentRound = 0L
 
     fun createAccount() {
         viewModelScope.launch {
@@ -119,6 +123,18 @@ open class BaseViewModel(
             } catch (e: Exception) {
                 Log.e(TAG, e.toString())
             }
+        }
+    }
+
+    fun setSnackBarMessage(resource: StringResource) {
+        viewModelScope.launch {
+            _snackBarMessage.value = getString(resource = resource)
+        }
+    }
+
+    fun setSnackBarMessage(str: String) {
+        viewModelScope.launch {
+            _snackBarMessage.value = str
         }
     }
 }

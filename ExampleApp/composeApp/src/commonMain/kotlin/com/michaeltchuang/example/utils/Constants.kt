@@ -14,6 +14,4 @@ object Constants {
     const val DEFAULT_MICRO_ALGO_BET_AMOUNT = 50000
     const val DEFAULT_MICRO_ALGO_TXN_FEE_SAFE_AMOUNT = 10000
     const val COINFLIP_APP_COMMITTMENT_ROUND_KEY = "Y29tbWl0bWVudF9yb3VuZA=="
-
-    const val CONTRACT = "ValidatorRegistry.arc4.json"
 }

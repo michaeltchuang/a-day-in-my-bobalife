@@ -11,18 +11,23 @@ import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.OutlinedTextFieldDefaults
+import androidx.compose.material3.Snackbar
+import androidx.compose.material3.SnackbarHost
+import androidx.compose.material3.SnackbarHostState
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.michaeltchuang.example.utils.Log
+import kotlinx.coroutines.launch
 import org.jetbrains.compose.resources.StringResource
 import org.jetbrains.compose.resources.stringResource
 
@@ -90,6 +95,26 @@ fun PassphraseField(
 }
 
 @Composable
-fun ShowSnackbar(message: String) {
-    Log.e("CHUANGM", message)
+fun ShowSnackbar(
+    message: String
+) {
+
+    val snackState = remember { SnackbarHostState() }
+    val snackScope = rememberCoroutineScope()
+
+    SnackbarHost(
+        modifier = Modifier,
+        hostState = snackState
+    ){
+        Snackbar(
+            snackbarData = it,
+            containerColor = Color.White,
+            contentColor = Color.Black
+        )
+    }
+
+    LaunchedEffect(Unit) {
+        snackScope.launch { snackState.showSnackbar(message) }
+        //openSnackbar(false)
+    }
 }

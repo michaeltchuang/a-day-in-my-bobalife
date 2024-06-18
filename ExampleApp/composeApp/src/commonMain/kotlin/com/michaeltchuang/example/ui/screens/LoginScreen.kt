@@ -28,7 +28,7 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
-import com.michaeltchuang.example.ui.viewmodels.BaseViewModel
+import com.michaeltchuang.example.ui.viewmodels.AlgorandBaseViewModel
 import com.michaeltchuang.example.ui.widgets.AlgorandButton
 import com.michaeltchuang.example.ui.widgets.AlgorandDivider
 import com.michaeltchuang.example.ui.widgets.PassphraseField
@@ -47,14 +47,16 @@ import example_app.composeapp.generated.resources.login_restore_textifield_title
 import org.jetbrains.compose.resources.painterResource
 import org.jetbrains.compose.resources.stringResource
 import org.koin.compose.viewmodel.koinViewModel
+import org.koin.core.annotation.KoinExperimentalAPI
 
+@OptIn(KoinExperimentalAPI::class)
 @Composable
 fun LoginScreen(innerPadding: PaddingValues) {
-    val activityViewModel: BaseViewModel =
+    val algorandBaseViewModel: AlgorandBaseViewModel =
         koinViewModel(
             viewModelStoreOwner = LocalContext.current as ComponentActivity,
         )
-    val account by activityViewModel.accountStateFlow.collectAsStateWithLifecycle()
+    val account by algorandBaseViewModel.accountStateFlow.collectAsStateWithLifecycle()
     if (account == null) {
         ShowSnackbar(stringResource(resource = Res.string.error_account))
     }
@@ -99,12 +101,12 @@ fun LoginScreen(innerPadding: PaddingValues) {
         )
         AlgorandDivider()
         AlgorandButton(stringResourceId = Res.string.login_button_create, onClick = {
-            activityViewModel.createAccount()
+            algorandBaseViewModel.createAccount()
         })
         AlgorandDivider()
         PassphraseField(stringResource(resource = label), stringResource(resource = dataInput))
         AlgorandButton(stringResourceId = Res.string.login_button_restore, onClick = {
-            activityViewModel.recoverAccount("${Constants.TEST_PASSPHRASE_PART1} ${Constants.TEST_PASSPHRASE_PART2}", false)
+            algorandBaseViewModel.recoverAccount("${Constants.TEST_PASSPHRASE_PART1} ${Constants.TEST_PASSPHRASE_PART2}", false)
         })
         AlgorandDivider()
         Text(

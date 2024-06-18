@@ -12,9 +12,10 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
-import com.michaeltchuang.example.ui.viewmodels.BaseViewModel
+import com.michaeltchuang.example.ui.viewmodels.AlgorandBaseViewModel
 import com.michaeltchuang.example.ui.widgets.AlgorandButton
 import com.michaeltchuang.example.ui.widgets.PassphraseField
+import com.michaeltchuang.example.utils.Constants
 import example_app.composeapp.generated.resources.Res
 import example_app.composeapp.generated.resources.account_address
 import example_app.composeapp.generated.resources.account_button_lock
@@ -28,14 +29,15 @@ import org.koin.core.annotation.KoinExperimentalAPI
 fun AccountScreen() {
     val TAG = "AccountScreen"
 
-    val activityViewModel: BaseViewModel =
+    val algorandBaseViewModel: AlgorandBaseViewModel =
         koinViewModel(
             viewModelStoreOwner = LocalContext.current as ComponentActivity,
         )
-    if (activityViewModel.account == null) {
+    if (algorandBaseViewModel.account == null) {
         Log.d(TAG, "No account detected")
-        null.also { activityViewModel._account.value = it }
+        null.also { algorandBaseViewModel._account.value = it }
     }
+    algorandBaseViewModel.appOptInStateCheck(algorandBaseViewModel.account!!, Constants.COINFLIP_APP_ID_TESTNET)
 
     Column(
         horizontalAlignment = Alignment.CenterHorizontally,
@@ -46,12 +48,12 @@ fun AccountScreen() {
                 .fillMaxHeight()
                 .background(Color.White),
     ) {
-        PassphraseField(stringResource(resource = Res.string.account_address), activityViewModel.account?.address.toString())
-        PassphraseField(stringResource(resource = Res.string.account_passphrase), activityViewModel.account?.toMnemonic().toString())
+        PassphraseField(stringResource(resource = Res.string.account_address), algorandBaseViewModel.account?.address.toString())
+        PassphraseField(stringResource(resource = Res.string.account_passphrase), algorandBaseViewModel.account?.toMnemonic().toString())
         AlgorandButton(
             stringResourceId = Res.string.account_button_lock,
             onClick = {
-                activityViewModel._account.value = null
+                algorandBaseViewModel._account.value = null
             },
         )
     }

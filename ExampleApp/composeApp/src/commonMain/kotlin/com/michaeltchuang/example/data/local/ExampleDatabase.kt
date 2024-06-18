@@ -7,7 +7,7 @@ import androidx.room.RoomDatabase
 import com.michaeltchuang.example.data.local.dao.ExampleDao
 import com.michaeltchuang.example.data.local.entities.ValidatorEntity
 
-@Database(entities = [ValidatorEntity::class], version = 1, exportSchema = false)
+@Database(entities = [ValidatorEntity::class], version = 2, exportSchema = false)
 abstract class ExampleDatabase : RoomDatabase() {
     abstract fun getDao(): ExampleDao
 
@@ -22,11 +22,12 @@ abstract class ExampleDatabase : RoomDatabase() {
             // if it is, then create the database
             return INSTANCE ?: synchronized(this) {
                 val instance =
-                    Room.databaseBuilder(
+                    Room
+                        .databaseBuilder(
                         context.applicationContext,
                         ExampleDatabase::class.java,
                         "dbMp",
-                    ).build()
+                    ).fallbackToDestructiveMigration(true).build()
                 INSTANCE = instance
                 // return instance
                 instance
