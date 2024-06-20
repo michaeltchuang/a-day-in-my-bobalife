@@ -20,3 +20,12 @@ fun getJsonDataFromAsset(
     }
     return jsonString
 }
+
+fun truncatedValidatorName(str: String): String {
+    val maxLength = 35
+    if (str.endsWith(".algo").not() || str.length > maxLength) {
+        return "${str.substring(0,5)} ... ${str.substring(str.length - 6)}"
+    } else {
+        return str
+    }
+}

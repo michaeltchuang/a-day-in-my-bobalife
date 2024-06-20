@@ -32,12 +32,14 @@ import androidx.compose.ui.draw.rotate
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
+import androidx.navigation.NavController
 import com.michaeltchuang.example.openUrl
 import com.michaeltchuang.example.ui.theme.AppTheme
 import com.michaeltchuang.example.ui.theme.LocalThemeIsDark
+import com.michaeltchuang.example.ui.viewmodels.AlgorandBaseViewModel
 import example_app.composeapp.generated.resources.IndieFlower_Regular
 import example_app.composeapp.generated.resources.Res
-import example_app.composeapp.generated.resources.cyclone
+import example_app.composeapp.generated.resources.home_header
 import example_app.composeapp.generated.resources.ic_dark_mode
 import example_app.composeapp.generated.resources.ic_light_mode
 import example_app.composeapp.generated.resources.ic_logo
@@ -51,7 +53,11 @@ import org.jetbrains.compose.resources.stringResource
 import org.jetbrains.compose.resources.vectorResource
 
 @Composable
-fun HomeScreen() {
+fun HomeScreen(
+    navController: NavController,
+    algorandBaseViewModel: AlgorandBaseViewModel,
+    tag: String,
+) {
     AppTheme {
         Column(
             modifier =
@@ -62,7 +68,7 @@ fun HomeScreen() {
             horizontalAlignment = Alignment.CenterHorizontally,
         ) {
             Text(
-                text = stringResource(Res.string.cyclone),
+                text = stringResource(Res.string.home_header),
                 fontFamily = FontFamily(Font(Res.font.IndieFlower_Regular)),
                 style = MaterialTheme.typography.displayLarge,
                 textAlign = TextAlign.Center,

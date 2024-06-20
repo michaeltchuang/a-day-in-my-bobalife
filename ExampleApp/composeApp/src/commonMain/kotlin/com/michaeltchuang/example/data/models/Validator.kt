@@ -11,8 +11,8 @@ data class Validator(
     val name: String,
     @SerialName("algoStaked")
     val algoStaked: Int?,
-    @SerialName("apr")
-    val apr: Double,
+    @SerialName("apy")
+    val apy: Double,
     @SerialName("percentToValidator")
     val percentToValidator: Int,
     @SerialName("epochRoundLength")

@@ -1,14 +1,11 @@
 package com.michaeltchuang.example.ui.screens
 
 import android.annotation.SuppressLint
-import androidx.activity.ComponentActivity
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.layout.wrapContentHeight
@@ -21,7 +18,6 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.alpha
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
@@ -29,16 +25,16 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
+import androidx.navigation.NavController
+import com.michaeltchuang.example.ui.navigation.AlgorandExperienceTabs
 import com.michaeltchuang.example.ui.viewmodels.AlgorandBaseViewModel
 import com.michaeltchuang.example.ui.widgets.AlgorandButton
 import com.michaeltchuang.example.ui.widgets.AlgorandDivider
 import com.michaeltchuang.example.ui.widgets.PassphraseField
-import com.michaeltchuang.example.ui.widgets.ShowSnackbar
 import com.michaeltchuang.example.ui.widgets.passphraseTextField
 import com.michaeltchuang.example.utils.Constants
 import example_app.composeapp.generated.resources.Res
 import example_app.composeapp.generated.resources.coin_heads
-import example_app.composeapp.generated.resources.error_account
 import example_app.composeapp.generated.resources.login_button_create
 import example_app.composeapp.generated.resources.login_button_restore
 import example_app.composeapp.generated.resources.login_disclaimer
@@ -47,20 +43,24 @@ import example_app.composeapp.generated.resources.login_restore_textfield_value
 import example_app.composeapp.generated.resources.login_restore_textifield_title
 import org.jetbrains.compose.resources.painterResource
 import org.jetbrains.compose.resources.stringResource
-import org.koin.compose.viewmodel.koinViewModel
 import org.koin.core.annotation.KoinExperimentalAPI
 
 @OptIn(KoinExperimentalAPI::class)
 @SuppressLint("ComposableNaming")
 @Composable
-fun LoginScreen(innerPadding: PaddingValues) {
-    val algorandBaseViewModel: AlgorandBaseViewModel =
-        koinViewModel(
-            viewModelStoreOwner = LocalContext.current as ComponentActivity,
-        )
+fun LoginScreen(
+    navController: NavController,
+    algorandBaseViewModel: AlgorandBaseViewModel,
+    tag: String,
+) {
     val account by algorandBaseViewModel.accountStateFlow.collectAsStateWithLifecycle()
-    if (account == null) {
-        ShowSnackbar(stringResource(resource = Res.string.error_account))
+    if (account != null) {
+        // already logged in
+        AlgorandExperienceTabs(navController, algorandBaseViewModel)
+        // navController.navigate(Screen.AccountScreen.route)
+        return
+    } else {
+        // showSnackbar(stringResource(resource = Res.string.error_account))
     }
 
     val label = Res.string.login_restore_textifield_title
@@ -72,7 +72,6 @@ fun LoginScreen(innerPadding: PaddingValues) {
         verticalArrangement = Arrangement.SpaceEvenly,
         modifier =
             Modifier
-                .padding(top = innerPadding.calculateTopPadding())
                 .fillMaxHeight()
                 .fillMaxWidth(),
     ) {

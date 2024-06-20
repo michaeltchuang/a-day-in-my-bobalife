@@ -3,8 +3,6 @@ package com.michaeltchuang.example.ui.screens
 import android.annotation.SuppressLint
 import android.os.Handler
 import android.os.Looper
-import android.util.Log
-import androidx.activity.ComponentActivity
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
@@ -36,6 +34,7 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
+import androidx.navigation.NavController
 import com.michaeltchuang.example.ui.theme.md_theme_light_primary
 import com.michaeltchuang.example.ui.viewmodels.AlgorandBaseViewModel
 import com.michaeltchuang.example.ui.viewmodels.PlayCoinFlipperViewModel
@@ -62,23 +61,17 @@ import example_app.composeapp.generated.resources.play_waiting_round
 import org.jetbrains.compose.resources.painterResource
 import org.jetbrains.compose.resources.stringResource
 import org.koin.compose.getKoin
-import org.koin.compose.viewmodel.koinViewModel
 import org.koin.core.annotation.KoinExperimentalAPI
 
 @OptIn(KoinExperimentalAPI::class)
 @SuppressLint("ComposableNaming")
 @Composable
-fun PlayCoinFlipperScreen() {
-    val TAG = "PlayCoinFlipperScreen"
-
-    val algorandBaseViewModel: AlgorandBaseViewModel =
-        koinViewModel(
-            viewModelStoreOwner = LocalContext.current as ComponentActivity,
-        )
-    if (algorandBaseViewModel.account == null) {
-        Log.d(TAG, "No account detected")
-        null.also { algorandBaseViewModel._account.value = it }
-    }
+fun PlayCoinFlipperScreen(
+    navController: NavController,
+    algorandBaseViewModel: AlgorandBaseViewModel,
+    tag: String,
+) {
+    // AlgorandExperienceTabs(navController, algorandBaseViewModel)
 
     val appOptInStateFlow by algorandBaseViewModel.appOptInStateFlow.collectAsStateWithLifecycle()
 

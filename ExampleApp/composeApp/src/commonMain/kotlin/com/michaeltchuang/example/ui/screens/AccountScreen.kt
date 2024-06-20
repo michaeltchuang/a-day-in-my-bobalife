@@ -1,8 +1,7 @@
 package com.michaeltchuang.example.ui.screens
 
 import android.annotation.SuppressLint
-import android.util.Log
-import androidx.activity.ComponentActivity
+import androidx.activity.compose.BackHandler
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -12,7 +11,8 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.platform.LocalContext
+import androidx.navigation.NavController
+import com.michaeltchuang.example.ui.navigation.Screen
 import com.michaeltchuang.example.ui.viewmodels.AlgorandBaseViewModel
 import com.michaeltchuang.example.ui.widgets.AlgorandButton
 import com.michaeltchuang.example.ui.widgets.PassphraseField
@@ -22,22 +22,19 @@ import example_app.composeapp.generated.resources.account_address
 import example_app.composeapp.generated.resources.account_button_lock
 import example_app.composeapp.generated.resources.account_passphrase
 import org.jetbrains.compose.resources.stringResource
-import org.koin.compose.viewmodel.koinViewModel
 import org.koin.core.annotation.KoinExperimentalAPI
 
 @OptIn(KoinExperimentalAPI::class)
 @SuppressLint("ComposableNaming")
 @Composable
-fun AccountScreen() {
-    val TAG = "AccountScreen"
-
-    val algorandBaseViewModel: AlgorandBaseViewModel =
-        koinViewModel(
-            viewModelStoreOwner = LocalContext.current as ComponentActivity,
-        )
-    if (algorandBaseViewModel.account == null) {
-        Log.d(TAG, "No account detected")
-        null.also { algorandBaseViewModel._account.value = it }
+fun AccountScreen(
+    navController: NavController,
+    algorandBaseViewModel: AlgorandBaseViewModel,
+    tag: String,
+) {
+    // AlgorandExperienceTabs(navController, algorandBaseViewModel)
+    BackHandler {
+        navController.popBackStack(Screen.HomeScreen.route, false)
     }
     algorandBaseViewModel.appOptInStateCheck(algorandBaseViewModel.account!!, Constants.COINFLIP_APP_ID_TESTNET)
 

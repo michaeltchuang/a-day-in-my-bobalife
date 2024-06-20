@@ -7,7 +7,7 @@ import androidx.room.RoomDatabase
 import com.michaeltchuang.example.data.local.dao.ExampleDao
 import com.michaeltchuang.example.data.local.entities.ValidatorEntity
 
-@Database(entities = [ValidatorEntity::class], version = 2, exportSchema = false)
+@Database(entities = [ValidatorEntity::class], version = 3, exportSchema = false)
 abstract class ExampleDatabase : RoomDatabase() {
     abstract fun getDao(): ExampleDao
 

@@ -1,15 +1,17 @@
 <resources>
-    <string name="cyclone">Michael T Chuang's \nExample App</string>
+    <!-- Navigation -->
+    <string name="app_bar_header">Michael T Chuang's Example App</string>
+    <string name="algorand_experience">Algorand Experience</string>
+    <string name="loading">Loading...</string>
+
+    <!-- Home -->
+    <string name="home_header">Michael T Chuang's \nExample App</string>
     <string name="open_github">Open github</string>
     <string name="run">Run</string>
     <string name="stop">Stop</string>
     <string name="theme">Theme</string>
 
-    <string name="algorand_experience">Algorand Experience</string>
-
-    <string name="nav_play">Play CoinFlip</string>
-    <string name="nav_account">Account Details</string>
-
+    <!-- Login -->
     <string name="login_button_create">Create Account*</string>
     <string name="login_button_restore">Restore Account*</string>
     <string name="login_guest_message">Create or import a wallet to start playing CoinFlip</string>
@@ -18,11 +20,13 @@
     <string name="login_restore_textfield_value">Enter 25 words here</string>
     <string name="login_disclaimer">*This app is for demo purposes only (pointed at testnet).</string>
 
+    <!-- Account Details -->
     <string name="account_header">Account Information</string>
     <string name="account_address">Public Key Address</string>
     <string name="account_passphrase">Mnemomic / Passphrase</string>
     <string name="account_button_lock">Lock Wallet</string>
 
+    <!-- Coin Flipper -->
     <string name="play_button_opt_in">App Opt In</string>
     <string name="play_button_close_out">Close Out App</string>
     <string name="play_button_wait_message">It will take a few seconds for the new state to be recognized on the blockchain</string>
@@ -40,7 +44,18 @@
     <string name="play_game_header">Wager: Bet 50000 mAlgos on</string>
     <string name="play_game_instructions">Click on a coin to pick a side and flip! \n(heads on left, tails on right)</string>
 
+    <!-- Error Handling -->
     <string name="error_account">Could not create/recover wallet from passphrase</string>
     <string name="error_account_flipcoin">Could not submit on chain.  Please check logs</string>
     <string name="error_account_settle">Could not settle bet on chain.  Please check logs for issue</string>
+
+    <!-- Validator -->
+    <string name="validator_icon_content_description">Validator Icon</string>
+    <string name="validator_label">Validator</string>
+    <string name="validator_label_desc">By staking your ALGO on a validator, you contribute to the performance and safety of the Algorand network, all while earning ALGO in return</string>
+    <string name="validator_est_apy">Est. APY</string>
+    <string name="validator_est_apy_long">Estimated APY</string>
+    <string name="validator_est_apy_desc">This is the rate of return you earn for staking your ALGO on the validator</string>
+    <string name="validator_no_results">No Results</string>
+
 </resources>
