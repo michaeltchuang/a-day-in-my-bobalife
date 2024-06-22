@@ -1,6 +1,5 @@
 package com.michaeltchuang.example.ui.viewmodels
 
-import android.app.GameState
 import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
@@ -79,7 +78,6 @@ class PlayCoinFlipperViewModel(
                         val result =
                             repository.appFlipCoin(
                                 acct,
-                                Constants.COINFLIP_APP_ID_TESTNET,
                                 abiContract,
                                 betMicroAlgosAmount,
                                 isHeads,
@@ -104,19 +102,13 @@ class PlayCoinFlipperViewModel(
                         val result =
                             repository.appSettleBet(
                                 acct,
-                                Constants.COINFLIP_APP_ID_TESTNET,
                                 abiContract,
-                                BigInteger.valueOf(Constants.RANDOM_BEACON_APPID),
                             )
-                        if (result?.confirmedRound == null) {
+                        if (result == null) {
                             setSnackBarMessage("Could not settle bet on chain.  Please check logs for issue")
-                        } else if (result.methodResults == null) {
-                            setSnackBarMessage("Unexpected server response.  Please check logs for detail")
                         } else {
-                            // successful result
-                            val betResult = result.methodResults?.get(0)?.value as Array<*>
                             launch {
-                                setSnackBarMessage(createAlertMessage(betResult))
+                                setSnackBarMessage(result)
                             }
                             resetGame()
                         }
@@ -131,13 +123,12 @@ class PlayCoinFlipperViewModel(
                             val result =
                                 repository.appFlipCoin(
                                     acct,
-                                    Constants.COINFLIP_APP_ID_TESTNET,
                                     abiContract,
                                     betMicroAlgosAmount,
                                     isHeads,
                                 )
                             if (result?.confirmedRound != null) {
-                                _currentRound.value = repository.getCurrentRound(acct, Constants.COINFLIP_APP_ID_TESTNET)
+                                _currentRound.value = repository.getCurrentRound()
                                 commitmentRound = (result.methodResults.get(0).value as BigInteger).toLong()
                                 algorandBaseViewModel?.hasExistingBet = true
                                 _appGameState.value = GameState.PENDING
@@ -161,18 +152,11 @@ class PlayCoinFlipperViewModel(
         }
     }
 
-    fun createAlertMessage(result: Array<*>): String {
-        val outcome = if (result.get(0) as Boolean == true) "Won!" else "Lost :("
-        val amount = result.get(1) as BigInteger
-        val msg = "You $outcome  ($amount)"
-        return(msg)
-    }
-
     fun getCurrentRound() {
         viewModelScope.launch {
             val acct = algorandBaseViewModel?.account
             acct?.apply {
-                val round = repository.getCurrentRound(acct, Constants.COINFLIP_APP_ID_TESTNET)
+                val round = repository.getCurrentRound()
                 Log.d(TAG, "Current Round: $round")
                 _currentRound.value = round
             }

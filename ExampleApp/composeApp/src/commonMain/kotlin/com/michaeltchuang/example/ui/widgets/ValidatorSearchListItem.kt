@@ -1,8 +1,8 @@
 package com.michaeltchuang.example.ui.widgets
 
 import android.annotation.SuppressLint
-import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -19,14 +19,17 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import coil.compose.AsyncImage
+import coil.request.ImageRequest
 import com.michaeltchuang.example.data.local.entities.ValidatorEntity
 import com.michaeltchuang.example.ui.theme.md_theme_light_onPrimary
 import com.michaeltchuang.example.ui.theme.md_theme_light_primary
 import com.michaeltchuang.example.ui.theme.md_theme_light_primaryContainer
-import com.michaeltchuang.example.utils.truncatedValidatorName
+import com.michaeltchuang.example.utils.truncatedAlgorandAddress
 import example_app.composeapp.generated.resources.Res
 import example_app.composeapp.generated.resources.ic_logo
 import example_app.composeapp.generated.resources.validator_icon_content_description
@@ -35,10 +38,16 @@ import org.jetbrains.compose.resources.stringResource
 
 @SuppressLint("ComposableNaming")
 @Composable
-fun ValidatorSearchListItem(entity: ValidatorEntity) {
+fun ValidatorSearchListItem(
+    entity: ValidatorEntity,
+    onValidatorSelected: (validatorId: Int) -> Unit
+) {
     Row(
         modifier =
             Modifier
+                .clickable {
+                    onValidatorSelected(entity.id)
+                }
                 .height(100.dp)
                 .fillMaxWidth()
                 .padding(5.dp)
@@ -53,31 +62,28 @@ fun ValidatorSearchListItem(entity: ValidatorEntity) {
                     .width(100.dp)
                     .fillMaxHeight(),
         ) {
-//            AsyncImage(
-//                model = Res.drawable.ic_logo,
-// //                model = ImageRequest.Builder(LocalContext.current)
-// //                    .data("https://example.com/image.jpg")
-// //                    .crossfade(true)
-// //                    .build(),
-//                placeholder = painterResource(Res.drawable.ic_logo),
-//                contentDescription = stringResource(Res.string.validator_icon_content_description),
-//                contentScale = ContentScale.Crop,
-//                modifier = Modifier
-//                    .clip(CircleShape)
-//                    .wrapContentSize()
-//                    .wrapContentHeight()
-//                    .wrapContentWidth()
-//                    .size(50.dp)
-//            )
-            Image(
-                painter = painterResource(Res.drawable.ic_logo),
+            AsyncImage(
+                model = ImageRequest.Builder(LocalContext.current)
+                     .data(entity.avatar)
+                     .crossfade(true)
+                     .build(),
+                placeholder = painterResource(Res.drawable.ic_logo),
                 contentDescription = stringResource(Res.string.validator_icon_content_description),
-                modifier =
-                    Modifier
-                        .height(50.dp)
-                        .width(50.dp)
-                        .clip(CircleShape),
+                contentScale = ContentScale.Crop,
+                modifier = Modifier
+                    .clip(CircleShape)
+                    .height(50.dp)
+                    .width(50.dp)
             )
+//            Image(
+//                painter = painterResource(Res.drawable.ic_logo),
+//                contentDescription = stringResource(Res.string.validator_icon_content_description),
+//                modifier =
+//                    Modifier
+//                        .height(50.dp)
+//                        .width(50.dp)
+//                        .clip(CircleShape),
+//            )
         }
         Column(
             verticalArrangement = Arrangement.Center,
@@ -91,7 +97,7 @@ fun ValidatorSearchListItem(entity: ValidatorEntity) {
             Text(
                 fontWeight = FontWeight.Bold,
                 color = md_theme_light_onPrimary,
-                text = truncatedValidatorName(entity.name),
+                text = truncatedAlgorandAddress(entity.name),
             )
             Spacer(modifier = Modifier.height(5.dp))
             Text(
@@ -132,22 +138,4 @@ fun ValidatorSearchListItem(entity: ValidatorEntity) {
             )
         }
     }
-}
-
-@Preview
-@SuppressLint("ComposableNaming")
-@Composable
-fun ValidatorListItemExample(
-    validator: ValidatorEntity =
-        ValidatorEntity(
-            id = 1,
-            name = "reti.algo",
-            algoStaked = 25000,
-            apy = 3.03,
-            percentToValidator = 5,
-            epochRoundLength = 1296,
-            minEntryStake = 5,
-        ),
-) {
-    ValidatorSearchListItem(validator)
 }

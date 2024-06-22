@@ -42,7 +42,6 @@ import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.michaeltchuang.example.data.local.entities.ValidatorEntity
-import com.michaeltchuang.example.data.models.Validator
 import com.michaeltchuang.example.ui.theme.md_theme_light_onPrimary
 import com.michaeltchuang.example.ui.theme.md_theme_light_primary
 import com.michaeltchuang.example.ui.viewmodels.ValidatorsListUIState
@@ -63,7 +62,7 @@ import org.koin.core.annotation.KoinExperimentalAPI
 @OptIn(KoinExperimentalAPI::class, ExperimentalFoundationApi::class, ExperimentalMaterial3Api::class)
 @SuppressLint("ComposableNaming")
 @Composable
-fun ValidatorSearchWidget(onValidatorSelected: (validator: Validator) -> Unit) {
+fun ValidatorSearchWidget(onValidatorSelected: (validatorId: Int) -> Unit) {
     val validatorsListViewModel = koinViewModel<ValidatorsListViewModel>()
     val validatorListUIState = validatorsListViewModel.validatorsListUIState.collectAsStateWithLifecycle()
 
@@ -224,7 +223,7 @@ fun ValidatorSearchWidget(onValidatorSelected: (validator: Validator) -> Unit) {
                     items(
                         items = uiState.result,
                         itemContent = { validator ->
-                            ValidatorSearchListItem(validator)
+                            ValidatorSearchListItem(validator, onValidatorSelected)
                         },
                     )
                 }

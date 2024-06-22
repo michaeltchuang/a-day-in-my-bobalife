@@ -30,10 +30,11 @@ fun ValidatorSearchScreen(
         LocalContext.current,
         "ValidatorRegistry.arc4.json",
     ) ?: ""
+    validatorListViewModel.setupDB()
 
     ValidatorSearchWidget(
-        onValidatorSelected = { validator ->
-            navController.navigate(Screen.ValidatorDetailScreen.route)
+        onValidatorSelected = { validatorId ->
+            navController.navigate(Screen.ValidatorDetailScreen.route + "/${validatorId}")
         },
     )
 }

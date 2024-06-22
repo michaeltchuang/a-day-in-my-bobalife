@@ -1,9 +1,13 @@
 package com.michaeltchuang.example.data.repositories
 
 import android.util.Log
+import com.algorand.algosdk.abi.Method
 import com.algorand.algosdk.account.Account
+import com.algorand.algosdk.builder.transaction.MethodCallTransactionBuilder
 import com.algorand.algosdk.builder.transaction.PaymentTransactionBuilder
 import com.algorand.algosdk.crypto.Address
+import com.algorand.algosdk.transaction.AppBoxReference
+import com.algorand.algosdk.transaction.AtomicTransactionComposer
 import com.algorand.algosdk.transaction.SignedTransaction
 import com.algorand.algosdk.transaction.Transaction
 import com.algorand.algosdk.transaction.TransactionWithSigner
@@ -145,10 +149,7 @@ open class AlgorandRepository {
             }
         }
 
-    suspend fun getCurrentRound(
-        account: Account,
-        appId: Long,
-    ): Long =
+    suspend fun getCurrentRound(): Long =
         withContext(Dispatchers.IO) {
             try {
                 val params: TransactionParametersResponse =
@@ -193,4 +194,35 @@ open class AlgorandRepository {
                 null
             }
         }
+
+    fun methodCallTransaction(
+        appId: Long,
+        account: Account,
+        method: Method,
+        methodArgs: List<Any?>? = null,
+        boxReferences: List<AppBoxReference>? = null
+    ) : AtomicTransactionComposer.ExecuteResult? {
+        try {
+            val rsp = client.TransactionParams().execute()
+            val tsp: TransactionParametersResponse = rsp.body()
+
+            val mctb = MethodCallTransactionBuilder.Builder()
+            mctb.applicationId(appId)
+            mctb.sender(account.address.toString())
+            mctb.signer(account.transactionSigner)
+            mctb.method(method)
+            methodArgs?.let { mctb.methodArguments(methodArgs) }
+            boxReferences?.let { mctb.boxReferences(boxReferences) }
+            mctb.onComplete(Transaction.OnCompletion.NoOpOC)
+            mctb.suggestedParams(tsp)
+
+            val atc = AtomicTransactionComposer()
+            atc.addMethodCall(mctb.build())
+
+            return atc.execute(client, 250)
+        } catch (e: Exception) {
+            Log.e(TAG, "" + e.toString())
+        }
+        return null
+    }
 }

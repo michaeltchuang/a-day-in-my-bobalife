@@ -4,7 +4,6 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.michaeltchuang.example.data.local.entities.ValidatorEntity
 import com.michaeltchuang.example.data.repositories.ValidatorRepository
-import com.michaeltchuang.example.utils.Constants
 import com.michaeltchuang.example.utils.Log
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.FlowPreview
@@ -34,7 +33,7 @@ open class ValidatorsListViewModel(
     private val validatorRepository: ValidatorRepository,
 ) : ViewModel() {
     val TAG: String = "ValidatorsListViewModel"
-    var algorandBaseViewModel: AlgorandBaseViewModel?? = null
+    var algorandBaseViewModel: AlgorandBaseViewModel? = null
 
     // private val _validatorsListState = MutableStateFlow(ValidatorsListState())
     // private val _validatorsListViewState: MutableStateFlow<ScreenState> = MutableStateFlow(ScreenState.Loading)
@@ -56,7 +55,7 @@ open class ValidatorsListViewModel(
                         val validators =
                             validatorList
                                 .filter { it.name.contains(searchQuery, ignoreCase = true) }
-                                .sortedByDescending { it.name }
+                                .sortedBy { it.id }
                         ValidatorsListUIState.Success(validators)
                     } else {
                         ValidatorsListUIState.Loading
@@ -68,17 +67,23 @@ open class ValidatorsListViewModel(
         searchQuery.value = query
     }
 
-    suspend fun fetchValidatorCount() {
+    fun setupDB() {
         viewModelScope.launch {
             val acct = algorandBaseViewModel?.account
             acct?.apply {
                 val validatorCount =
                     validatorRepository.getNumberOfValidators(
-                        acct,
-                        Constants.RETI_APP_ID_TESTNET,
-                        abiContract,
+                        account = acct,
+                        contractStr = abiContract,
                     )
                 Log.e(TAG, "validatorCount is $validatorCount")
+                for(validatorId in 1..validatorCount) {
+                    validatorRepository.fetchValidatorInfo(
+                        account = acct,
+                        contractStr = abiContract,
+                        validatorId.toBigInteger()
+                    )
+                }
             }
         }
     }

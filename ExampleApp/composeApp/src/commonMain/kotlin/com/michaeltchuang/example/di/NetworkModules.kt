@@ -1,5 +1,6 @@
 package com.michaeltchuang.example.di
 
+import com.michaeltchuang.example.data.network.NfdApi
 import io.ktor.client.HttpClient
 import io.ktor.client.plugins.contentnegotiation.ContentNegotiation
 import io.ktor.http.ContentType
@@ -16,4 +17,5 @@ val provideHttpClientModules =
                 }
             }
         }
+        single { NfdApi(get()) }
     }

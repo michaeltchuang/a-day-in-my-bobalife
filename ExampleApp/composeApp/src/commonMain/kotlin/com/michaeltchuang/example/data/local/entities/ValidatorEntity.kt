@@ -9,7 +9,9 @@ data class ValidatorEntity(
     val name: String,
     val algoStaked: Int?,
     val apy: Double? = null,
+    val avatar: String? = null,
     val percentToValidator: Int?,
     val epochRoundLength: Int?,
     val minEntryStake: Int?,
+    val inactive: Boolean = false
 )

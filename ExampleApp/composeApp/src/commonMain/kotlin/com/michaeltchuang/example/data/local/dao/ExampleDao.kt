@@ -13,7 +13,7 @@ interface ExampleDao {
     fun getAllValidatorsAsFlow(): Flow<List<ValidatorEntity>>
 
     @Query("SELECT * FROM validators WHERE id = :id")
-    suspend fun getValidatorById(id: Int): ValidatorEntity
+    fun getValidatorByIdAsFlow(id: Int): Flow<ValidatorEntity?>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertValidator(validator: ValidatorEntity): Long

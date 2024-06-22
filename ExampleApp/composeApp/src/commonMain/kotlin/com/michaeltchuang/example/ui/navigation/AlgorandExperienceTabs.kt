@@ -16,7 +16,7 @@ import androidx.compose.material.icons.filled.AccountCircle
 import androidx.compose.material.icons.filled.PlayArrow
 import androidx.compose.material.icons.filled.Search
 import androidx.compose.material3.Icon
-import androidx.compose.material3.Tab
+import androidx.compose.material3.LeadingIconTab
 import androidx.compose.material3.TabRow
 import androidx.compose.material3.TabRowDefaults.SecondaryIndicator
 import androidx.compose.material3.TabRowDefaults.tabIndicatorOffset
@@ -88,7 +88,7 @@ fun TabLayout(
                 .wrapContentHeight(),
     ) {
         tabData.forEachIndexed { index, data ->
-            Tab(
+            LeadingIconTab(
                 selected = pagerState.currentPage == index,
                 onClick = {
                     scope.launch {

@@ -1,5 +1,6 @@
 package com.michaeltchuang.example.ui.navigation
 
+import android.os.Bundle
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.icons.Icons
@@ -22,10 +23,12 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.navigation.NavGraph.Companion.findStartDestination
+import androidx.navigation.NavType
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
+import androidx.navigation.navArgument
 import com.michaeltchuang.example.ui.screens.AccountScreen
 import com.michaeltchuang.example.ui.screens.HomeScreen
 import com.michaeltchuang.example.ui.screens.LoginScreen
@@ -135,13 +138,16 @@ fun AppNavigation() {
                 )
                 SnackBarLayout(sharedViewModel, snackbarHostState)
             }
-            composable(Screen.ValidatorDetailScreen.route) {
+            composable(Screen.ValidatorDetailScreen.route + "/{validatorId}",
+                arguments = listOf(navArgument("validatorId") { type = NavType.IntType })
+            ) {
                 val backStackEntry = remember(it) { navController.getBackStackEntry("parentRoute") }
                 val sharedViewModel: AlgorandBaseViewModel = koinNavViewModel(viewModelStoreOwner = backStackEntry)
                 ValidatorDetailScreen(
                     tag = Screen.ValidatorDetailScreen.route,
                     navController = navController,
                     algorandBaseViewModel = sharedViewModel,
+                    validatorId = (it.arguments as Bundle).get("validatorId") as Int
                 )
                 SnackBarLayout(sharedViewModel, snackbarHostState)
             }
