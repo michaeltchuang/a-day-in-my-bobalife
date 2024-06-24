@@ -1,3 +1,29 @@
+## [2024.25.0](https://github.com/michaeltchuang/a-day-in-my-bobalife/compare/v2024.24.0...v2024.25.0) (2024-06-24)
+
+
+### Features
+
+* add in room database support ([0cfc3c2](https://github.com/michaeltchuang/a-day-in-my-bobalife/commit/0cfc3c2bd8175c9537fe32e912c4e608ea848dc2))
+* clean up validator detail work ([6c96ff0](https://github.com/michaeltchuang/a-day-in-my-bobalife/commit/6c96ff057cb4845e1dd02c2d3c5b908ff433a2be))
+* fix coin flipper app code ([3074727](https://github.com/michaeltchuang/a-day-in-my-bobalife/commit/30747277113ff898fa5e9506b06cdb75d47ee333))
+* update to use androidx tab navigation and koinNavViewModel ([bc19534](https://github.com/michaeltchuang/a-day-in-my-bobalife/commit/bc19534d67e42f89836fe620c5d525620b5dca01))
+
+
+### Bug Fixes
+
+* update function naming from lint ([7c54c1c](https://github.com/michaeltchuang/a-day-in-my-bobalife/commit/7c54c1c7b8c42def9ff48a2176e5979757bdf349))
+
+
+### Updates & Maintenance
+
+* log greeting (2024-06-18) ([633db83](https://github.com/michaeltchuang/a-day-in-my-bobalife/commit/633db83f732b35b738a707e01f96a63effbe5e96))
+* log greeting (2024-06-19) ([fb04ba1](https://github.com/michaeltchuang/a-day-in-my-bobalife/commit/fb04ba12bc11694b468e3df32faa34ed7680d1cc))
+* log greeting (2024-06-20) ([7055689](https://github.com/michaeltchuang/a-day-in-my-bobalife/commit/7055689da6a583fff8713a180c2b5a56e6b78228))
+* log greeting (2024-06-21) ([c8484ad](https://github.com/michaeltchuang/a-day-in-my-bobalife/commit/c8484ad6f9648ee9269e35620c1ce797c62ac4a3))
+* log greeting (2024-06-22) ([d83ddde](https://github.com/michaeltchuang/a-day-in-my-bobalife/commit/d83ddde1480144af28cced1b836acd39539c325f))
+* log greeting (2024-06-23) ([11e17fc](https://github.com/michaeltchuang/a-day-in-my-bobalife/commit/11e17fc4377307c600b162503dd815040e75d657))
+* log greeting (2024-06-24) ([34c3a9a](https://github.com/michaeltchuang/a-day-in-my-bobalife/commit/34c3a9a1e05df30087c426e8e39eaf10c823898e))
+
 ## [2024.24.0](https://github.com/michaeltchuang/a-day-in-my-bobalife/compare/v2024.23.0...v2024.24.0) (2024-06-17)
 
 
