@@ -51,8 +51,12 @@ open class AlgorandBaseViewModel(
 
         passphrase?.apply {
             viewModelScope.launch {
-                val result = repository.recoverAccount(passphrase)
-                result?.let { r ->
+                val r = repository.recoverAccount(passphrase)
+                if (r == null) {
+                    val message = "could not recover account with passphrase ($passphrase)"
+                    _snackBarMessage.value = message
+                    Log.d(TAG, message)
+                } else {
                     _account.value = r
                     account = r
                     accountInfo = r.let { repository.getAccountInfo(it) }
@@ -62,6 +66,7 @@ open class AlgorandBaseViewModel(
                         appOptInStateCheck(r, Constants.COINFLIP_APP_ID_TESTNET)
                     }
                 }
+
             }
         }
     }

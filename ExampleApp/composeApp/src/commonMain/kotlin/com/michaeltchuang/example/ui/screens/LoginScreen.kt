@@ -32,7 +32,6 @@ import com.michaeltchuang.example.ui.widgets.AlgorandButton
 import com.michaeltchuang.example.ui.widgets.AlgorandDivider
 import com.michaeltchuang.example.ui.widgets.PassphraseField
 import com.michaeltchuang.example.ui.widgets.passphraseTextField
-import com.michaeltchuang.example.utils.Constants
 import example_app.composeapp.generated.resources.Res
 import example_app.composeapp.generated.resources.coin_heads
 import example_app.composeapp.generated.resources.login_button_create
@@ -107,7 +106,8 @@ fun LoginScreen(
         AlgorandDivider()
         PassphraseField(stringResource(resource = label), stringResource(resource = dataInput))
         AlgorandButton(stringResourceId = Res.string.login_button_restore, onClick = {
-            algorandBaseViewModel.recoverAccount("${Constants.TEST_PASSPHRASE_PART1} ${Constants.TEST_PASSPHRASE_PART2}", false)
+            algorandBaseViewModel.recoverAccount(passphraseTextField, true)
+            // algorandBaseViewModel.recoverAccount("${Constants.TEST_PASSPHRASE_PART1} ${Constants.TEST_PASSPHRASE_PART2}", false)
         })
         AlgorandDivider()
         Text(
