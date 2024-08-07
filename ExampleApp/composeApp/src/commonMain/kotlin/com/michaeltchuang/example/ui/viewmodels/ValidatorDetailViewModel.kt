@@ -31,11 +31,6 @@ open class ValidatorDetailViewModel(
     val TAG: String = "ValidatorsListViewModel"
     var algorandBaseViewModel: AlgorandBaseViewModel? = null
 
-    // private val _validatorsListState = MutableStateFlow(ValidatorsListState())
-    // private val _validatorsListViewState: MutableStateFlow<ScreenState> = MutableStateFlow(ScreenState.Loading)
-    // val validatorsListViewState = _validatorsListViewState.asStateFlow()
-    var abiContract = "ValidatorRegistry.arc4.json"
-
     var _validatorDetailUIStateFlow = MutableStateFlow<ValidatorDetailUIState>(ValidatorDetailUIState.Loading)
     var validatorDetailUIState = _validatorDetailUIStateFlow.asStateFlow()
 
@@ -53,35 +48,6 @@ open class ValidatorDetailViewModel(
 
                     }
                     //.stateIn(viewModelScope, SharingStarted.WhileSubscribed(5000), ValidatorDetailUIState.Loading)
-        }
-    }
-
-    fun addStakeToValidator(
-        validatorId: Int = 1,
-        amount: Int = 5000,
-    ) {
-        viewModelScope.launch {
-            val acct = algorandBaseViewModel?.account
-            acct?.apply {
-                val validatorCount =
-//                    validatorRepository.addStakeToValidator(
-//                        account = acct,
-//                        contractStr = abiContract,
-//                        validatorId = validatorId.toLong(),
-//                        amount = amount,
-//                    )
-
-                validatorRepository.fetchValidatorInfo(
-                        account = acct,
-                        contractStr = abiContract,
-                        validatorId = validatorId.toBigInteger(),
-                    )
-//                    validatorRepository.appOptIn(
-//                        account = acct,
-//                        appId = Constants.RETI_APP_ID_TESTNET,
-//                    )
-                Log.e(TAG, "fetched validator $validatorId info")
-            }
         }
     }
 }

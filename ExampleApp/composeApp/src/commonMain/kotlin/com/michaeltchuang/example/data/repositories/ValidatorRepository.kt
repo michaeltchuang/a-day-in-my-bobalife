@@ -35,21 +35,23 @@ class ValidatorRepository(
 
     private var database: ExampleDao
     private val nfdApi: NfdApi by inject()
+    var validatorRegistryContract: Contract
+    var stakingPoolContract: Contract
 
     val coroutineScope = CoroutineScope(Dispatchers.Default)
-
-    private suspend fun loadData() {
-        try {
-            // load data to db
-        } catch (e: Exception) {
-            // TODO surface this to UI/option to retry etc ?
-            println("Exception reading data: $e")
-        }
-    }
 
     init {
         database = ExampleDatabase.getDatabase(context).getDao()
         //loadValidatorDataIntoDb()
+        val contractValidator = context.assets.open("ValidatorRegistry.arc4.json")
+            .bufferedReader()
+            .use { it.readText() }
+        validatorRegistryContract = Encoder.decodeFromJson(contractValidator, Contract::class.java)
+
+        val contractStaking = context.assets.open("StakingPool.arc4.json")
+            .bufferedReader()
+            .use { it.readText() }
+        stakingPoolContract = Encoder.decodeFromJson(contractStaking, Contract::class.java)
     }
 
     fun loadValidatorDataIntoDb() {
@@ -194,15 +196,14 @@ class ValidatorRepository(
     fun getValidatorByIdFromDb(validatorId: Int): Flow<ValidatorEntity?> = database.getValidatorByIdAsFlow(validatorId)
 
     suspend fun getNumberOfValidators(
-        account: Account,
-        contractStr: String,
+        account: Account
     ): Long {
         var result: AtomicTransactionComposer.ExecuteResult? = null
         withContext(Dispatchers.IO) {
             val methodArgs = null
             val boxReferences = null
-            val contract: Contract = Encoder.decodeFromJson(contractStr, Contract::class.java)
-            val method = contract.getMethodByName("getNumValidators")
+
+            val method = validatorRegistryContract.getMethodByName("getNumValidators")
 
             result = methodCallTransaction(
                 appId = Constants.RETI_APP_ID_TESTNET,
@@ -225,11 +226,8 @@ class ValidatorRepository(
 
     }
 
-
-
     suspend fun fetchValidatorInfo(
         account: Account,
-        contractStr: String,
         validatorId: BigInteger,
     ) {
         var result: AtomicTransactionComposer.ExecuteResult? = null
@@ -239,8 +237,7 @@ class ValidatorRepository(
                 AppBoxReference(0, getValidatorListBoxName(validatorId.toLong())),
                 AppBoxReference(0, getValidatorListBoxName(0.toLong()))
             )
-            val contract: Contract = Encoder.decodeFromJson(contractStr, Contract::class.java)
-            val method = contract.getMethodByName("getValidatorConfig")
+            val method = validatorRegistryContract.getMethodByName("getValidatorConfig")
 
             result = methodCallTransaction(
                 appId = Constants.RETI_APP_ID_TESTNET,
@@ -289,47 +286,6 @@ class ValidatorRepository(
         }
     }
 
-    suspend fun addStakeToValidator(
-        account: Account,
-        contractStr: String,
-        validatorId: Long,
-        amount: Int,
-    ): List<ValidatorEntity> {
-        var result: AtomicTransactionComposer.ExecuteResult? = null
-        withContext(Dispatchers.IO) {
-            val tws = createTransactionWithSigner(account, Constants.RETI_APP_ID_TESTNET, amount)
-            val methodArgs = listOf(tws, validatorId, 0L)
-            val boxReferences = listOf(
-                AppBoxReference(0, getValidatorListBoxName(validatorId.toLong())),
-                AppBoxReference(0, getValidatorListBoxName(0.toLong()))
-            )
-            val contract: Contract = Encoder.decodeFromJson(contractStr, Contract::class.java)
-            val method = contract.getMethodByName("addStake")
-
-            result = methodCallTransaction(
-                appId = Constants.RETI_APP_ID_TESTNET,
-                account = account,
-                method = method,
-                methodArgs = methodArgs,
-                boxReferences = boxReferences
-            )
-        }
-        val validatorCount =
-            if (result?.confirmedRound == null) {
-                0L
-            } else if (result?.methodResults == null) {
-                0L
-            } else {
-                // successful result
-                result?.methodResults?.get(0)?.value as BigInteger //poolId: number
-                result?.methodResults?.get(1)?.value as BigInteger //poolAppId: number
-                result?.methodResults?.get(2)?.value as BigInteger //validatorId: number
-            }
-
-        val output: List<ValidatorEntity> = mutableListOf<ValidatorEntity>()
-        return output
-    }
-
 }
 
 
@@ -367,32 +323,6 @@ fun validatorConfigFromABIReturn(returnVal: Any): ValidatorConfig? {
         null
     }
 }
-
-//fun getNfdAvatarUrl(nfd: Nfd): String {
-//    val baseUrl = getNfdAppFromViteEnvironment()
-//    val url = nfd.properties?.userDefined?.avatar ?: nfd.properties?.verified?.avatar
-//
-//    val isAvailable = nfd.state == "available"
-//    val isForSale = nfd.state == "forSale"
-//    val isReserved = nfd.state == "reserved"
-//    val isCurated = nfd.category == "curated"
-//
-//    if (url.isNullOrBlank() && isCurated) {
-//        return "$baseUrl/img/nfd-image-placeholder_gold.jpg"
-//    }
-//
-//    val showAvailablePlaceholder = isAvailable || isForSale || isReserved
-//
-//    if (url.isNullOrBlank() && showAvailablePlaceholder) {
-//        return "$baseUrl/img/nfd-image-placeholder_gray.jpg"
-//    }
-//
-//    if (url.isNullOrBlank()) {
-//        return "$baseUrl/img/nfd-image-placeholder.jpg"
-//    }
-//
-//    return url
-//}
 
 
 

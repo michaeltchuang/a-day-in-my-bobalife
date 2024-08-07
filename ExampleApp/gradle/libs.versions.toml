@@ -1,9 +1,9 @@
 [versions]
 algosdk = "2.5.0"
-androidx-room = "2.7.0-alpha04"
+androidx-room = "2.7.0-alpha05"
 agp = "8.4.2"
 apollo = "4.0.0-beta.6"
-androidx-activityCompose = "1.9.0"
+androidx-activityCompose = "1.9.1"
 androidx-uiTest = "1.6.8"
 buildConfig = "4.1.1"
 coil = "2.6.0"
@@ -16,7 +16,7 @@ ktor = "3.0.0-wasm2"
 kotlinx-serialization = "1.7.0-RC"
 kotlinx-datetime = "0.6.0"
 ksp = "2.0.0-1.0.22"
-lifecycleCompose = "2.8.2"
+lifecycleCompose = "2.8.4"
 multiplatformSettings = "1.1.1"
 koin-bom = "3.6.0-Beta4"
 koin = "1.2.0-Beta4"
@@ -26,8 +26,6 @@ napier = "2.7.1"
 sqlite = "2.5.0-SNAPSHOT"
 voyager = "1.1.0-beta01"
 navigationCompose = "2.8.0-alpha02"
-
-
 
 
 [libraries]

@@ -8,6 +8,6 @@ import org.koin.dsl.module
 val provideRepositoryModules =
     module {
         single<AlgorandRepository> { AlgorandRepository() }
-        single<CoinFlipperRepository> { CoinFlipperRepository() }
+        single<CoinFlipperRepository> { CoinFlipperRepository(get()) }
         single<ValidatorRepository> { ValidatorRepository(get()) }
     }

@@ -26,7 +26,6 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.alpha
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.StrokeCap
-import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
@@ -41,7 +40,6 @@ import com.michaeltchuang.example.ui.viewmodels.PlayCoinFlipperViewModel
 import com.michaeltchuang.example.ui.widgets.AlgorandButton
 import com.michaeltchuang.example.ui.widgets.AlgorandDivider
 import com.michaeltchuang.example.utils.Constants
-import com.michaeltchuang.example.utils.getJsonDataFromAsset
 import example_app.composeapp.generated.resources.Res
 import example_app.composeapp.generated.resources.coin_heads
 import example_app.composeapp.generated.resources.coin_tails
@@ -71,16 +69,12 @@ fun PlayCoinFlipperScreen(
     algorandBaseViewModel: AlgorandBaseViewModel,
     tag: String,
 ) {
-    // AlgorandExperienceTabs(navController, algorandBaseViewModel)
 
     val appOptInStateFlow by algorandBaseViewModel.appOptInStateFlow.collectAsStateWithLifecycle()
 
     val playCoinFlipperViewModel: PlayCoinFlipperViewModel = getKoin().get()
     playCoinFlipperViewModel.algorandBaseViewModel = algorandBaseViewModel
-    playCoinFlipperViewModel.abiContract = getJsonDataFromAsset(
-        LocalContext.current,
-        "CoinFlipper.arc4.json",
-    ) ?: ""
+
     val snackbarMessageStateFlow by playCoinFlipperViewModel.snackBarMessageStateFlow.collectAsStateWithLifecycle()
     algorandBaseViewModel.setSnackBarMessage(snackbarMessageStateFlow)
 

@@ -18,7 +18,6 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
@@ -33,7 +32,6 @@ import com.michaeltchuang.example.ui.viewmodels.AlgorandBaseViewModel
 import com.michaeltchuang.example.ui.viewmodels.ValidatorDetailUIState
 import com.michaeltchuang.example.ui.viewmodels.ValidatorDetailViewModel
 import com.michaeltchuang.example.ui.widgets.AlgorandButton
-import com.michaeltchuang.example.utils.getJsonDataFromAsset
 import com.michaeltchuang.example.utils.truncatedAlgorandAddress
 import example_app.composeapp.generated.resources.Res
 import example_app.composeapp.generated.resources.loading
@@ -58,13 +56,7 @@ fun ValidatorDetailScreen(
 ) {
 
     val viewModel: ValidatorDetailViewModel = getKoin().get()
-    // val screenState by validatorListViewModel.validatorsListViewState.collectAsState()
     viewModel.algorandBaseViewModel = algorandBaseViewModel
-    // validatorListViewModel.context = WeakReference(LocalContext.current)
-    viewModel.abiContract = getJsonDataFromAsset(
-        LocalContext.current,
-        "ValidatorRegistry.arc4.json",
-    ) ?: ""
 
     val validatorDetailUIState = viewModel.validatorDetailUIState.collectAsStateWithLifecycle()
     viewModel.fetchValidatorById(validatorId)

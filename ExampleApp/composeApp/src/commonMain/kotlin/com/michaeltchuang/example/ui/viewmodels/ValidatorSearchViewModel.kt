@@ -29,16 +29,11 @@ sealed class ValidatorsListUIState {
 }
 
 @OptIn(FlowPreview::class, ExperimentalCoroutinesApi::class)
-open class ValidatorsListViewModel(
+open class ValidatorSearchViewModel(
     private val validatorRepository: ValidatorRepository,
 ) : ViewModel() {
     val TAG: String = "ValidatorsListViewModel"
     var algorandBaseViewModel: AlgorandBaseViewModel? = null
-
-    // private val _validatorsListState = MutableStateFlow(ValidatorsListState())
-    // private val _validatorsListViewState: MutableStateFlow<ScreenState> = MutableStateFlow(ScreenState.Loading)
-    // val validatorsListViewState = _validatorsListViewState.asStateFlow()
-    var abiContract = "ValidatorRegistry.arc4.json"
 
     val validatorsFromDb =
         validatorRepository
@@ -73,41 +68,16 @@ open class ValidatorsListViewModel(
             acct?.apply {
                 val validatorCount =
                     validatorRepository.getNumberOfValidators(
-                        account = acct,
-                        contractStr = abiContract,
+                        account = acct
                     )
                 Log.e(TAG, "validatorCount is $validatorCount")
                 for(validatorId in 1..validatorCount) {
                     validatorRepository.fetchValidatorInfo(
                         account = acct,
-                        contractStr = abiContract,
                         validatorId.toBigInteger()
                     )
                 }
             }
         }
     }
-
-//    suspend fun getValidators() {
-//        CoroutineScope(Dispatchers.IO).launch {
-//            try {
-//                validatorRepository.getValidatorsList().collect { response: NetworkResult<List<Validator>> ->
-//                    when (response.status) {
-//                        ApiStatus.LOADING -> {
-//                            _validatorsListState.update { it.copy(isLoading = true) }
-//                        }
-//                        ApiStatus.SUCCESS -> {
-//                            _validatorsListState.update { it.copy(isLoading = false, errorMessage = "", response.data) }
-//                        }
-//                        ApiStatus.ERROR -> {
-//                            _validatorsListState.update { it.copy(isLoading = false, errorMessage = response.message) }
-//                        }
-//                    }
-//                }
-//            } catch (e: Exception) {
-//                _validatorsListState.update { it.copy(isLoading = false, errorMessage = e.message) }
-//            }
-//            _validatorsListViewState.value = _validatorsListState.value.toUiState()
-//        }
-//    }
 }

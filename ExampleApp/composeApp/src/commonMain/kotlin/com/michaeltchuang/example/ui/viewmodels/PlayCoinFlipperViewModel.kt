@@ -38,7 +38,6 @@ class PlayCoinFlipperViewModel(
 
     var betMicroAlgosAmount = Constants.DEFAULT_MICRO_ALGO_BET_AMOUNT
     var isHeads = true
-    var abiContract = "CoinFlipper.arc4.json"
 
     fun hasExistingBetState() {
         algorandBaseViewModel
@@ -78,7 +77,6 @@ class PlayCoinFlipperViewModel(
                         val result =
                             repository.appFlipCoin(
                                 acct,
-                                abiContract,
                                 betMicroAlgosAmount,
                                 isHeads,
                             )
@@ -101,8 +99,7 @@ class PlayCoinFlipperViewModel(
                     acct?.apply {
                         val result =
                             repository.appSettleBet(
-                                acct,
-                                abiContract,
+                                acct
                             )
                         if (result == null) {
                             setSnackBarMessage("Could not settle bet on chain.  Please check logs for issue")
@@ -123,7 +120,6 @@ class PlayCoinFlipperViewModel(
                             val result =
                                 repository.appFlipCoin(
                                     acct,
-                                    abiContract,
                                     betMicroAlgosAmount,
                                     isHeads,
                                 )

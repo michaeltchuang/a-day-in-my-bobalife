@@ -44,8 +44,8 @@ import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.michaeltchuang.example.data.local.entities.ValidatorEntity
 import com.michaeltchuang.example.ui.theme.md_theme_light_onPrimary
 import com.michaeltchuang.example.ui.theme.md_theme_light_primary
+import com.michaeltchuang.example.ui.viewmodels.ValidatorSearchViewModel
 import com.michaeltchuang.example.ui.viewmodels.ValidatorsListUIState
-import com.michaeltchuang.example.ui.viewmodels.ValidatorsListViewModel
 import example_app.composeapp.generated.resources.Res
 import example_app.composeapp.generated.resources.loading
 import example_app.composeapp.generated.resources.validator_est_apy
@@ -63,11 +63,10 @@ import org.koin.core.annotation.KoinExperimentalAPI
 @SuppressLint("ComposableNaming")
 @Composable
 fun ValidatorSearchWidget(onValidatorSelected: (validatorId: Int) -> Unit) {
-    val validatorsListViewModel = koinViewModel<ValidatorsListViewModel>()
-    val validatorListUIState = validatorsListViewModel.validatorsListUIState.collectAsStateWithLifecycle()
+    val validatorSearchViewModel = koinViewModel<ValidatorSearchViewModel>()
+    val validatorListUIState = validatorSearchViewModel.validatorsListUIState.collectAsStateWithLifecycle()
 
-    val allValidators = validatorsListViewModel.validatorsFromDb.collectAsStateWithLifecycle()
-    val validatorSearchQuery = validatorsListViewModel.searchQuery.collectAsStateWithLifecycle()
+    val validatorSearchQuery = validatorSearchViewModel.searchQuery.collectAsStateWithLifecycle()
 
     val sheetState = rememberModalBottomSheetState()
     val scope = rememberCoroutineScope()
@@ -80,7 +79,6 @@ fun ValidatorSearchWidget(onValidatorSelected: (validatorId: Int) -> Unit) {
                 .fillMaxHeight()
                 .fillMaxWidth(),
     ) {
-        val isDataLoading = allValidators.value.isEmpty()
         TextField(
             singleLine = true,
             value = validatorSearchQuery.value,
@@ -102,14 +100,14 @@ fun ValidatorSearchWidget(onValidatorSelected: (validatorId: Int) -> Unit) {
                     imeAction = ImeAction.Search,
                 ),
             onValueChange = { searchQuery ->
-                validatorsListViewModel.onValidatorSearchQueryChange(searchQuery)
+                validatorSearchViewModel.onValidatorSearchQueryChange(searchQuery)
             },
             trailingIcon = {
                 if (validatorSearchQuery.value.isNotEmpty()) {
                     Icon(
                         modifier =
                             Modifier.clickable {
-                                validatorsListViewModel.onValidatorSearchQueryChange("")
+                                validatorSearchViewModel.onValidatorSearchQueryChange("")
                             },
                         imageVector = Icons.Default.Clear,
                         contentDescription = "Clear search",
@@ -242,6 +240,7 @@ fun ValidatorSearchWidget(onValidatorSelected: (validatorId: Int) -> Unit) {
                             text = stringResource(resource = Res.string.validator_no_results),
                         )
                     }
+                    validatorSearchViewModel.setupDB()
                 }
             }
         }
