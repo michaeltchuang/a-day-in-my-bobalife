@@ -14,7 +14,7 @@ import androidx.compose.foundation.pager.rememberPagerState
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.AccountCircle
 import androidx.compose.material.icons.filled.PlayArrow
-import androidx.compose.material.icons.filled.Search
+import androidx.compose.material.icons.filled.ShoppingCart
 import androidx.compose.material3.Icon
 import androidx.compose.material3.LeadingIconTab
 import androidx.compose.material3.TabRow
@@ -31,8 +31,8 @@ import androidx.compose.ui.unit.sp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.navigation.NavController
 import com.michaeltchuang.example.ui.screens.AccountScreen
+import com.michaeltchuang.example.ui.screens.DispenserScreen
 import com.michaeltchuang.example.ui.screens.PlayCoinFlipperScreen
-import com.michaeltchuang.example.ui.screens.ValidatorSearchScreen
 import com.michaeltchuang.example.ui.theme.md_theme_light_primary
 import com.michaeltchuang.example.ui.viewmodels.AlgorandBaseViewModel
 import kotlinx.coroutines.launch
@@ -132,10 +132,10 @@ fun TabContent(
             }
             2 -> {
                 // navController.navigate(Screen.ValidatorSearchScreen.route)
-                ValidatorSearchScreen(
+                DispenserScreen(
                     navController = navController,
                     algorandBaseViewModel = algorandBaseViewModel,
-                    tag = Screen.ValidatorSearchScreen.route,
+                    tag = Screen.DispenserScreen.route,
                 )
             }
         }
@@ -146,5 +146,5 @@ private fun getTabList(): List<Pair<String, ImageVector>> =
     listOf(
         "Account" to Icons.Default.AccountCircle,
         "Coin Flipper" to Icons.Default.PlayArrow,
-        "Validators" to Icons.Default.Search,
+        "Dispenser" to Icons.Default.ShoppingCart,
     )

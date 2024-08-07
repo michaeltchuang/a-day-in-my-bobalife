@@ -122,7 +122,7 @@ android {
 
         applicationId = "com.michaeltchuang.example"
         versionCode = 1
-        versionName = "1.0.0"
+        versionName = "2024.31.0"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }

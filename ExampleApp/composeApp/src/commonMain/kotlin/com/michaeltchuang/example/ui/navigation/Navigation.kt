@@ -5,7 +5,7 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Home
-import androidx.compose.material.icons.filled.ShoppingCart
+import androidx.compose.material.icons.filled.Star
 import androidx.compose.material3.Icon
 import androidx.compose.material3.NavigationBar
 import androidx.compose.material3.NavigationBarItem
@@ -30,6 +30,7 @@ import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navArgument
 import com.michaeltchuang.example.ui.screens.AccountScreen
+import com.michaeltchuang.example.ui.screens.DispenserScreen
 import com.michaeltchuang.example.ui.screens.HomeScreen
 import com.michaeltchuang.example.ui.screens.LoginScreen
 import com.michaeltchuang.example.ui.screens.PlayCoinFlipperScreen
@@ -128,6 +129,16 @@ fun AppNavigation() {
                 )
                 SnackBarLayout(sharedViewModel, snackbarHostState)
             }
+            composable(Screen.DispenserScreen.route) {
+                val backStackEntry = remember(it) { navController.getBackStackEntry("parentRoute") }
+                val sharedViewModel: AlgorandBaseViewModel = koinNavViewModel(viewModelStoreOwner = backStackEntry)
+                DispenserScreen(
+                    tag = Screen.PlayCoinFlipperScreen.route,
+                    navController = navController,
+                    algorandBaseViewModel = sharedViewModel,
+                )
+                SnackBarLayout(sharedViewModel, snackbarHostState)
+            }
             composable(Screen.ValidatorSearchScreen.route) {
                 val backStackEntry = remember(it) { navController.getBackStackEntry("parentRoute") }
                 val sharedViewModel: AlgorandBaseViewModel = koinNavViewModel(viewModelStoreOwner = backStackEntry)
@@ -189,7 +200,7 @@ fun bottomNavigationItems(): List<BottomNavigationItem> =
         ),
         BottomNavigationItem(
             label = "Algorand Experience",
-            icon = Icons.Filled.ShoppingCart,
+            icon = Icons.Filled.Star,
             route = Screen.LoginScreen.route,
         ),
     )
@@ -210,6 +221,8 @@ sealed class Screen(
     object LoginScreen : Screen("algorand_experience")
 
     object PlayCoinFlipperScreen : Screen("play_coin_flipper")
+
+    object DispenserScreen : Screen("tesnet_dispenser")
 
     object ValidatorDetailScreen : Screen("validator_detail")
 
