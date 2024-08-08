@@ -121,7 +121,7 @@ android {
         targetSdk = 34
 
         applicationId = "com.michaeltchuang.example"
-        versionCode = 2
+        versionCode = 3
         versionName = "2024.31.0"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
