@@ -40,6 +40,7 @@ import com.michaeltchuang.example.ui.viewmodels.PlayCoinFlipperViewModel
 import com.michaeltchuang.example.ui.widgets.AlgorandButton
 import com.michaeltchuang.example.ui.widgets.AlgorandDivider
 import com.michaeltchuang.example.utils.Constants
+import com.michaeltchuang.example.utils.Constants.DEFAULT_MICRO_ALGO_BET_AMOUNT
 import example_app.composeapp.generated.resources.Res
 import example_app.composeapp.generated.resources.coin_heads
 import example_app.composeapp.generated.resources.coin_tails
@@ -53,6 +54,7 @@ import example_app.composeapp.generated.resources.play_button_submit_bet
 import example_app.composeapp.generated.resources.play_button_wait_message
 import example_app.composeapp.generated.resources.play_current_round
 import example_app.composeapp.generated.resources.play_game_header
+import example_app.composeapp.generated.resources.play_game_header2
 import example_app.composeapp.generated.resources.play_game_instructions
 import example_app.composeapp.generated.resources.play_title
 import example_app.composeapp.generated.resources.play_waiting_round
@@ -256,7 +258,8 @@ fun BetViewComposable(
         }
         AlgorandDivider()
         Text(
-            stringResource(Res.string.play_game_header),
+            stringResource(Res.string.play_game_header) +
+                    DEFAULT_MICRO_ALGO_BET_AMOUNT + stringResource(Res.string.play_game_header2),
             color = Color.Black,
             style =
                 TextStyle(

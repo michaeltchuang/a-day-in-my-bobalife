@@ -14,7 +14,7 @@
     <!-- Login -->
     <string name="login_button_create">Create Account*</string>
     <string name="login_button_restore">Restore Account*</string>
-    <string name="login_guest_message">Create or import a wallet to start playing CoinFlip</string>
+    <string name="login_guest_message">Create or import a wallet to use Algorand blockchain</string>
     <string name="login_guest_coin_description">Algorand Coin</string>
     <string name="login_restore_textifield_title">Mnemomic / Passphrase</string>
     <string name="login_restore_textfield_value">Enter 25 words here</string>
@@ -41,7 +41,8 @@
     <string name="play_current_round">Current Round: </string>
     <string name="play_waiting_round">Waiting Round: </string>
     <string name="play_balance_low">Balance too low to play CoinFlip, add some money from Testnet Dispenser</string>
-    <string name="play_game_header">Wager: Bet 50000 mAlgos on</string>
+    <string name="play_game_header">Wager: Bet </string>
+    <string name="play_game_header2"> mAlgos on </string>
     <string name="play_game_instructions">Click on a coin to pick a side and flip! \n(heads on left, tails on right)</string>
 
     <!-- Error Handling -->

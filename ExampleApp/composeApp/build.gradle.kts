@@ -121,7 +121,7 @@ android {
         targetSdk = 34
 
         applicationId = "com.michaeltchuang.example"
-        versionCode = 1
+        versionCode = 2
         versionName = "2024.31.0"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
@@ -148,6 +148,21 @@ android {
     buildFeatures {
         // enables a Compose tooling support in the AndroidStudio
         compose = true
+    }
+
+    buildTypes {
+        debug {
+            isMinifyEnabled = false
+            isDebuggable = true
+        }
+        release {
+            isMinifyEnabled = false
+            isDebuggable = false
+//            proguardFiles(
+//                getDefaultProguardFile("proguard-android-optimize.txt"),
+//                "proguard-rules.pro"
+//            )
+        }
     }
 //    dependencies {
 //        ksp(libs.androidx.room.compiler)

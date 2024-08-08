@@ -86,7 +86,7 @@ fun LoginScreen(
             textAlign = TextAlign.Center,
             modifier =
                 Modifier
-                    .width(282.dp)
+                    .width(300.dp)
                     .wrapContentHeight(),
         )
         Image(

@@ -35,6 +35,7 @@ import com.michaeltchuang.example.ui.screens.DispenserScreen
 import com.michaeltchuang.example.ui.screens.PlayCoinFlipperScreen
 import com.michaeltchuang.example.ui.theme.md_theme_light_primary
 import com.michaeltchuang.example.ui.viewmodels.AlgorandBaseViewModel
+import com.russhwolf.settings.BuildConfig
 import kotlinx.coroutines.launch
 
 @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
@@ -123,14 +124,6 @@ fun TabContent(
                 )
             }
             1 -> {
-                // navController.navigate(Screen.PlayCoinFlipperScreen.route)
-                PlayCoinFlipperScreen(
-                    navController = navController,
-                    algorandBaseViewModel = algorandBaseViewModel,
-                    tag = Screen.PlayCoinFlipperScreen.route,
-                )
-            }
-            2 -> {
                 // navController.navigate(Screen.ValidatorSearchScreen.route)
                 DispenserScreen(
                     navController = navController,
@@ -139,12 +132,31 @@ fun TabContent(
                 )
             }
         }
+        if (BuildConfig.DEBUG) {
+            when (index) {
+                2 -> {
+                    // navController.navigate(Screen.PlayCoinFlipperScreen.route)
+                    PlayCoinFlipperScreen(
+                        navController = navController,
+                        algorandBaseViewModel = algorandBaseViewModel,
+                        tag = Screen.PlayCoinFlipperScreen.route,
+                    )
+                }
+            }
+        }
     }
 }
 
 private fun getTabList(): List<Pair<String, ImageVector>> =
-    listOf(
-        "Account" to Icons.Default.AccountCircle,
-        "Coin Flipper" to Icons.Default.PlayArrow,
-        "Dispenser" to Icons.Default.ShoppingCart,
-    )
+    if (BuildConfig.DEBUG) {
+        listOf(
+            "Account" to Icons.Default.AccountCircle,
+            "Dispenser" to Icons.Default.ShoppingCart,
+            "Coin Flipper" to Icons.Default.PlayArrow,
+        )
+    } else {
+        listOf(
+            "Account" to Icons.Default.AccountCircle,
+            "Dispenser" to Icons.Default.ShoppingCart,
+        )
+    }
