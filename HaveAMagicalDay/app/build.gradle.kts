@@ -13,7 +13,7 @@ application {
 }
 
 dependencies {
-    implementation("com.github.ajalt.clikt:clikt:4.4.0")
+    implementation("com.github.ajalt.clikt:clikt:5.0.0")
     implementation("com.algorand:algosdk:2.5.0")
     testImplementation("junit:junit:4.13.2")
 }
