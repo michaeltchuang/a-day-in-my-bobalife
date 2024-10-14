@@ -1,3 +1,18 @@
+## [2024.41.0](https://github.com/michaeltchuang/a-day-in-my-bobalife/compare/v2024.40.0...v2024.41.0) (2024-10-14)
+
+
+### Updates & Maintenance
+
+* bump kotlin from 2.0.20 to 2.0.21 in /DisneyScenicRides ([#181](https://github.com/michaeltchuang/a-day-in-my-bobalife/issues/181)) ([a4ca534](https://github.com/michaeltchuang/a-day-in-my-bobalife/commit/a4ca534dd04aae177ad0ba7a13adaf417a9b6825))
+* bump org.jetbrains.kotlin.jvm from 2.0.20 to 2.0.21 in /HaveAMagicalDay ([#182](https://github.com/michaeltchuang/a-day-in-my-bobalife/issues/182)) ([ecbceac](https://github.com/michaeltchuang/a-day-in-my-bobalife/commit/ecbceac27bdd926135a3ebef43c6d57c092de747))
+* log greeting (2024-10-08) ([aede7df](https://github.com/michaeltchuang/a-day-in-my-bobalife/commit/aede7df0b3c30e62f69c9508b340bf93ef72c620))
+* log greeting (2024-10-09) ([af85852](https://github.com/michaeltchuang/a-day-in-my-bobalife/commit/af8585246fea153f20844cdf0ce0ed884a980fab))
+* log greeting (2024-10-10) ([6dafb3b](https://github.com/michaeltchuang/a-day-in-my-bobalife/commit/6dafb3b8a87dc780923ea1e9715d4c5e4d3ecbb0))
+* log greeting (2024-10-11) ([737217a](https://github.com/michaeltchuang/a-day-in-my-bobalife/commit/737217a01b97d27185345bf87cc4233920f4e663))
+* log greeting (2024-10-12) ([e92109b](https://github.com/michaeltchuang/a-day-in-my-bobalife/commit/e92109ba3a9adbdabe6cffd0e6165c7af7742e65))
+* log greeting (2024-10-13) ([5034fbd](https://github.com/michaeltchuang/a-day-in-my-bobalife/commit/5034fbd3efba03258b27ff8634b551ca6034a376))
+* log greeting (2024-10-14) ([42bce07](https://github.com/michaeltchuang/a-day-in-my-bobalife/commit/42bce0776f20783589143901355292d088bd7378))
+
 ## [2024.40.0](https://github.com/michaeltchuang/a-day-in-my-bobalife/compare/v2024.39.0...v2024.40.0) (2024-10-07)
 
 
