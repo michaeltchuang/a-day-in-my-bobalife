@@ -1,3 +1,5 @@
+import org.jetbrains.kotlin.gradle.dsl.JvmTarget
+import org.jetbrains.kotlin.gradle.tasks.KotlinJvmCompile
 import java.text.SimpleDateFormat
 import java.util.Date
 import java.util.TimeZone
@@ -13,14 +15,15 @@ application {
 }
 
 dependencies {
-    implementation("com.github.ajalt.clikt:clikt:5.0.2")
-    implementation("com.algorand:algosdk:2.5.0")
-    testImplementation("junit:junit:4.13.2")
+    implementation(libs.clikt)
+    implementation(libs.algosdk)
+    testImplementation(libs.junit)
 }
 
-tasks.withType<org.jetbrains.kotlin.gradle.tasks.KotlinCompile>().configureEach {
-    kotlinOptions {
-        jvmTarget = "17"
+tasks.withType<KotlinJvmCompile>().configureEach {
+    compilerOptions {
+        jvmTarget.set(JvmTarget.JVM_17)
+        freeCompilerArgs.add("-opt-in=kotlin.RequiresOptIn")
     }
 }
 
