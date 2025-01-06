@@ -1,3 +1,21 @@
+## [2025.0.0](https://github.com/michaeltchuang/a-day-in-my-bobalife/compare/v2024.52.0...v2025.0.0) (2025-01-06)
+
+
+### Breaking
+
+* update for new year and introduce toml file ([e234c15](https://github.com/michaeltchuang/a-day-in-my-bobalife/commit/e234c1584fbeca927b0930f002604c6136233ce4))
+
+
+### Updates & Maintenance
+
+* log greeting (2024-12-31) ([c0bf6ef](https://github.com/michaeltchuang/a-day-in-my-bobalife/commit/c0bf6ef492187730910de2554ca2dc471544cbf5))
+* log greeting (2025-01-01) ([7d9aec4](https://github.com/michaeltchuang/a-day-in-my-bobalife/commit/7d9aec4a7518df3dccc693dec7119aa280560c43))
+* log greeting (2025-01-02) ([b17e9ab](https://github.com/michaeltchuang/a-day-in-my-bobalife/commit/b17e9aba3a946d33bbb68efefd7411b2230c3cd0))
+* log greeting (2025-01-03) ([50babbb](https://github.com/michaeltchuang/a-day-in-my-bobalife/commit/50babbb76eabba83fc8e032cd44bc7af92867779))
+* log greeting (2025-01-04) ([c5a9c3e](https://github.com/michaeltchuang/a-day-in-my-bobalife/commit/c5a9c3e0e36528668447ea74f2d30594f6c7e946))
+* log greeting (2025-01-05) ([83d284b](https://github.com/michaeltchuang/a-day-in-my-bobalife/commit/83d284b24abfc1e0e77ad8a1da31b2eec14402e8))
+* log greeting (2025-01-06) ([8b7cec2](https://github.com/michaeltchuang/a-day-in-my-bobalife/commit/8b7cec254bd45ca44e5456c9ede908dd6aa164bb))
+
 ## [2024.52.0](https://github.com/michaeltchuang/a-day-in-my-bobalife/compare/v2024.51.0...v2024.52.0) (2024-12-30)
 
 
