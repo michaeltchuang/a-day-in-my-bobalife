@@ -1,3 +1,17 @@
+## [2025.2.0](https://github.com/michaeltchuang/a-day-in-my-bobalife/compare/v2025.1.0...v2025.2.0) (2025-01-20)
+
+
+### Updates & Maintenance
+
+* bump com.algorand:algosdk from 2.5.0 to 2.6.0 in /HaveAMagicalDay ([#206](https://github.com/michaeltchuang/a-day-in-my-bobalife/issues/206)) ([f240c49](https://github.com/michaeltchuang/a-day-in-my-bobalife/commit/f240c491602609520112b1b0dfb413938c0c0bf0))
+* log greeting (2025-01-14) ([e3d42ea](https://github.com/michaeltchuang/a-day-in-my-bobalife/commit/e3d42ea80f30615959bfe396b524ab6dc0d92230))
+* log greeting (2025-01-15) ([cecf656](https://github.com/michaeltchuang/a-day-in-my-bobalife/commit/cecf6569366d066e3ab43fb819754732e44a602e))
+* log greeting (2025-01-16) ([a4f3eb5](https://github.com/michaeltchuang/a-day-in-my-bobalife/commit/a4f3eb5082f0a9307a4f8e01ca3e844a9407638d))
+* log greeting (2025-01-17) ([3e6493d](https://github.com/michaeltchuang/a-day-in-my-bobalife/commit/3e6493d74bc6995bac54483fb5321c810d7e7241))
+* log greeting (2025-01-18) ([38ae40d](https://github.com/michaeltchuang/a-day-in-my-bobalife/commit/38ae40dc82e89291cae838edc98512ff5b0c2105))
+* log greeting (2025-01-19) ([32cf98e](https://github.com/michaeltchuang/a-day-in-my-bobalife/commit/32cf98e8283943ce662ba6af6bb8e1451e42631f))
+* log greeting (2025-01-20) ([032fcc5](https://github.com/michaeltchuang/a-day-in-my-bobalife/commit/032fcc510047a306a5772565b122c9826eeca62c))
+
 ## [2025.1.0](https://github.com/michaeltchuang/a-day-in-my-bobalife/compare/v2025.0.0...v2025.1.0) (2025-01-13)
 
 
