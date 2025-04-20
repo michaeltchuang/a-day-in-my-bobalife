@@ -25,12 +25,13 @@ class PaymentProcessor(
     private val repository: AlgorandRepository,
     private val dateUtils: DateUtils = DateUtils(),
 ) {
+    val daysAgo: Long = 0L
     fun processPayments() {
         val account =
             repository.recoverAccount(System.getenv("CLIKT_PASSPHRASE"))
                 ?: throw Exception("Could not find account")
 
-        val currentDateStr = getDateString()
+        val currentDateStr = getDateString(daysAgo)
         val volumeNum = calculateVolumeNumber(currentDateStr)
 
         // First payment
@@ -89,7 +90,7 @@ class PaymentProcessor(
     ) {
         try {
             txnId?.let {
-                val entry = "${getDateString()},$volume-$vlogNum,$it\n"
+                val entry = "${getDateString(daysAgo)},$volume-$vlogNum,$it\n"
                 Files.write(
                     Paths.get(Constants.HISTORY_CSV_FILE),
                     entry.toByteArray(),
