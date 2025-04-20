@@ -13,5 +13,5 @@ object Constants {
 
     const val VOL3_VLOG1_DATE = "2025-04-08"
     const val VOL3_VLOG8_DATE = "2025-04-14"
-    const val VOL3_VLOG14_DATE = "2023-04-20"
+    const val VOL3_VLOG14_DATE = "2025-04-20"
 }

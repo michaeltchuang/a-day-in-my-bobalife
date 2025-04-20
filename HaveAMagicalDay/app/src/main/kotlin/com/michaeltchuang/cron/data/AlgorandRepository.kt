@@ -71,8 +71,9 @@ class AlgorandRepository() {
 
             // send to network
             val encodedTxBytes: ByteArray = Encoder.encodeToMsgPack(signedTxn)
-            val txResponse = client.RawTransaction().rawtxn(encodedTxBytes)
-                .execute(txHeaders, txValues)
+            val txResponse =
+                client.RawTransaction().rawtxn(encodedTxBytes)
+                    .execute(txHeaders, txValues)
 
             // Check if the response is successful and has a body
             if (!txResponse.isSuccessful) {
@@ -80,8 +81,9 @@ class AlgorandRepository() {
             }
 
             // Get the transaction ID
-            val txnId = txResponse.body()?.txId
-                ?: signedTxn.transactionID // Fallback to getting ID from signed transaction
+            val txnId =
+                txResponse.body()?.txId
+                    ?: signedTxn.transactionID // Fallback to getting ID from signed transaction
 
             if (txnId == null) {
                 throw Exception("Failed to get transaction ID")
@@ -89,7 +91,7 @@ class AlgorandRepository() {
 
             // Wait for transaction confirmation
             val pTrx: PendingTransactionResponse = Utils.waitForConfirmation(client, txnId, 10)
-            println("${account.address} sent $amount microAlgos to ${receiverAddress} for transaction $txnId")
+            println("${account.address} sent $amount microAlgos to $receiverAddress for transaction $txnId")
             return txnId
         } catch (e: Exception) {
             println(e.toString())
