@@ -11,15 +11,10 @@ object Constants {
     const val TEST_PASSPHRASE_PART2 = "can intact cactus rail pumpkin cost actual famous gauge deny pink above rubber"
     const val DEFAULT_MICRO_ALGO_TRANSFER_AMOUNT = 888
     const val DEFAULT_VLOG_TIME = "T08:08:08.888"
-    const val VOL2_START_DATE = "2023-02-20"
-    const val HISTORY_CSV_FILE = "../greeting-history.log"
+    const val VOL3_VLOG0_START_DATE = "2025-04-07"
+    const val HISTORY_CSV_FILE = "../greeting-history-volume3.log"
 
-    const val VOL2_VLOG1_DATE = "2023-02-21"
-    const val VOL2_VLOG22_DATE = "2023-03-12"
-    const val VOL2_VLOG23_DATE = "2023-03-13"
-    const val VOL2_VLOG24_DATE = "2023-03-13"
-    const val VOL2_VLOG25_DATE = "2023-03-14"
-    const val VOL2_VLOG31_DATE = "2023-03-20"
-    const val VOL2_VLOG39_DATE = "2023-03-27"
-    const val VOL2_VLOG42_DATE = "2023-03-29"
+    const val VOL3_VLOG1_DATE = "2025-04-08"
+    const val VOL3_VLOG8_DATE = "2025-04-14"
+    const val VOL3_VLOG14_DATE = "2023-04-20"
 }
