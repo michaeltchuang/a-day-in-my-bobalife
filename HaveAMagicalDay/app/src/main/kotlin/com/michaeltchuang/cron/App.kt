@@ -26,6 +26,7 @@ class PaymentProcessor(
     private val dateUtils: DateUtils = DateUtils(),
 ) {
     val daysAgo: Long = 0L
+
     fun processPayments() {
         val account =
             repository.recoverAccount(System.getenv("CLIKT_PASSPHRASE"))
@@ -72,8 +73,9 @@ class PaymentProcessor(
         currentDateStr: String,
     ): Int = dateUtils.calculateVlogNum(extra, Constants.VOL3_VLOG0_START_DATE, currentDateStr)
 
-    private fun isMonday(): Boolean = LocalDate.now(AppConfiguration.tz.toZoneId())
-        .minusDays(daysAgo).dayOfWeek.value == 1
+    private fun isMonday(): Boolean =
+        LocalDate.now(AppConfiguration.tz.toZoneId())
+            .minusDays(daysAgo).dayOfWeek.value == 1
 
     private fun createGreeting(
         volume: Int,
