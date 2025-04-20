@@ -34,7 +34,7 @@ class AlgorandRepository() {
 
     fun sendPayment(
         account: Account,
-        appId: Long,
+        receiverAddress: String,
         amount: Int,
         note: String,
     ): String? {
@@ -53,13 +53,16 @@ class AlgorandRepository() {
                 resp.body()
                     ?: throw java.lang.Exception("Params retrieval error")
 
+            // Convert string address to Address object
+            val receiverAddr = Address(receiverAddress)
+
             // Create a transaction
             val ptxn =
                 PaymentTransactionBuilder.Builder()
                     .suggestedParams(sp)
                     .amount(amount)
                     .sender(account.address)
-                    .receiver(Address.forApplication(appId))
+                    .receiver(receiverAddr)
                     .noteUTF8(note)
                     .build()
 
@@ -68,13 +71,25 @@ class AlgorandRepository() {
 
             // send to network
             val encodedTxBytes: ByteArray = Encoder.encodeToMsgPack(signedTxn)
-            val txnId =
-                client.RawTransaction().rawtxn(encodedTxBytes)
-                    .execute(txHeaders, txValues).body().txId
+            val txResponse = client.RawTransaction().rawtxn(encodedTxBytes)
+                .execute(txHeaders, txValues)
+
+            // Check if the response is successful and has a body
+            if (!txResponse.isSuccessful) {
+                throw Exception("Failed to send transaction: ${txResponse.message()}")
+            }
+
+            // Get the transaction ID
+            val txnId = txResponse.body()?.txId
+                ?: signedTxn.transactionID // Fallback to getting ID from signed transaction
+
+            if (txnId == null) {
+                throw Exception("Failed to get transaction ID")
+            }
 
             // Wait for transaction confirmation
             val pTrx: PendingTransactionResponse = Utils.waitForConfirmation(client, txnId, 10)
-            println("${account.address} sent $amount microAlgos to ${Address.forApplication(appId)} for transaction $txnId")
+            println("${account.address} sent $amount microAlgos to ${receiverAddress} for transaction $txnId")
             return txnId
         } catch (e: Exception) {
             println(e.toString())

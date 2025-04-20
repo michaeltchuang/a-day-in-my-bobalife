@@ -3,6 +3,7 @@
 package com.michaeltchuang.cron
 
 import com.algorand.algosdk.account.Account
+import com.algorand.algosdk.crypto.Address
 import com.michaeltchuang.cron.data.AlgorandRepository
 import com.michaeltchuang.cron.utils.Constants
 import com.michaeltchuang.cron.utils.DateUtils
@@ -48,7 +49,7 @@ class PaymentProcessor(
         account.address?.let { address ->
             val txnId = repository.sendPayment(
                 account,
-                Constants.COINFLIP_APP_ID_TESTNET,
+                "${Constants.RECEIVER_ADDRESS}",
                 Constants.DEFAULT_MICRO_ALGO_TRANSFER_AMOUNT,
                 createGreeting(volumeNum, vlogNum)
             )
