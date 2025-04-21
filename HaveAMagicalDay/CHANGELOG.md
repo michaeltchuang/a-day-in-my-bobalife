@@ -1,3 +1,29 @@
+## [2025.15.0](https://github.com/michaeltchuang/a-day-in-my-bobalife/compare/v2025.14.0...v2025.15.0) (2025-04-21)
+
+
+### Features
+
+* switch from coinflip app to a receiver address ([a9db9a8](https://github.com/michaeltchuang/a-day-in-my-bobalife/commit/a9db9a88b99b649db71a16371096eed922780c15))
+* switch to mainnet for volume 3 ([dc02653](https://github.com/michaeltchuang/a-day-in-my-bobalife/commit/dc02653f0898ff51e9588c85111962489e8dfa1d))
+* update for volume 3 ([f31c44b](https://github.com/michaeltchuang/a-day-in-my-bobalife/commit/f31c44be62c28abcc2465a6868912ab27db49257))
+
+
+### Bug Fixes
+
+* kotlin lint ([38ff34e](https://github.com/michaeltchuang/a-day-in-my-bobalife/commit/38ff34e4b94fa2a9a8879939055fb80bf0291f55))
+* kotlin lint check ([44561e1](https://github.com/michaeltchuang/a-day-in-my-bobalife/commit/44561e1f11a4467de2ace5874a10326480735f53))
+* update missing 8th vlog logic ([bda65f4](https://github.com/michaeltchuang/a-day-in-my-bobalife/commit/bda65f45f41ed290d1584b026ebd1fbfee45461c))
+
+
+### Updates & Maintenance
+
+* log greeting (2025-04-15) ([3d706ec](https://github.com/michaeltchuang/a-day-in-my-bobalife/commit/3d706ecfe5b612b50907d13c89b08c22ead72331))
+* log greeting (2025-04-16) ([227a387](https://github.com/michaeltchuang/a-day-in-my-bobalife/commit/227a3879c1bd9a9e5858383c2dcf5eff12d755b2))
+* log greeting (2025-04-17) ([98be723](https://github.com/michaeltchuang/a-day-in-my-bobalife/commit/98be72370d38a9d57ec378e4229334a22f48245c))
+* log greeting (2025-04-18) ([a417560](https://github.com/michaeltchuang/a-day-in-my-bobalife/commit/a417560968b7558c0282c0f29df74ec31ce0678f))
+* log greeting (2025-04-19) ([f5346f9](https://github.com/michaeltchuang/a-day-in-my-bobalife/commit/f5346f9be9f0c724e8c87433ba76b15c19369e83))
+* log greeting (2025-04-20) ([5a5b642](https://github.com/michaeltchuang/a-day-in-my-bobalife/commit/5a5b6424e2887074d4c170390fe67ca7a3363f93))
+
 ## [2025.14.0](https://github.com/michaeltchuang/a-day-in-my-bobalife/compare/v2025.13.0...v2025.14.0) (2025-04-14)
 
 
