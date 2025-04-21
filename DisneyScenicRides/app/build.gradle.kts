@@ -36,10 +36,10 @@ android {
         compose = true
     }
     kotlin {
-        jvmToolchain(17)
+        jvmToolchain(21)
     }
     kotlinOptions {
-        jvmTarget = "17"
+        jvmTarget = "21"
     }
     lint {
         checkDependencies = true
