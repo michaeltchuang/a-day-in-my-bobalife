@@ -1,3 +1,21 @@
+## [2025.20.0](https://github.com/michaeltchuang/a-day-in-my-bobalife/compare/v2025.19.0...v2025.20.0) (2025-05-26)
+
+
+### Updates & Maintenance
+
+* bump com.algorand:algosdk from 2.7.0 to 2.8.1 in /HaveAMagicalDay ([#249](https://github.com/michaeltchuang/a-day-in-my-bobalife/issues/249)) ([05fa927](https://github.com/michaeltchuang/a-day-in-my-bobalife/commit/05fa92761442c63784c38023deaa4c9fb3cc3718))
+* bump foundation from 1.8.1 to 1.8.2 in /DisneyScenicRides ([#245](https://github.com/michaeltchuang/a-day-in-my-bobalife/issues/245)) ([e4aff50](https://github.com/michaeltchuang/a-day-in-my-bobalife/commit/e4aff5028b8abafaa812f2e139e9bfb8258b4c78))
+* bump org.jlleitschuh.gradle.ktlint from 12.2.0 to 12.3.0 in /HaveAMagicalDay ([#248](https://github.com/michaeltchuang/a-day-in-my-bobalife/issues/248)) ([59f762e](https://github.com/michaeltchuang/a-day-in-my-bobalife/commit/59f762e5c16e635e83df3c995ab325448f82c300))
+* bump runtime-livedata from 1.8.1 to 1.8.2 in /DisneyScenicRides ([#247](https://github.com/michaeltchuang/a-day-in-my-bobalife/issues/247)) ([11c0caf](https://github.com/michaeltchuang/a-day-in-my-bobalife/commit/11c0caf5e33373cc9e01677fc863ca81ecf2766c))
+* bump ui from 1.8.1 to 1.8.2 in /DisneyScenicRides ([#246](https://github.com/michaeltchuang/a-day-in-my-bobalife/issues/246)) ([6b9ac10](https://github.com/michaeltchuang/a-day-in-my-bobalife/commit/6b9ac10f04a6521fe899a022acd747ee457240ba))
+* log greeting (2025-05-20) ([01e27da](https://github.com/michaeltchuang/a-day-in-my-bobalife/commit/01e27daa4f359083415919d1a73813e4114b40a4))
+* log greeting (2025-05-21) ([9e15fc7](https://github.com/michaeltchuang/a-day-in-my-bobalife/commit/9e15fc704a8bb385d464ebd5f57de27973116e12))
+* log greeting (2025-05-22) ([aba2843](https://github.com/michaeltchuang/a-day-in-my-bobalife/commit/aba2843e53a5695db14f0e937441c3d8d9b1f0bb))
+* log greeting (2025-05-23) ([c6fe3d3](https://github.com/michaeltchuang/a-day-in-my-bobalife/commit/c6fe3d3cb8854908f940b30d76c19d215f8618ac))
+* log greeting (2025-05-24) ([c9ad599](https://github.com/michaeltchuang/a-day-in-my-bobalife/commit/c9ad59976789bced6d2766bcff3b2060e5c99d3f))
+* log greeting (2025-05-25) ([e08609f](https://github.com/michaeltchuang/a-day-in-my-bobalife/commit/e08609fa0b70ac1e849b8110e101d0c7cbfd0edd))
+* log greeting (2025-05-26) ([fdcaa02](https://github.com/michaeltchuang/a-day-in-my-bobalife/commit/fdcaa0248f7c5dcdef42de823bb7964099f88075))
+
 ## [2025.19.0](https://github.com/michaeltchuang/a-day-in-my-bobalife/compare/v2025.18.0...v2025.19.0) (2025-05-19)
 
 
