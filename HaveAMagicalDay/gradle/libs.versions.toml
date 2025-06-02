@@ -1,5 +1,5 @@
 [versions]
-algosdk = "2.8.1"
+algosdk = "2.8.2"
 clikt = "5.0.3"
 junit = "4.13.2"
 
