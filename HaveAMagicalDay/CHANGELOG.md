@@ -1,3 +1,18 @@
+## [2025.21.0](https://github.com/michaeltchuang/a-day-in-my-bobalife/compare/v2025.20.0...v2025.21.0) (2025-06-02)
+
+
+### Updates & Maintenance
+
+* bump com.algorand:algosdk from 2.8.1 to 2.8.2 in /HaveAMagicalDay ([#251](https://github.com/michaeltchuang/a-day-in-my-bobalife/issues/251)) ([135e3c1](https://github.com/michaeltchuang/a-day-in-my-bobalife/commit/135e3c19a4721d4c0aabc13d2fd116e57c1a8f67))
+* bump com.android.tools.build:gradle from 8.10.0 to 8.10.1 in /DisneyScenicRides ([#250](https://github.com/michaeltchuang/a-day-in-my-bobalife/issues/250)) ([4f6e4e2](https://github.com/michaeltchuang/a-day-in-my-bobalife/commit/4f6e4e2ea2451c59e9141a1524e6f1b28e0170c9))
+* log greeting (2025-05-27) ([e9f48d3](https://github.com/michaeltchuang/a-day-in-my-bobalife/commit/e9f48d3a0d4f491161666c48b5ff757ef40d49dd))
+* log greeting (2025-05-28) ([f7afd21](https://github.com/michaeltchuang/a-day-in-my-bobalife/commit/f7afd21b04d5bfc7a85b85fccbc83a017ba0696d))
+* log greeting (2025-05-29) ([55864a1](https://github.com/michaeltchuang/a-day-in-my-bobalife/commit/55864a1ffcce9f73be56d236c396f83986e7ed52))
+* log greeting (2025-05-30) ([74a3f78](https://github.com/michaeltchuang/a-day-in-my-bobalife/commit/74a3f785c9b8464614eb04d09df36a2dfbe908fb))
+* log greeting (2025-05-31) ([a7a7505](https://github.com/michaeltchuang/a-day-in-my-bobalife/commit/a7a7505ec500ab3e6aac0c5813b42bb395446441))
+* log greeting (2025-06-01) ([4b32e94](https://github.com/michaeltchuang/a-day-in-my-bobalife/commit/4b32e9485086c1d4fdf6a3bccc4ddde1eb272770))
+* log greeting (2025-06-02) ([b69cd40](https://github.com/michaeltchuang/a-day-in-my-bobalife/commit/b69cd402ec0ebd0a8502131f20e355f53b13dd41))
+
 ## [2025.20.0](https://github.com/michaeltchuang/a-day-in-my-bobalife/compare/v2025.19.0...v2025.20.0) (2025-05-26)
 
 
