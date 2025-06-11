@@ -21,8 +21,8 @@ kotlin {
         compilations.all {
             compileTaskProvider {
                 compilerOptions {
-                    jvmTarget.set(JvmTarget.JVM_17)
-                    freeCompilerArgs.add("-Xjdk-release=${JavaVersion.VERSION_17}")
+                    jvmTarget.set(JvmTarget.JVM_21)
+                    freeCompilerArgs.add("-Xjdk-release=${JavaVersion.VERSION_21}")
                 }
             }
         }
@@ -52,7 +52,7 @@ kotlin {
 
     @OptIn(ExperimentalKotlinGradlePluginApi::class)
     compilerOptions {
-        languageVersion.set(KotlinVersion.KOTLIN_2_0)
+        languageVersion.set(KotlinVersion.KOTLIN_2_1)
     }
 
     sourceSets {
@@ -114,15 +114,15 @@ kotlin {
 
 android {
     namespace = "com.michaeltchuang.example"
-    compileSdk = 34
+    compileSdk = 36
 
     defaultConfig {
         minSdk = 28
-        targetSdk = 34
+        targetSdk = 36
 
         applicationId = "com.michaeltchuang.example"
-        versionCode = 3
-        versionName = "2024.31.0"
+        versionCode = 5
+        versionName = "2025.22.0"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
@@ -133,7 +133,7 @@ android {
     // https://developer.android.com/studio/test/gradle-managed-devices
     @Suppress("UnstableApiUsage")
     testOptions {
-        managedDevices.devices {
+        managedDevices.allDevices {
             maybeCreate<ManagedVirtualDevice>("pixel5").apply {
                 device = "Pixel 5"
                 apiLevel = 34
@@ -142,8 +142,8 @@ android {
         }
     }
     compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_17
-        targetCompatibility = JavaVersion.VERSION_17
+        sourceCompatibility = JavaVersion.VERSION_21
+        targetCompatibility = JavaVersion.VERSION_21
     }
     buildFeatures {
         // enables a Compose tooling support in the AndroidStudio
@@ -158,6 +158,7 @@ android {
         release {
             isMinifyEnabled = false
             isDebuggable = false
+            // signingConfig = signingConfigs.getByName("debug")
 //            proguardFiles(
 //                getDefaultProguardFile("proguard-android-optimize.txt"),
 //                "proguard-rules.pro"

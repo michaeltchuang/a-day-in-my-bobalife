@@ -42,9 +42,7 @@ import example_app.composeapp.generated.resources.login_restore_textfield_value
 import example_app.composeapp.generated.resources.login_restore_textifield_title
 import org.jetbrains.compose.resources.painterResource
 import org.jetbrains.compose.resources.stringResource
-import org.koin.core.annotation.KoinExperimentalAPI
 
-@OptIn(KoinExperimentalAPI::class)
 @SuppressLint("ComposableNaming")
 @Composable
 fun LoginScreen(
