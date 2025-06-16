@@ -1,3 +1,18 @@
+## [2025.23.0](https://github.com/michaeltchuang/a-day-in-my-bobalife/compare/v2025.22.0...v2025.23.0) (2025-06-16)
+
+
+### Updates & Maintenance
+
+* change license ([82c2ee6](https://github.com/michaeltchuang/a-day-in-my-bobalife/commit/82c2ee6681ef050ffff85c7e78dc4a2965eacd0a))
+* log greeting (2025-06-10) ([4163f4a](https://github.com/michaeltchuang/a-day-in-my-bobalife/commit/4163f4a1f14cc05e6a6dd10cbf14e37fcb9d07c9))
+* log greeting (2025-06-11) ([ec9f34e](https://github.com/michaeltchuang/a-day-in-my-bobalife/commit/ec9f34e4b4d99797ee6f27e2dc33a0dc8a8fc42a))
+* log greeting (2025-06-12) ([a8d3b7e](https://github.com/michaeltchuang/a-day-in-my-bobalife/commit/a8d3b7e02663985cd420976ac27e6bdd4f37336f))
+* log greeting (2025-06-13) ([be9b749](https://github.com/michaeltchuang/a-day-in-my-bobalife/commit/be9b7497e24d329618d65c32867c0ce662095791))
+* log greeting (2025-06-14) ([8456f83](https://github.com/michaeltchuang/a-day-in-my-bobalife/commit/8456f83a64d3f2c7a55c31ead7faaa21242acd27))
+* log greeting (2025-06-15) ([6d68eb8](https://github.com/michaeltchuang/a-day-in-my-bobalife/commit/6d68eb884b7ca0f9dd7526a488f273dee5a86fae))
+* log greeting (2025-06-16) ([643a9c0](https://github.com/michaeltchuang/a-day-in-my-bobalife/commit/643a9c0350e9ed795ddc397b9ef81a2ef95bf7d9))
+* update dependencies ([b9c8a3a](https://github.com/michaeltchuang/a-day-in-my-bobalife/commit/b9c8a3ab4d88c1d0538dcd45abf87a06a7487c5e))
+
 ## [2025.22.0](https://github.com/michaeltchuang/a-day-in-my-bobalife/compare/v2025.21.0...v2025.22.0) (2025-06-09)
 
 
