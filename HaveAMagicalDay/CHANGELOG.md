@@ -1,3 +1,19 @@
+## [2025.25.0](https://github.com/michaeltchuang/a-day-in-my-bobalife/compare/v2025.24.0...v2025.25.0) (2025-06-30)
+
+
+### Updates & Maintenance
+
+* bump com.android.tools.build:gradle from 8.10.1 to 8.11.0 in /DisneyScenicRides ([#259](https://github.com/michaeltchuang/a-day-in-my-bobalife/issues/259)) ([9542cbd](https://github.com/michaeltchuang/a-day-in-my-bobalife/commit/9542cbd473ef9b4a354f1ce10c9f08e7080ab01e))
+* bump kotlin from 2.1.21 to 2.2.0 in /DisneyScenicRides ([#258](https://github.com/michaeltchuang/a-day-in-my-bobalife/issues/258)) ([826496f](https://github.com/michaeltchuang/a-day-in-my-bobalife/commit/826496f2bedd5449329843b56b2e5b5f3026342c))
+* bump org.jetbrains.kotlin.jvm from 2.1.21 to 2.2.0 in /HaveAMagicalDay ([#257](https://github.com/michaeltchuang/a-day-in-my-bobalife/issues/257)) ([deb95fd](https://github.com/michaeltchuang/a-day-in-my-bobalife/commit/deb95fd6dbacac7d222ea6d3e2ec67f35532e89a))
+* log greeting (2025-06-24) ([8bea2d5](https://github.com/michaeltchuang/a-day-in-my-bobalife/commit/8bea2d51b7a154f314a45c1db1bb6e1617bd14a7))
+* log greeting (2025-06-25) ([8a781ce](https://github.com/michaeltchuang/a-day-in-my-bobalife/commit/8a781ce9e15314b7b99c7963e2af4a6425f91727))
+* log greeting (2025-06-26) ([77a6a64](https://github.com/michaeltchuang/a-day-in-my-bobalife/commit/77a6a64b8448d8aa98459952ef606e938910ac9b))
+* log greeting (2025-06-27) ([a6edcb2](https://github.com/michaeltchuang/a-day-in-my-bobalife/commit/a6edcb2a465fc252131ea9193c887222e922224b))
+* log greeting (2025-06-28) ([c6bbd37](https://github.com/michaeltchuang/a-day-in-my-bobalife/commit/c6bbd37ee40b350576244fa8621e5f863308fc52))
+* log greeting (2025-06-29) ([a9df5e6](https://github.com/michaeltchuang/a-day-in-my-bobalife/commit/a9df5e6fb4adce7ba3977a726c31d8e76c060a97))
+* log greeting (2025-06-30) ([dbf69b5](https://github.com/michaeltchuang/a-day-in-my-bobalife/commit/dbf69b58dc0fb379d6e2ea9ba8e2a1320ac8f1e9))
+
 ## [2025.24.0](https://github.com/michaeltchuang/a-day-in-my-bobalife/compare/v2025.23.0...v2025.24.0) (2025-06-23)
 
 
