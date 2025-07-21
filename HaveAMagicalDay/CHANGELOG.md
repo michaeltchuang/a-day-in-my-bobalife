@@ -1,3 +1,19 @@
+## [2025.28.0](https://github.com/michaeltchuang/a-day-in-my-bobalife/compare/v2025.27.0...v2025.28.0) (2025-07-21)
+
+
+### Updates & Maintenance
+
+* bump androidx.navigation:navigation-fragment-ktx from 2.9.1 to 2.9.2 in /DisneyScenicRides ([#266](https://github.com/michaeltchuang/a-day-in-my-bobalife/issues/266)) ([93cb578](https://github.com/michaeltchuang/a-day-in-my-bobalife/commit/93cb5785e0fa4962ac2844370c2f351bcbccfc01))
+* bump androidx.navigation:navigation-ui-ktx from 2.9.1 to 2.9.2 in /DisneyScenicRides ([#265](https://github.com/michaeltchuang/a-day-in-my-bobalife/issues/265)) ([cb2fa25](https://github.com/michaeltchuang/a-day-in-my-bobalife/commit/cb2fa252b9f8344c12635a83aa6cc890c122ce45))
+* bump lifecycle-livedata-ktx from 2.9.1 to 2.9.2 in /DisneyScenicRides ([#264](https://github.com/michaeltchuang/a-day-in-my-bobalife/issues/264)) ([95b735a](https://github.com/michaeltchuang/a-day-in-my-bobalife/commit/95b735af49f60946cdcb3726d0c24306758c233c))
+* log greeting (2025-07-15) ([47defc0](https://github.com/michaeltchuang/a-day-in-my-bobalife/commit/47defc0cff53cb586bf9f3c6a3222dbb125ad0dd))
+* log greeting (2025-07-16) ([70ad032](https://github.com/michaeltchuang/a-day-in-my-bobalife/commit/70ad032b10e58c9d165506c9dfbcdd9cd12f79a7))
+* log greeting (2025-07-17) ([411da57](https://github.com/michaeltchuang/a-day-in-my-bobalife/commit/411da57a31d467de1154cfd1539543bc5913dbf6))
+* log greeting (2025-07-18) ([45d3ebd](https://github.com/michaeltchuang/a-day-in-my-bobalife/commit/45d3ebdf623193a5a152c4a195074254927b45d4))
+* log greeting (2025-07-19) ([2515bfe](https://github.com/michaeltchuang/a-day-in-my-bobalife/commit/2515bfecd9ae512bbec724adac1766ee7e2d722c))
+* log greeting (2025-07-20) ([4e5f271](https://github.com/michaeltchuang/a-day-in-my-bobalife/commit/4e5f27124ef2d24150f37f0baed7d5d5043d8b05))
+* log greeting (2025-07-21) ([37e6fdb](https://github.com/michaeltchuang/a-day-in-my-bobalife/commit/37e6fdbfeabbcddc2a732d261f0147f9b8fc4889))
+
 ## [2025.27.0](https://github.com/michaeltchuang/a-day-in-my-bobalife/compare/v2025.26.0...v2025.27.0) (2025-07-14)
 
 
