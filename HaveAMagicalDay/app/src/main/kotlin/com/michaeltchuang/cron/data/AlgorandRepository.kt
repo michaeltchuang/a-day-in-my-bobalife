@@ -11,7 +11,7 @@ import com.algorand.algosdk.v2.client.model.PendingTransactionResponse
 import com.algorand.algosdk.v2.client.model.TransactionParametersResponse
 import com.michaeltchuang.cron.utils.Constants
 
-class AlgorandRepository() {
+class AlgorandRepository {
     private var client: AlgodClient =
         AlgodClient(
             Constants.ALGOD_API_ADDR,
@@ -58,7 +58,8 @@ class AlgorandRepository() {
 
             // Create a transaction
             val ptxn =
-                PaymentTransactionBuilder.Builder()
+                PaymentTransactionBuilder
+                    .Builder()
                     .suggestedParams(sp)
                     .amount(amount)
                     .sender(account.address)
@@ -72,7 +73,9 @@ class AlgorandRepository() {
             // send to network
             val encodedTxBytes: ByteArray = Encoder.encodeToMsgPack(signedTxn)
             val txResponse =
-                client.RawTransaction().rawtxn(encodedTxBytes)
+                client
+                    .RawTransaction()
+                    .rawtxn(encodedTxBytes)
                     .execute(txHeaders, txValues)
 
             // Check if the response is successful and has a body

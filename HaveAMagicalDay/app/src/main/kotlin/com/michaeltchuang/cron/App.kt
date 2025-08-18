@@ -74,17 +74,18 @@ class PaymentProcessor(
     ): Int = dateUtils.calculateVlogNum(extra, Constants.VOL3_VLOG0_START_DATE, currentDateStr)
 
     private fun isMonday(): Boolean =
-        LocalDate.now(AppConfiguration.tz.toZoneId())
-            .minusDays(daysAgo).dayOfWeek.value == 1
+        LocalDate
+            .now(AppConfiguration.tz.toZoneId())
+            .minusDays(daysAgo)
+            .dayOfWeek.value == 1
 
     private fun createGreeting(
         volume: Int,
         vlogNum: Int,
-    ): String {
-        return "Vlog $volume-$vlogNum, have a magical day everyone! - Michael T Chuang".also {
+    ): String =
+        "Vlog $volume-$vlogNum, have a magical day everyone! - Michael T Chuang".also {
             println(it)
         }
-    }
 
     private fun appendToCsvFile(
         volume: Int,
@@ -106,11 +107,11 @@ class PaymentProcessor(
     }
 }
 
-fun getDateString(daysAgo: Long = 0): String {
-    return LocalDate.now(AppConfiguration.tz.toZoneId())
+fun getDateString(daysAgo: Long = 0): String =
+    LocalDate
+        .now(AppConfiguration.tz.toZoneId())
         .minusDays(daysAgo)
         .format(AppConfiguration.dateFormatter)
-}
 
 fun main() {
     PaymentProcessor(AlgorandRepository()).processPayments()

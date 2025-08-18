@@ -3,7 +3,7 @@ package com.michaeltchuang.cron.utils
 import java.time.Duration
 import java.time.LocalDateTime
 
-class DateUtils() {
+class DateUtils {
     fun calculateVlogNum(
         returnEighth: Boolean,
         startDateStr: String,
