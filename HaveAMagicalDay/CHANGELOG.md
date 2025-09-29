@@ -1,3 +1,22 @@
+## [2025.38.0](https://github.com/michaeltchuang/a-day-in-my-bobalife/compare/v2025.37.0...v2025.38.0) (2025-09-29)
+
+
+### Updates & Maintenance
+
+* bump androidx.compose.material3:material3 from 1.3.2 to 1.4.0 in /DisneyScenicRides ([#297](https://github.com/michaeltchuang/a-day-in-my-bobalife/issues/297)) ([b263e69](https://github.com/michaeltchuang/a-day-in-my-bobalife/commit/b263e6950cd50d33989bde4ad7fcbefa6357c1da))
+* bump androidx.navigation:navigation-fragment-ktx from 2.9.4 to 2.9.5 in /DisneyScenicRides ([#299](https://github.com/michaeltchuang/a-day-in-my-bobalife/issues/299)) ([62d4243](https://github.com/michaeltchuang/a-day-in-my-bobalife/commit/62d42432327e6394c7188149522fc020e27e2d95))
+* bump androidx.navigation:navigation-ui-ktx from 2.9.4 to 2.9.5 in /DisneyScenicRides ([#295](https://github.com/michaeltchuang/a-day-in-my-bobalife/issues/295)) ([8d41c94](https://github.com/michaeltchuang/a-day-in-my-bobalife/commit/8d41c94b92aa36f077209d414d5aa89ccb7dc750))
+* bump foundation from 1.9.1 to 1.9.2 in /DisneyScenicRides ([#294](https://github.com/michaeltchuang/a-day-in-my-bobalife/issues/294)) ([f7b3f26](https://github.com/michaeltchuang/a-day-in-my-bobalife/commit/f7b3f269a5b2b88a610044bd0711ed41d3441c0b))
+* bump runtime-livedata from 1.9.1 to 1.9.2 in /DisneyScenicRides ([#296](https://github.com/michaeltchuang/a-day-in-my-bobalife/issues/296)) ([3f8d22e](https://github.com/michaeltchuang/a-day-in-my-bobalife/commit/3f8d22e4d888f170e1f7c9c7c905ed99e7ff9b56))
+* bump ui from 1.9.1 to 1.9.2 in /DisneyScenicRides ([#298](https://github.com/michaeltchuang/a-day-in-my-bobalife/issues/298)) ([207b3a0](https://github.com/michaeltchuang/a-day-in-my-bobalife/commit/207b3a07ad07e7f94a5cad4f2a31955b7da41e8f))
+* log greeting (2025-09-23) ([7881fda](https://github.com/michaeltchuang/a-day-in-my-bobalife/commit/7881fda77704bfeff52d314499b57f77a7bb4ac8))
+* log greeting (2025-09-24) ([e1fa795](https://github.com/michaeltchuang/a-day-in-my-bobalife/commit/e1fa795e4b7191431e904e6c16da3bc2f6c0f8da))
+* log greeting (2025-09-25) ([5d75bc9](https://github.com/michaeltchuang/a-day-in-my-bobalife/commit/5d75bc92bd70577cc1035ca9a5255892d77e51be))
+* log greeting (2025-09-26) ([fcd0ae3](https://github.com/michaeltchuang/a-day-in-my-bobalife/commit/fcd0ae350a334fc59db023d1693aaa7df413b468))
+* log greeting (2025-09-27) ([151ab55](https://github.com/michaeltchuang/a-day-in-my-bobalife/commit/151ab5526b6a912027786d0caee1ab466b269936))
+* log greeting (2025-09-28) ([7734f11](https://github.com/michaeltchuang/a-day-in-my-bobalife/commit/7734f11b9a8767d193948c0feffc3c754f68fab8))
+* log greeting (2025-09-29) ([83c9ab8](https://github.com/michaeltchuang/a-day-in-my-bobalife/commit/83c9ab86eb3efc3d9b988a45b5a1d689e706c159))
+
 ## [2025.37.0](https://github.com/michaeltchuang/a-day-in-my-bobalife/compare/v2025.36.0...v2025.37.0) (2025-09-22)
 
 
