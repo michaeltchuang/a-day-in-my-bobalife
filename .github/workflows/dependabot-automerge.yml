@@ -9,5 +9,5 @@ on:
 jobs:
   pr-check:
     name: "Dependabot Automerge"
-    uses: michaeltchuang/.github/.github/workflows/dependabot-automerge.yml@main
+    uses: michaeltchuangllc/.github/.github/workflows/dependabot-automerge.yml@main
     secrets: inherit
