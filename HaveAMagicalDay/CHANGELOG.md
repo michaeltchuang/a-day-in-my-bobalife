@@ -1,3 +1,20 @@
+## [2025.40.0](https://github.com/michaeltchuang/a-day-in-my-bobalife/compare/v2025.39.0...v2025.40.0) (2025-10-13)
+
+
+### Updates & Maintenance
+
+* bump foundation from 1.9.2 to 1.9.3 in /DisneyScenicRides ([#301](https://github.com/michaeltchuang/a-day-in-my-bobalife/issues/301)) ([c5f991b](https://github.com/michaeltchuang/a-day-in-my-bobalife/commit/c5f991bb75bfd823a83b74b6f36d7a39a055fbdc))
+* bump runtime-livedata from 1.9.2 to 1.9.3 in /DisneyScenicRides ([#302](https://github.com/michaeltchuang/a-day-in-my-bobalife/issues/302)) ([9f6a5a3](https://github.com/michaeltchuang/a-day-in-my-bobalife/commit/9f6a5a36e39f5ca8910ee4411ff4eed48a6938d7))
+* bump ui from 1.9.2 to 1.9.3 in /DisneyScenicRides ([#303](https://github.com/michaeltchuang/a-day-in-my-bobalife/issues/303)) ([722acce](https://github.com/michaeltchuang/a-day-in-my-bobalife/commit/722acceac5216c09e4b2495baa5bfb1625212923))
+* log greeting (2025-10-07) ([8c80d5e](https://github.com/michaeltchuang/a-day-in-my-bobalife/commit/8c80d5ecf9d554a49a47868fe5cf40d8a2edde98))
+* log greeting (2025-10-08) ([2415fd0](https://github.com/michaeltchuang/a-day-in-my-bobalife/commit/2415fd07980807c84438c568c3dca32b423a11b1))
+* log greeting (2025-10-09) ([73e6ad4](https://github.com/michaeltchuang/a-day-in-my-bobalife/commit/73e6ad47cc32c576551606a8b1eb80e9cf41dcfe))
+* log greeting (2025-10-10) ([5b81523](https://github.com/michaeltchuang/a-day-in-my-bobalife/commit/5b815231fb56e32a64ac1b19e1030fae33b10139))
+* log greeting (2025-10-11) ([c93c9af](https://github.com/michaeltchuang/a-day-in-my-bobalife/commit/c93c9afc0dcc5c7c4547073b209e39c302a4d7aa))
+* log greeting (2025-10-12) ([8d6ac24](https://github.com/michaeltchuang/a-day-in-my-bobalife/commit/8d6ac242b8d9f060903db26076516e9f34452742))
+* log greeting (2025-10-13) ([c4e88f9](https://github.com/michaeltchuang/a-day-in-my-bobalife/commit/c4e88f943f4c5b491a724a7c19f7016c97daf743))
+* update workflow due to new github org ([4e56c44](https://github.com/michaeltchuang/a-day-in-my-bobalife/commit/4e56c44e168fd5d60d7cb69d9e63de2b0e620cf3))
+
 ## [2025.39.0](https://github.com/michaeltchuang/a-day-in-my-bobalife/compare/v2025.38.0...v2025.39.0) (2025-10-06)
 
 
