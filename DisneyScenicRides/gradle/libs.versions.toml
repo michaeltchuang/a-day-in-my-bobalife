@@ -15,7 +15,7 @@ material3 = "1.4.0"
 navigation-fragment-ktx = "2.9.5"
 navigation-ui-ktx = "2.9.5"
 runtime-livedata = "1.9.3"
-ui = "1.9.3"
+ui = "1.9.5"
 
 [libraries]
 androidx-appcompat = { module = "androidx.appcompat:appcompat", version.ref = "appcompat" }
