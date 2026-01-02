@@ -26,7 +26,7 @@ class VideoPlayerActivity : YouTubeBaseActivity(), YouTubePlayer.OnInitializedLi
 
     public override fun onCreate(savedInstanceState: Bundle?) {
         requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_USER
-        setTheme(materialR.style.ThemeOverlay_AppCompat_Dark)
+        setTheme(materialR.style.ThemeOverlay_Material3_Dark)
         super.onCreate(savedInstanceState)
 
         val layout = layoutInflater.inflate(com.michaeltchuang.ride.R.layout.activity_video_player, null) as ConstraintLayout

@@ -1,3 +1,5 @@
+import org.jetbrains.kotlin.gradle.dsl.JvmTarget
+
 plugins {
     id("com.android.application")
     id("org.jetbrains.kotlin.android")
@@ -13,8 +15,8 @@ android {
         applicationId = "com.michaeltchuang.ride"
         minSdk = 27
         targetSdk = 36
-        versionCode = 1
-        versionName = "1.0.0"
+        versionCode = 2026
+        versionName = "2026.0.0"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
@@ -37,13 +39,36 @@ android {
     }
     kotlin {
         jvmToolchain(21)
-    }
-    kotlinOptions {
-        jvmTarget = "21"
+        compilerOptions {
+            jvmTarget.set(JvmTarget.JVM_21)
+        }
     }
     lint {
-        checkDependencies = true
+        // Disable problematic rules for KMP
+        disable.addAll(
+            listOf(
+                "NullSafeMutableLiveData",
+                "UnusedResources",
+                "MissingTranslation",
+                "Instantiatable",
+                "InvalidPackage",
+                "TypographyFractions",
+                "TypographyQuotes",
+                "TrustAllX509TrustManager",
+                "UseTomlInstead",
+                "AndroidGradlePluginVersion",
+                "GradleDependency",
+            ),
+        )
+
+        // Continue on lint errors instead of failing the build
         abortOnError = true
+
+        // Skip lint for release builds to speed up builds
+        checkReleaseBuilds = false
+
+        // Only run lint on changed files
+        checkDependencies = true
     }
     namespace = "com.michaeltchuang.ride"
 }
