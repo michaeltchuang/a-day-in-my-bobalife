@@ -14,7 +14,7 @@ material = "1.13.0"
 material3 = "1.4.0"
 navigation-fragment-ktx = "2.9.6"
 navigation-ui-ktx = "2.9.6"
-runtime-livedata = "1.10.0"
+runtime-livedata = "1.10.4"
 ui = "1.10.0"
 
 [libraries]
