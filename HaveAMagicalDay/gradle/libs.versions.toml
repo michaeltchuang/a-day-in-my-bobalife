@@ -1,6 +1,6 @@
 [versions]
 algosdk = "2.10.1"
-clikt = "5.0.3"
+clikt = "5.1.0"
 junit = "4.13.2"
 
 [libraries]
