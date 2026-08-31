@@ -5,13 +5,17 @@ import java.util.Date
 import java.util.TimeZone
 
 plugins {
-    id("org.jetbrains.kotlin.jvm") version "2.2.20"
+    id("org.jetbrains.kotlin.jvm") version "2.4.10"
     id("org.jlleitschuh.gradle.ktlint") version "13.1.0"
     application
 }
 
 application {
     mainClass.set("com.michaeltchuang.cron.App")
+}
+
+kotlin {
+    jvmToolchain(21)
 }
 
 dependencies {
