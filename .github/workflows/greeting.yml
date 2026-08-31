@@ -26,7 +26,7 @@ jobs:
       CLIKT_PASSPHRASE: ${{ secrets.CLIKT_PASSPHRASE }}
     steps:
       - name: "Checkout main branch"
-        uses: actions/checkout@v4
+        uses: actions/checkout@v7
         with:
           token: ${{ secrets.MICHAELTCHUANG_BOT }}
           repository: michaeltchuang/a-day-in-my-bobalife
@@ -40,7 +40,7 @@ jobs:
           git_user_signingkey: true
           git_commit_gpgsign: true
       - name: "Install JDK 21"
-        uses: actions/setup-java@v4
+        uses: actions/setup-java@v5
         with:
           distribution: "zulu"
           java-version: "21"
