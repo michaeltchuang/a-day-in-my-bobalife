@@ -1,6 +1,6 @@
 [versions]
 androidx-junit = "1.3.0"
-appcompat = "1.7.1"
+appcompat = "1.8.0"
 constraintlayout = "2.2.1"
 core-ktx = "1.17.0"
 espresso-core = "3.7.0"
