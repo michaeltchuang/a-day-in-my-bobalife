@@ -2,19 +2,18 @@ import org.jetbrains.kotlin.gradle.dsl.JvmTarget
 
 plugins {
     id("com.android.application")
-    id("org.jetbrains.kotlin.android")
-    id("org.jlleitschuh.gradle.ktlint") version(libs.versions.ktlint)
+    id("org.jlleitschuh.gradle.ktlint") version (libs.versions.ktlint)
 
     alias(libs.plugins.compose.compiler)
 }
 
 android {
-    compileSdk = 36
+    compileSdk = 37
 
     defaultConfig {
         applicationId = "com.michaeltchuang.ride"
         minSdk = 27
-        targetSdk = 36
+        targetSdk = 37
         versionCode = 2026
         versionName = "2026.0.0"
 
@@ -34,7 +33,6 @@ android {
         targetCompatibility = JavaVersion.VERSION_21
     }
     buildFeatures {
-        dataBinding = true
         compose = true
     }
     kotlin {
@@ -74,10 +72,9 @@ android {
 }
 
 dependencies {
-    implementation(files("src/main/libs/YouTubeAndroidPlayerApi.jar"))
-
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)
+    implementation(libs.androidx.activity.compose)
     implementation(libs.androidx.runtime)
     implementation(libs.androidx.runtime.livedata)
     implementation(libs.androidx.material3)
@@ -86,11 +83,10 @@ dependencies {
     implementation(libs.androidx.foundation)
     implementation(libs.androidx.foundation.layout)
     implementation(libs.material)
-    implementation(libs.androidx.constraintlayout)
-    implementation(libs.androidx.lifecycle.livedata.ktx)
-    implementation(libs.androidx.lifecycle.viewmodel.ktx)
-    implementation(libs.androidx.navigation.fragment.ktx)
-    implementation(libs.androidx.navigation.ui.ktx)
+    implementation(libs.androidx.lifecycle.viewmodel.compose)
+    implementation(libs.androidx.lifecycle.runtime.compose)
+    implementation(libs.androidx.navigation.compose)
+    implementation(libs.youtube.player.core)
 
     testImplementation(libs.junit)
 

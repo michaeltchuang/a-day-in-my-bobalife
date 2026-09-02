@@ -21,6 +21,7 @@ kotlin {
 dependencies {
     implementation(libs.clikt)
     implementation(libs.algosdk)
+    implementation(libs.falcon.signatures.mobile)
     testImplementation(libs.junit)
 }
 

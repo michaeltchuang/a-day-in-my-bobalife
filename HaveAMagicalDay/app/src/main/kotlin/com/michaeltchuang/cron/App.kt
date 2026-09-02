@@ -57,7 +57,7 @@ class PaymentProcessor(
             val txnId =
                 repository.sendPayment(
                     account,
-                    "${Constants.RECEIVER_ADDRESS}",
+                    Constants.RECEIVER_ADDRESS,
                     Constants.DEFAULT_MICRO_ALGO_TRANSFER_AMOUNT,
                     createGreeting(volumeNum, vlogNum),
                 )

@@ -1,9 +1,11 @@
 [versions]
 algosdk = "2.11.0"
 clikt = "5.1.0"
+falcon-sdk = "0.0.19"
 junit = "4.13.2"
 
 [libraries]
 algosdk = { module = "com.algorand:algosdk", version.ref = "algosdk" }
 clikt = { module = "com.github.ajalt.clikt:clikt", version.ref = "clikt" }
+falcon-signatures-mobile = { group = "io.github.algorandecosystem", name = "falcon-signatures-mobile-sdk", version.ref = "falcon-sdk" }
 junit = { module = "junit:junit", version.ref = "junit" }
