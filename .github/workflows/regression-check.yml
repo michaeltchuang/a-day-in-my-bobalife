@@ -39,4 +39,3 @@ jobs:
     name: "Save PR Number for Dependabot Automerge"
     needs: [ have-a-magical-day, disney-scenic-rides ]
     uses: michaeltchuangllc/.github/.github/workflows/dependabot-save-pr-number.yml@main
-    secrets: inherit

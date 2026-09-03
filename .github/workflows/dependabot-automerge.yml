@@ -10,4 +10,5 @@ jobs:
   pr-check:
     name: "Dependabot Automerge"
     uses: michaeltchuangllc/.github/.github/workflows/dependabot-automerge.yml@main
-    secrets: inherit
+    secrets:
+      MICHAELTCHUANG_BOT: ${{ secrets.MICHAELTCHUANG_BOT }}
