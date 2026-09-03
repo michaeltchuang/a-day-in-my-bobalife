@@ -1,7 +1,7 @@
 [versions]
 algosdk = "2.11.0"
 clikt = "5.1.0"
-falcon-sdk = "0.0.19"
+falcon-sdk = "0.1.0"
 junit = "4.13.2"
 
 [libraries]
