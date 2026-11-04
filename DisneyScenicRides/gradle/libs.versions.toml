@@ -15,7 +15,7 @@ material3 = "1.4.0"
 navigation-compose = "2.10.2"
 runtime-livedata = "1.12.0"
 ui = "1.12.0"
-youtube-player = "13.0.0"
+youtube-player = "13.1.0"
 
 [libraries]
 androidx-activity-compose = { module = "androidx.activity:activity-compose", version.ref = "activity-compose" }
