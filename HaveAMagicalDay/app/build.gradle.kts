@@ -20,8 +20,14 @@ kotlin {
 
 dependencies {
     implementation(libs.clikt)
-    implementation(libs.algosdk)
     implementation(libs.falcon.signatures.mobile)
+    implementation(libs.jna)
+    implementation(libs.json)
+
+    // AlgoKit Core Rust libraries (UniFFI/Kotlin bindings), replacing the Java algosdk for
+    // account derivation, transaction composition/signing, and msgpack encoding.
+    implementation(files("libs/algokit_composer.jar", "libs/algokit_crypto.jar", "libs/algokit_transact.jar"))
+
     testImplementation(libs.junit)
 }
 

@@ -17,7 +17,7 @@ class UnitTests {
                 Constants.VOL3_VLOG0_START_DATE,
                 VOL3_VLOG1_DATE,
             )
-        assertEquals(output, 1)
+        assertEquals(1, output)
     }
 
     @Test

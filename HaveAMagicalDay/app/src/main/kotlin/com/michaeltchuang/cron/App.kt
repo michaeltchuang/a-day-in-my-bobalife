@@ -2,7 +2,7 @@
 
 package com.michaeltchuang.cron
 
-import com.algorand.algosdk.account.Account
+import com.michaeltchuang.cron.data.AlgorandAccount
 import com.michaeltchuang.cron.data.AlgorandRepository
 import com.michaeltchuang.cron.utils.Constants
 import com.michaeltchuang.cron.utils.DateUtils
@@ -49,20 +49,18 @@ class PaymentProcessor(
     }
 
     private fun sendPaymentAndRecord(
-        account: Account,
+        account: AlgorandAccount,
         volumeNum: Int,
         vlogNum: Int,
     ) {
-        account.address?.let { address ->
-            val txnId =
-                repository.sendPayment(
-                    account,
-                    Constants.RECEIVER_ADDRESS,
-                    Constants.DEFAULT_MICRO_ALGO_TRANSFER_AMOUNT,
-                    createGreeting(volumeNum, vlogNum),
-                )
-            appendToCsvFile(volumeNum, vlogNum, txnId)
-        }
+        val txnId =
+            repository.sendPayment(
+                account,
+                Constants.RECEIVER_ADDRESS,
+                Constants.DEFAULT_MICRO_ALGO_TRANSFER_AMOUNT,
+                createGreeting(volumeNum, vlogNum),
+            )
+        appendToCsvFile(volumeNum, vlogNum, txnId)
     }
 
     private fun calculateVolumeNumber(currentDateStr: String): Int =
