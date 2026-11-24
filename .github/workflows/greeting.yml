@@ -4,7 +4,7 @@ on:
 
   # no timezone support so cron runs in UTC time for now
   schedule:
-    - cron: "8 13 * * *"
+    - cron: "8 11 * * *"
 
   # Allow workflow to be manually run from the GitHub UI
   workflow_dispatch:
@@ -48,7 +48,8 @@ jobs:
       - name: Get current date
         id: currentdate
         run: |
-          echo "jobdate=$(date +'%Y-%m-%d')" >> $GITHUB_OUTPUT
+          # match the app's America/Los_Angeles date used in the greeting history log
+          echo "jobdate=$(TZ=America/Los_Angeles date +'%Y-%m-%d')" >> $GITHUB_OUTPUT
       - name: "Run greeting script"
         working-directory: HaveAMagicalDay
         run: ./gradlew run

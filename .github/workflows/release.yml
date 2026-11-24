@@ -1,17 +1,55 @@
 name: "Release SDK"
 
 on:
-  # no timezone support so cron runs in UTC time for now
-  schedule:
-    - cron: "8 15 * * 1"
+  # Weekly release runs after the scheduled AlgoFam Greeting job completes
+  # (instead of its own cron) so it is always ordered after the greeting.
+  workflow_run:
+    workflows: ["AlgoFam Greeting"]
+    types: [completed]
 
   workflow_dispatch:
   workflow_call:
 
 jobs:
+  # When triggered by the greeting workflow (scheduled or manual run), only release
+  # on Mondays (Pacific time) after a successful greeting, and only if a release
+  # hasn't already been published today (so greeting re-runs don't release twice).
+  check-release-trigger:
+    name: "Check release trigger"
+    runs-on: ubuntu-latest
+    outputs:
+      should_release: ${{ steps.check.outputs.should_release }}
+    steps:
+      - id: check
+        env:
+          GH_TOKEN: ${{ github.token }}
+          EVENT_NAME: ${{ github.event_name }}
+          UPSTREAM_CONCLUSION: ${{ github.event.workflow_run.conclusion }}
+        run: |
+          should_release=true
+          if [ "$EVENT_NAME" = "workflow_run" ]; then
+            today=$(TZ=America/Los_Angeles date +%F)
+            day_of_week=$(TZ=America/Los_Angeles date +%u)
+            latest_published=$(gh api "repos/${{ github.repository }}/releases/latest" --jq .published_at 2>/dev/null || true)
+            latest_release_day=""
+            if [ -n "$latest_published" ]; then
+              latest_release_day=$(TZ=America/Los_Angeles date -d "$latest_published" +%F)
+            fi
+            echo "today=$today day_of_week=$day_of_week upstream_conclusion=$UPSTREAM_CONCLUSION latest_release_day=$latest_release_day"
+            if [ "$UPSTREAM_CONCLUSION" != "success" ] \
+              || [ "$day_of_week" != "1" ] \
+              || [ "$latest_release_day" = "$today" ]; then
+              should_release=false
+            fi
+          fi
+          echo "should_release=$should_release"
+          echo "should_release=$should_release" >> "$GITHUB_OUTPUT"
+
   # SDK release is done from public main branch.
   confirm-public-repo-main-branch:
     name: "Confirm release is run from public/main branch"
+    needs: check-release-trigger
+    if: needs.check-release-trigger.outputs.should_release == 'true'
     uses: michaeltchuangllc/.github/.github/workflows/release-branch-context-check.yml@main
 
   create-release-branch:

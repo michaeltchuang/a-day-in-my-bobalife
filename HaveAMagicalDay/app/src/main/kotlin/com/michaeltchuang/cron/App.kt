@@ -6,6 +6,7 @@ import com.algorand.algosdk.account.Account
 import com.michaeltchuang.cron.data.AlgorandRepository
 import com.michaeltchuang.cron.utils.Constants
 import com.michaeltchuang.cron.utils.DateUtils
+import com.michaeltchuang.cron.utils.HistoryUtils
 import java.nio.file.Files
 import java.nio.file.Paths
 import java.nio.file.StandardOpenOption
@@ -28,11 +29,16 @@ class PaymentProcessor(
     val daysAgo: Long = 0L
 
     fun processPayments() {
+        val currentDateStr = getDateString(daysAgo)
+        if (HistoryUtils.hasEntryForDate(currentDateStr)) {
+            println("Greeting already logged for $currentDateStr, skipping.")
+            return
+        }
+
         val account =
             repository.recoverAccount(System.getenv("CLIKT_PASSPHRASE"))
                 ?: throw Exception("Could not find account")
 
-        val currentDateStr = getDateString(daysAgo)
         val volumeNum = calculateVolumeNumber(currentDateStr)
 
         // First payment
